@@ -1,4 +1,5 @@
 (require 'xcscope+)
+(require 'paredit)
 (defcustom jd:programming-language-major-modes
   '(prog-mode     ; This is the mode perl, makefile, lisp-mode, scheme-mode,
                   ; emacs-lisp-mode, sh-mode, java-mode, c-mode, c++-mode,
@@ -34,36 +35,35 @@
 (global-semantic-idle-summary-mode 1)
 
 ;; CC mode
-;; (c-add-style "jd"
-;; 	     '("gnu"
-;; 	       (c-offsets-alist
-;; 		(block-open . 0)
-;; 		(block-close . 0)
-;; 		(substatement-open . 0)
-;; 		(case-label . +)
-;; 		(func-decl-cont . 0)
-;; 		(inline-open . 0))
-;; 	       (c-hanging-braces-alist
-;;                 (brace-list-close nil)
-;; 		(defun-open after)
-;; 		(defun-close after)
-;; 		(class-open before after)
-;; 		(class-close before)
-;; 		(substatement-open after before)
-;; 		(substatement-close after))
-;; 	       (c-block-comment-prefix . "* ")
-;; 	       (c-echo-syntactic-information-p . t)
-;; 	       (c-basic-offset . 4)))
-;; Don't insert electric newlines on ;
-;; That makes me CRAZY
-(setq-default c-hanging-semi&comma-criteria nil)
-(setq c-block-comment-prefix "* ")
+(c-add-style "xa1"
+	     '("gnu"
+	       (c-offsets-alist
+		(block-open . 0)
+		(block-close . 0)
+		(substatement-open . 0)
+		(case-label . +)
+		(func-decl-cont . 0)
+		(inline-open . 0))
+	       (c-hanging-braces-alist
+                (brace-list-close nil)
+		(defun-open after)
+		(defun-close after)
+		(class-open before after)
+		(class-close before)
+		(substatement-open after before)
+		(substatement-close after))
+	       (c-block-comment-prefix . "* ")
+	       (c-echo-syntactic-information-p . t)
+	       (c-basic-offset . 4)
+               ;; Don't insert electric newlines on ;
+               ;; That makes me CRAZY
+               (c-hanging-semi&comma-criteria . nil)))
 
 (add-hook 'c-mode-common-hook
 	  (lambda ()
             (when (fboundp 'doxymacs-mode)
               (doxymacs-mode 1))
-;;	    (c-set-style "jd")
+	    (c-set-style "xa1")
 	    (c-toggle-auto-newline nil)))
 (add-hook 'c-initialization-hook
 	  (lambda () (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)))
