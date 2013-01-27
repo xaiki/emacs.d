@@ -7,3 +7,4 @@
      (eval-print-last-sexp))))
 
 (require 'el-get)
+(provide 'el-get-bootstrap)

@@ -5,9 +5,8 @@
         '(naquadah-theme
           highlight-indentation
           browse-kill-ring
-          gnus
+          nognus
           go-mode
-          el-get
           rainbow-mode
           google-maps
           google-weather
@@ -17,7 +16,6 @@
           browse-kill-ring
           magit
           gnuplot-mode
-          emacs-jabber
           rainbow-delimiters
           htmlize
           lua-mode
@@ -31,9 +29,9 @@
           org-mode
           mmm-mode
           clojure-mode
-          slime
-          slime-annot
           doc-mode
           paredit
-          jinja2-mode
-          git-commit-mode))
+          git-commit-mode
+	  xcscope
+	  xcscope+
+	  ))
