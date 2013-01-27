@@ -34,7 +34,7 @@
 (load custom-file)
 
 ;; Require el-get to install packages
-(require 'el-get)
+(require 'el-get-bootstrap)
 
 (require 'jd-keybindings)
 (require 'jd-daemon)
