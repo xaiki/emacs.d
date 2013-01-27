@@ -1,3 +1,13 @@
+(global-set-key "\C-cec" (lambda () (interactive)
+			   (erc :server "core.evilgiggle.com" :port "6667"
+				:nick "xaiki" :password "caca")))
+(global-set-key "\C-ceu" (lambda () (interactive)
+			   (erc :server "core.evilgiggle.com" :port "6667"
+				:nick "xaiki" :password "caca2")))
+(global-set-key "\C-ced" (lambda () (interactive)
+			   (erc :server "core.evilgiggle.com" :port "6667"
+				:nick "xaiki" :password "caca3")))
+
 (global-set-key "\C-cq"
                 (defun jd:quit-emacs ()
                   (interactive)

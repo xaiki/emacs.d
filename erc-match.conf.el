@@ -1,4 +1,4 @@
-(setq erc-keywords '("julien" "danjou" "naquadah" "ceilometer"))
+(setq erc-keywords '("xaiki" "Niv" "Sardi" "Iks" "0xa1f00"))
 
 (defcustom jd:erc-pals-file "~/.erc.pals"
   "File containing a list of pals for ERC.
@@ -6,7 +6,7 @@ Put each name on a line."
   :type 'file)
 
 (defcustom jd:erc-fools-file "~/.erc.fools"
-  "File containing a list of pals for ERC.
+  "File containing a list of fools for ERC.
 Put each name on a line."
   :type 'file)
 

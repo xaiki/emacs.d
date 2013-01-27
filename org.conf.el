@@ -1,5 +1,22 @@
-(require 'org-depend)
-(setq org-directory "~/Org")
+(setq org-directory "~/Documents/org")
+(run-at-time "00:59" 3600 'org-save-all-org-buffers)
+
+(org-babel-do-load-languages
+ (quote org-babel-load-languages)
+ (quote ((emacs-lisp . t)
+         (dot . t)
+         (ditaa . t)
+         (R . t)
+         (python . t)
+         (ruby . t)
+         (gnuplot . t)
+         (clojure . t)
+         (sh . t)
+         (ledger . t)
+         (org . t)
+         (plantuml . t)
+         (latex . t))))
+
 (setq org-hide-leading-stars t)
 (setq org-src-fontify-natively t)
 (setq org-startup-indented t)
@@ -13,7 +30,6 @@
       '((sequence "TODO(t!)"
                   "STARTED(s!)"
                   "DELEGATED(g@)"
-                  "BLOCKED(b@)"
                   "FEEDBACK(f!/@)"
                   "REWORK(r!/!)"
                   "VERIFY(v/!)"
@@ -22,9 +38,31 @@
                   "CANCELED(c@)")
         (sequence "PROJECT(j!)" "|" "CANCELED(c@)" "DONE(d!)")))
 (setq org-enforce-todo-dependencies t)
+(setq org-enforce-todo-checkbox-dependencies t)
 (setq org-link-abbrev-alist
-      '(("colissimo" . "http://www.coliposte.net/particulier/suivi_particulier.jsp?colispart=")
-        ("launchpad" . "https://bugs.launchpad.net/bugs/")))
+      '(("colissimo" . "http://www.coliposte.net/particulier/suivi_particulier.jsp?colispart=")))
+
+(setq org-capture-templates (quote (("m" "Meeting" entry (file+headline (concat org-directory "/WORK.org") "Meetings") "* MEETING %^{Meeting Date and Time}T%? %^{Subject}
+:PROPERTIES:
+:LOCATION: %^{Location}
+:END:
+ %i
+ %a") ("t" "Todo" entry (file+headline (concat org-directory "/TODO.org") "Tasks") "* TODO %?
+  %i
+  %a") ("j" "Journal" entry (file+headline (concat org-directory "/JOURNAL.org") "Journal") "* %U %?
+
+  %i
+  %a") ("i" "Idea" entry (file+headline (concat org-directory "/JOURNAL.org") "New Ideas") "*
+
+%^{Title}
+  %i
+  %a") ("c" "Contacts" entry (file (concat org-directory "/Contacts.org"))
+"* %(org-contacts-template-name)
+  :PROPERTIES:
+  :EMAIL: %(org-contacts-template-email)
+  :END:"))))
+
+(global-set-key "\C-cc" 'org-capture)
 
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-mode-hook
@@ -46,13 +84,7 @@
     (unless m
       (set-buffer-modified-p nil))))
 (add-hook 'org-mode-hook 'jd:org-decrypt-entires-silently)
-(add-hook 'org-mode-hook (defun jd:org-decrypt-after-save ()
-                           (add-hook (make-local-variable 'after-save-hook)
-                                     'jd:org-decrypt-entires-silently)))
+(add-hook 'org-mode-hook (lambda ()
+                           (add-hook 'after-save-hook 'jd:org-decrypt-entires-silently)))
 
-(setq org-clock-persist-query-save t)
-(setq org-show-notification-handler
-      (defun jd:org-show-notification-handler (notification)
-        (require 'notifications)
-        (notifications-notify
-         :title notification)))
+(require 'xa-org-export)

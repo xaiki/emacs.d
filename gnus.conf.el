@@ -1,12 +1,13 @@
-(require 'jd-email)
+(require 'xa-email)
+;; Check for new mail
+(require 'gnus-demon)
 ;; Move spam into spam
 (require 'spam)
+;; Pretty gnus
+(require 'xa-gnus-faces)
 
 ;; gnus
-(setq gnus-select-method '(nnimap "Naquadah"
-                                  (nnimap-address "mail.naquadah.org")
-                                  (nnimap-stream ssl)))
-
+(setq gnus-select-method '(nnnil ""))
 (setq gnus-novice-user nil)             ; I AM NOT!
 (setq gnus-spam-process-destinations
       '(("." "spam")))
@@ -14,7 +15,7 @@
 (setq gnus-summary-line-format
       (concat "%z%U%R %~(max-right 17)~(pad-right 17)&user-date;  "
               "%~(max-right 20)~(pad-right 20)f %B%s\n"))
-(setq gnus-message-archive-group "nnimap+Naquadah:sent")
+(setq gnus-message-archive-group "sent")
 ;; Expire
 (setq gnus-total-expirable-newsgroups
       (concat "^\\("
@@ -28,11 +29,9 @@
 (setq gnus-parameters
       '(("^lists\\."
          (subscribed . t)
-         (gnus-message-archive-group . "nnimap+Naquadah:sent"))
+         (gnus-message-archive-group . "sent"))
         ("^lists\\.ding"
          (to-list . "ding@gnus.org"))
-        ("^lists\\.awesome\\(-devel\\)?"
-         (to-list . "awesome\\1@naquadah.org"))
         ("^lists\\.launchpad\\.\\(.+\\)"
          (to-list . "\\1@lists.launchpad.net")
          (list-identifier . "\\\\[\\1\\\\]")
@@ -90,17 +89,11 @@ http://lists.alioth.debian.org/mailman/listinfo/\\1"))
 (setq gnus-save-newsrc-file nil)
 (setq gnus-read-newsrc-file nil)
 (setq gnus-always-read-dribble-file t)
-;; Check every 5 minutes when emacs is idle when Gnus is started
-(add-hook 'gnus-startup-hook
-          (defun jd:gnus-check-for-new-mail ()
-            (gnus-demon-add-handler 'gnus-group-get-new-news 5 t)))
-(add-hook 'gnus-after-getting-new-news-hook 'gnus-notifications)
-(add-hook 'gnus-after-getting-new-news-hook 'gnus-group-find-new-groups)
 
 ;; gnus-group
 ;; Redefine this to nil because I pressed it by mistake too many times
 (define-key gnus-group-mode-map (kbd "M-c") nil)
-(setq gnus-group-default-list-level (- gnus-level-subscribed 1))
+(setq gnus-group-default-list-level (- gnus-level-subscribed 2))
 (setq gnus-group-sort-function '(gnus-group-sort-by-alphabet
                                  gnus-group-sort-by-level))
 
@@ -112,9 +105,7 @@ http://lists.alioth.debian.org/mailman/listinfo/\\1"))
                         (append image
                                 '(:ascent center)))
           (propertize " " 'display `(space . (:width ,(car (image-size image))))))
-      (if image-p
-          string
-        " "))))
+      string)))
 
 (defun gnus-user-format-function-e (dummy)
   (jd:gnus-image-or-space (char-to-string gnus-unread-mark) "~/.emacs.d/icons/email.png"
@@ -124,11 +115,15 @@ http://lists.alioth.debian.org/mailman/listinfo/\\1"))
   (jd:gnus-image-or-space (char-to-string gnus-ticked-mark) "~/.emacs.d/icons/important.png"
                           (cdr (assq 'tick gnus-tmp-marked))))
 
-(setq gnus-group-line-format "%ue%uM %S%p[%5t][%L]\t%P%5y:%B%(%g%)%O\n")
+(add-hook 'gnus-group-mode-hook
+	  (lambda ()
+	    (setq header-line-format "    Ticked    New     Unread   Group" )))
+
+(setq gnus-group-line-format "%ue%uM %1(%1{%6i %}%)%{ %}%2(%2{%7U %}%)%{ %}%3(%3{%7y %}%)%{%* %}%4(%B%-45G%)\n")
+;;(setq gnus-group-line-format "%ue%uM %S%p[%5t][%L]\t%P%5y:%B%(%g%)%O\n")
 
 ;; gnus-sum
-(setq gnus-summary-thread-gathering-function 'gnus-gather-threads-by-references)
-(setq gnus-ignored-from-addresses jd:email-addresses-regexp)
+(setq gnus-ignored-from-addresses (xa:email-addresses-regexp))
 (setq gnus-thread-sort-functions '(gnus-thread-sort-by-number
                                    gnus-thread-sort-by-subject
                                    gnus-thread-sort-by-date
@@ -144,12 +139,13 @@ http://lists.alioth.debian.org/mailman/listinfo/\\1"))
       gnus-read-mark ?✓
       gnus-del-mark ?✗
       gnus-killed-mark ?☠
-      gnus-replied-mark ?↺
-      gnus-forwarded-mark ?↪
+      gnus-replied-mark ?⟲
+      gnus-forwarded-mark ?⤳
       gnus-cached-mark ?☍
-      gnus-recent-mark ?✩
-      gnus-unseen-mark ?★
+      gnus-recent-mark ?★
+      gnus-unseen-mark ?✩
       gnus-unread-mark ?✉
+      gnus-attach-mark ?⚓
       gnus-score-over-mark ?↑           ; ↑ ☀
       gnus-score-below-mark ?↓         ; ↓ ☂
       gnus-sum-thread-tree-false-root " ◌ "
@@ -161,29 +157,18 @@ http://lists.alioth.debian.org/mailman/listinfo/\\1"))
       gnus-sum-thread-tree-vertical        "│ ")
 
 ;; gnus-msg
-(setq gnus-posting-styles
-      '((".*"
-         (name "Julien Danjou")
-         (address "julien@danjou.info"))
-        ("debian"
-         (address "acid@debian.org")
-         (organization "Debian"))
-        ("lists\\.debian\\.france"
-         (address "julien@danjou.info"))
-        ("INBOX\\.nous"
-         (reply-to "nous@danjou.info"))))
 (setq gnus-gcc-mark-as-read t)
 ;; Automatically sign when sending mails
 (add-hook 'gnus-message-setup-hook 'mml-secure-message-sign-pgpmime)
 ;; This is used when "posting"...
 (setq gnus-mailing-list-groups "lists")
 
+(setq gnus-posting-styles xa:posting-styles)
+
 ;; gnus-async
 (setq gnus-use-header-prefetch t)       ; prefetch header for next group
 
 ;; gnus-art
-(add-to-list 'gnus-emphasis-alist
-             '("\\b@jd\\|Julien\\|Danjou\\|jd\\b" 0 0 warning))
 (setq gnus-visible-headers
       (concat gnus-visible-headers "\\|^User-Agent:\\|^X-Mailer:"))
 (setq gnus-sorted-header-list
@@ -197,12 +182,13 @@ http://lists.alioth.debian.org/mailman/listinfo/\\1"))
 (setq gnus-treat-from-gravatar 'head)
 (setq gnus-treat-mail-gravatar 'head)
 (setq gnus-treat-body-boundary nil)    ; No body/header separator
+(add-hook 'gnus-article-prepare-hook 'egocentric-mode-on)
 (add-to-list 'gnus-buttonized-mime-types "multipart/signed")
 (setq gnus-blocked-images nil)          ; HTML rendering
 
 ;; gnus-gravatar
 (setq gnus-gravatar-properties '(:ascent center))
-(setq gnus-gravatar-too-ugly jd:email-addresses-regexp)
+(setq gnus-gravatar-too-ugly (xa:email-addresses-regexp))
 
 ;; nnheader
 (setq gnus-nov-is-evil t)               ; No NOV
@@ -212,33 +198,6 @@ http://lists.alioth.debian.org/mailman/listinfo/\\1"))
 
 ;; gnus-score
 (setq gnus-home-score-file "~/.gnus.score")
-
-;; gnus-win
-(gnus-add-configuration
- ;; two panes side-by-side
- '(article (horizontal 1.0
-                       (summary .5 point)
-                       (article 1.0))))
-(gnus-add-configuration
- ;; two panes side-by-side
- '(summary (horizontal 1.0
-                       (summary 1.0 point))))
-;; Vertical display when replying
-(gnus-add-configuration '(reply (vertical 1.0
-                                          (horizontal 1.0
-                                                      (message .5 point)
-                                                      (article 1.0))
-                                          (summary .2))))
-(gnus-add-configuration '(reply-yank (vertical 1.0
-                                               (horizontal 1.0
-                                                           (message .5 point)
-                                                           (article 1.0))
-                                               (summary .2))))
-(gnus-add-configuration '(forward (vertical 1.0
-                                            (horizontal 1.0
-                                                        (message .5 point)
-                                                        (article 1.0))
-                                            (summary .2))))
 
 ;; No cursor
 (defun jd:no-cursor ()

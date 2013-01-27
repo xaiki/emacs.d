@@ -4,6 +4,9 @@
 ;; Expand load-path
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get") ; Load el-get
+(add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/lisp") ; org-contrib
+(add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
+(require 'mu4e)
 
 ;; Generate autoloads
 (let ((generated-autoload-file "~/.emacs.d/jd-autoloads.el"))
@@ -30,12 +33,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-
-(defvar jd:projects-directory (expand-file-name "~/Work/src")
-  "Where I store my projects.
-This variable is used in some places.")
-
-
 ;; Require el-get to install packages
 (require 'el-get)
 
@@ -50,8 +47,8 @@ This variable is used in some places.")
 (require 'saveplace)
 (require 'uniquify)
 (require 'mmm-auto)
-(require 'google-contacts-message)
-(require 'google-contacts-gnus)
+;;(require 'google-contacts-message)
+;;(require 'google-contacts-gnus)
 
 ;; C source code
 (setq frame-title-format '("" invocation-name ": %b"))
@@ -60,20 +57,20 @@ This variable is used in some places.")
 (setq scroll-step 1)
 (setq visible-bell t)
 (setq-default fill-column 76)
-(setq user-full-name "Julien Danjou")
+(setq user-full-name "Niv Sardi")
 (defalias 'yes-or-no-p 'y-or-n-p)
 (set-default 'indicate-buffer-boundaries '((up . nil) (down . nil) (t . left)))
 (setq next-screen-context-lines 5)      ; I want to keep more lines when
                                         ; switching pages
 (setq use-dialog-box nil)               ; Seriously…
-(setq source-directory "~/Work/src/emacs/src")
+(setq source-directory "~/Work/src/emacs")
 (put 'narrow-to-region 'disabled nil)
 (set-default 'indent-tabs-mode nil)    ; always use spaces to indent, no tab
 
 (display-time-mode 1)
 (global-hi-lock-mode 1)                 ; highlight stuff
 (savehist-mode 1)
-(blink-cursor-mode 1)			; blink!
+(blink-cursor-mode 0)			; no blink!
 (delete-selection-mode 1)		; Transient mark can delete/replace
 (set-scroll-bar-mode 'right)		; Scrollbar on the right
 (scroll-bar-mode -1)			; But no scrollbar
@@ -85,8 +82,17 @@ This variable is used in some places.")
 (url-handler-mode 1)                    ; Allow to open URL
 (mouse-avoidance-mode 'animate)         ; Move the mouse away
 (ffap-bindings)                         ; Use ffap
-(iswitchb-mode 1)
+
+;;(iswitchb-mode 1)
+(ido-mode 'both)                            ; Interactively Do Things
+(global-set-key "" 'ido-find-file)
+(smex-initialize)
+
 (browse-kill-ring-default-keybindings)
 (which-func-mode 1)
 
 (org-crypt-use-before-save-magic)
+
+(package-initialize)
+(require 'sws-mode)
+(require 'jade-mode)

@@ -1,4 +1,4 @@
-(add-to-list 'erc-modules 'smiley)
+;;(add-to-list 'erc-modules 'smiley)
 (add-to-list 'erc-modules 'match)
 (add-to-list 'erc-modules 'scrolltobottom)
 (add-to-list 'erc-modules 'notifications)

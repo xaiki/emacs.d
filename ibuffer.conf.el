@@ -6,13 +6,14 @@
 (setq ibuffer-saved-filter-groups
       `(("default"
          ,@(mapcar (lambda (directory)
-                     `(,(file-name-nondirectory directory) (filename . ,(concat directory "/"))))
+                     `(,(file-name-nondirectory directory) (filename . ,directory)))
                    (remove-if-not 'file-directory-p
-                                  (directory-files jd:projects-directory t "^[^\.][^\.]*" t)))
+                                  (directory-files "~/Work/src/" t "^[^\.][^\.]*" t)))
          ,@(mapcar (lambda (directory)
-                     `(,(concat "Debian/" (file-name-nondirectory directory)) (filename . ,(concat directory "/"))))
+                     `(,(concat "Debian/" (file-name-nondirectory directory)) (filename . ,directory)))
                    (remove-if-not 'file-directory-p
                                   (directory-files "~/Debian/" t "^[^\.][^\.]*" t)))
+         ("julien.danjou.info" (filename . ,(expand-file-name "~/Work/jdi")))
          ("Terminals" (mode . term-mode))
 	 ("Org" (or (mode . org-mode)
                     (mode . org-agenda-mode)
