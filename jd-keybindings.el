@@ -15,20 +15,6 @@
                       (save-buffers-kill-emacs)
                     (message "Coward!"))))
 
-
-(global-set-key "\C-cce"
-                (defun jd:edit-dot-emacs ()
-                  "Edit the ~/.emacs.d/init.el file"
-                  (interactive)
-                  (find-file (locate-user-emacs-file "init.el"))))
-
-(global-set-key "\C-ccd"
-                (defun jd:edit-emacs-dir ()
-                  "Edit the ~/.emacs.d/ dir"
-                  (interactive)
-                  (let ((default-directory "~/.emacs.d/"))
-                    (call-interactively 'find-file))))
-
 (global-set-key [f11]
                 (defun jd:set-frame-maximized ()
                   (interactive)
