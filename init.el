@@ -47,6 +47,9 @@
 (require 'saveplace)
 (require 'uniquify)
 (require 'mmm-auto)
+(require 'sws-mode)
+(require 'jade-mode)
+
 ;;(require 'google-contacts-message)
 ;;(require 'google-contacts-gnus)
 
@@ -86,7 +89,7 @@
 ;;(iswitchb-mode 1)
 (ido-mode 'both)                            ; Interactively Do Things
 (global-set-key "" 'ido-find-file)
-(smex-initialize)
+(smex-initialize)			; ido for M-x
 
 (browse-kill-ring-default-keybindings)
 (which-func-mode 1)
@@ -94,5 +97,4 @@
 (org-crypt-use-before-save-magic)
 
 (package-initialize)
-(require 'sws-mode)
-(require 'jade-mode)
+

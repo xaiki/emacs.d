@@ -34,4 +34,5 @@
           git-commit-mode
 	  xcscope
 	  xcscope+
+          smex
 	  ))
