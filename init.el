@@ -35,6 +35,7 @@
 
 ;; Require el-get to install packages
 (require 'el-get-bootstrap)
+(package-initialize)
 
 (require 'jd-keybindings)
 (require 'jd-daemon)
@@ -96,5 +97,4 @@
 
 (org-crypt-use-before-save-magic)
 
-(package-initialize)
 
