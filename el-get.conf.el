@@ -31,6 +31,7 @@
           clojure-mode
           doc-mode
           paredit
+	  package
           git-commit-mode
 	  xcscope
 	  xcscope+

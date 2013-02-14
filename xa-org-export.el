@@ -1,8 +1,6 @@
 
 (setq org-export-latex-classes nil)
 (when (require 'org-latex nil t)
-  (add-to-list 'org-export-latex-packages-alist '("" "listings"))
-  (add-to-list 'org-export-latex-packages-alist '("" "color"))
   (setq org-export-latex-listings t))
 (setq org-indent-mode nil)
 (setq org-export-html-style

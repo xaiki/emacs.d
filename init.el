@@ -6,7 +6,7 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get") ; Load el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/lisp") ; org-contrib
 (add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
-(require 'mu4e)
+(require 'mu4e nil t)
 
 ;; Generate autoloads
 (let ((generated-autoload-file "~/.emacs.d/jd-autoloads.el"))
@@ -48,15 +48,14 @@
 (require 'saveplace)
 (require 'uniquify)
 (require 'mmm-auto)
-(require 'sws-mode)
-(require 'jade-mode)
+(require 'sws-mode nil t)
+(require 'jade-mode nil t)
 
 ;;(require 'google-contacts-message)
 ;;(require 'google-contacts-gnus)
 
 ;; C source code
 (setq frame-title-format '("" invocation-name ": %b"))
-(tool-bar-mode -1)			; Kill the toolbar
 (menu-bar-mode -1)                      ; Kill the menu bar
 (setq scroll-step 1)
 (setq visible-bell t)
@@ -76,11 +75,9 @@
 (savehist-mode 1)
 (blink-cursor-mode 0)			; no blink!
 (delete-selection-mode 1)		; Transient mark can delete/replace
-(set-scroll-bar-mode 'right)		; Scrollbar on the right
-(scroll-bar-mode -1)			; But no scrollbar
 (line-number-mode 1)			; Show line number
 (column-number-mode 1)			; Show colum number
-(global-hl-line-mode 1)			; Highlight the current line
+
 (windmove-default-keybindings)	      ; Move between frames with Shift+arrow
 (show-paren-mode t)
 (url-handler-mode 1)                    ; Allow to open URL
@@ -96,5 +93,10 @@
 (which-func-mode 1)
 
 (org-crypt-use-before-save-magic)
-
-
+(if (display-graphic-p)
+    (progn
+      (tool-bar-mode -1)			; Kill the toolbar
+      (set-scroll-bar-mode 'right)		; Scrollbar on the right
+      (scroll-bar-mode -1)			; But no scrollbar
+      (lobal-hl-line-mode 1)			; Highlight the current line
+      ))
