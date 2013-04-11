@@ -36,4 +36,12 @@
 	  xcscope
 	  xcscope+
           smex
+          helm
+          auto-complete
+          auto-complete-latex
+          auto-complete-clang
+          auto-complete-css
+          auto-complete-emacs-lisp
+          auto-complete-etags
+          auto-complete-yasnippet
 	  ))
