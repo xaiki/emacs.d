@@ -88,6 +88,7 @@
 (setq perl-indent-level 4)
 (setq sh-basic-offset 8)
 (setq js-indent-level 8)
+(global-font-lock-mode)
 
 (require 'pabbrev nil t)
 (add-to-list 'auto-mode-alist '("~/src/.*linux.*/.*\\.[ch]$" . linux-c-mode))

@@ -103,5 +103,5 @@
       (tool-bar-mode -1)			; Kill the toolbar
       (set-scroll-bar-mode 'right)		; Scrollbar on the right
       (scroll-bar-mode -1)			; But no scrollbar
-      (lobal-hl-line-mode 1)			; Highlight the current line
+      (global-hl-line-mode 1)			; Highlight the current line
       ))
