@@ -4,8 +4,10 @@
 ;; Expand load-path
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get") ; Load el-get
+(add-to-list 'load-path "~/.emacs.d/el-get/org-mode/lisp") ; Load org-mode
 (add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/lisp") ; org-contrib
 (add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
+(add-to-list 'load-path "~/.emacs.d/org-caldav") ; Load org-caldav
 (require 'mu4e nil t)
 
 ;; Generate autoloads
@@ -35,15 +37,18 @@
 
 ;; Require el-get to install packages
 (require 'el-get-bootstrap)
-(package-initialize)
+(package-initialize)                ;; Initialize & Install Package
 
 (require 'jd-keybindings)
 (require 'jd-daemon)
 (require 'jd-coding)
+(require 'org)
+(require 'org-element)
 (require 'ob)
 (require 'org-crypt)
 (require 'org-habit)
 (require 'org-plot)
+(require 'org-caldav)
 (require 'naquadah-theme)
 (require 'saveplace)
 (require 'uniquify)

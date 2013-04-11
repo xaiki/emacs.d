@@ -1,4 +1,5 @@
 (setq org-directory "~/Documents/org")
+(setq org-agenda-files "~/.emacs.d/org-agendas")
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
 (org-babel-do-load-languages
@@ -22,6 +23,7 @@
 (setq org-startup-indented t)
 (setq org-completion-use-iswitchb t)
 (setq org-log-done t)
+(setq org-log-into-drawer t)
 (setq org-email-link-description-format "Email %c (%d): %s")
 (setq org-link-frame-setup
       '((gnus . org-gnus-no-new-news)
