@@ -3,13 +3,9 @@
 
 ;; Expand load-path
 (add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get") ; Load el-get
-(add-to-list 'load-path "~/.emacs.d/el-get/org-mode/lisp") ; Load org-mode
-(add-to-list 'load-path "~/.emacs.d/el-get/org-mode/contrib/lisp") ; org-contrib
 (add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
 (add-to-list 'load-path "~/.emacs.d/org-caldav") ; Load org-caldav
 (require 'mu4e nil t)
-
 (require 'iso-transl)
 
 ;; Generate autoloads
@@ -37,9 +33,8 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-;; Require el-get to install packages
-(require 'el-get-bootstrap)
-(package-initialize)                ;; Initialize & Install Package
+;; Install packages
+(require 'package)
 
 (require 'jd-keybindings)
 (require 'jd-daemon)

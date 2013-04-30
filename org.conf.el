@@ -1,3 +1,4 @@
+(require 'org-depend nil t)
 (setq org-directory "~/Documents/org")
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
