@@ -84,10 +84,10 @@
 
 (setq tab-width 8)
 (setq indent-tabs-mode t)
-(setq c-basic-offset 8)
+(setq c-basic-offset 4)
 (setq perl-indent-level 4)
 (setq sh-basic-offset 8)
-(setq js-indent-level 8)
+(setq js-indent-level 4)
 (global-font-lock-mode)
 
 (require 'pabbrev nil t)

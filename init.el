@@ -56,6 +56,9 @@
 (require 'sws-mode nil t)
 (require 'jade-mode nil t)
 
+(require 'popwin)
+(popwin-mode 1)
+
 ;;(require 'google-contacts-message)
 ;;(require 'google-contacts-gnus)
 
@@ -83,7 +86,6 @@
 (line-number-mode 1)			; Show line number
 (column-number-mode 1)			; Show colum number
 
-(windmove-default-keybindings)	      ; Move between frames with Shift+arrow
 (show-paren-mode t)
 (url-handler-mode 1)                    ; Allow to open URL
 (mouse-avoidance-mode 'animate)         ; Move the mouse away

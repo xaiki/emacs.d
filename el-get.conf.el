@@ -5,21 +5,24 @@
         '(naquadah-theme
           highlight-indentation
           browse-kill-ring
-          nognus
+;;          nognus
           go-mode
           rainbow-mode
-          google-maps
-          google-weather
+;;          google-maps
+;;          google-weather
+;;          google-contacts
+          gnuplot-git
+          emacs-scrum
           multi-term
           erc-track-score
           markdown-mode
           browse-kill-ring
-          magit
-          gnuplot-mode
+;;          magit
+          egg
           rainbow-delimiters
           htmlize
           lua-mode
-          google-contacts
+
           yaml-mode
           haskell-mode
           php-mode
@@ -44,4 +47,5 @@
           auto-complete-emacs-lisp
           auto-complete-etags
           auto-complete-yasnippet
+          popwin
 	  ))
