@@ -17,8 +17,8 @@
           erc-track-score
           markdown-mode
           browse-kill-ring
-;;          magit
-          egg
+          magit
+;;          egg
           rainbow-delimiters
           htmlize
           lua-mode
