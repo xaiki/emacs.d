@@ -48,4 +48,6 @@
           auto-complete-etags
           auto-complete-yasnippet
           popwin
+          org-trello
+          sublimity
 	  ))
