@@ -1,3 +1,4 @@
+(setq org-agenda-files "~/.emacs.d/org-agendas")
 (setq org-agenda-day-face-function
       (defun jd:org-agenda-day-face-holidays-function (date)
         "Compute DATE face with holidays."
@@ -46,7 +47,6 @@
         ("OpenStack" "~/.emacs.d/icons/org/openstack.png" nil nil :ascent center)
         ("\\(Holidays\\|Vacation\\)" "~/.emacs.d/icons/org/holidays.png" nil nil :ascent center)
         (".*" '(space . (:width (16))))))
-(setq org-agenda-files (list org-directory))
 (setq org-agenda-custom-commands
       '(("p" "Projects" todo "PROJECT"
          ((org-agenda-dim-blocked-tasks t)
