@@ -10,6 +10,8 @@
 (add-to-list 'load-path "~/.emacs.d/org-caldav") ; Load org-caldav
 (require 'mu4e nil t)
 
+(require 'iso-transl)
+
 ;; Generate autoloads
 (let ((generated-autoload-file "~/.emacs.d/jd-autoloads.el"))
   (update-directory-autoloads "~/.emacs.d")
@@ -86,6 +88,8 @@
 (line-number-mode 1)			; Show line number
 (column-number-mode 1)			; Show colum number
 
+(setq org-support-shift-select t)
+
 (show-paren-mode t)
 (url-handler-mode 1)                    ; Allow to open URL
 (mouse-avoidance-mode 'animate)         ; Move the mouse away
@@ -98,6 +102,8 @@
 
 (browse-kill-ring-default-keybindings)
 (which-func-mode 1)
+
+(setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 
 (org-crypt-use-before-save-magic)
 (if (display-graphic-p)
