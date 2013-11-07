@@ -93,6 +93,8 @@
 (setq js-indent-level 4)
 (global-font-lock-mode)
 
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
 (require 'pabbrev nil t)
 (add-to-list 'auto-mode-alist '("~/src/.*linux.*/.*\\.[ch]$" . linux-c-mode))
 (add-to-list 'auto-mode-alist '("*.make$" . makefile-gmake-mode))
