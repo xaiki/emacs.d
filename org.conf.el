@@ -1,5 +1,4 @@
 (setq org-directory "~/Documents/org")
-(setq org-agenda-files "~/.emacs.d/org-agendas")
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
 (org-babel-do-load-languages
