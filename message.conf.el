@@ -14,7 +14,7 @@
 (setq message-elide-ellipsis "\n[…]\n\n")
 (setq message-citation-line-function 'message-insert-formatted-citation-line)
 (add-hook 'message-mode-hook 'footnote-mode)
-(setq message-subscribed-address-functions '(gnus-find-subscribed-addresses))
+;;(setq message-subscribed-address-functions '(gnus-find-subscribed-addresses))
 
 ;;(setq message-signature '(concat "Niv Sardi\n" (nth (random (length xa:message-signatures)) xa:message-signatures)))
 
