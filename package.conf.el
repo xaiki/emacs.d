@@ -1,13 +1,15 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
 (package-initialize)
 
-(unless (package-read-all-archive-contents)
-  ;; Fetch the remote list of packages.
+(unless package-archive-contents    ;; Refresh the packages descriptions
   (package-refresh-contents))
 
-(dolist (package '(naquadah-theme
+(dolist (package '(org-plus-contrib
+                   naquadah-theme
 		   oauth2		; Should be a dep of google-stuff
 		   browse-kill-ring
 		   go-mode
