@@ -1,3 +1,4 @@
+(require 'smtpmail)
 (setq
  user-mail-address "xaiki@evilgiggle.com"
  user-full-name  "Niv Sardi")
