@@ -27,6 +27,7 @@
         ("[Ee]macs" "/usr/share/icons/hicolor/16x16/apps/emacs-snapshot.png" nil nil :ascent center)
         ("[Uu]sina.*" "~/.emacs.d/icons/org/udm.png" nil nil :ascent center)
         ("[Oo]pcode.*" "~/.emacs.d/icons/org/opcod.png" nil nil :ascent center)
+        ("[Uu][Nn][Qq][Ii].*" "~/.emacs.d/icons/org/unq.png" nil nil :ascent center)
         ("slcfk" "~/.emacs.d/icons/org/slcfk.png" nil nil :ascent center)
         ("Visitors" "~/.emacs.d/icons/org/visitors.png" nil nil :ascent center)
         ("\\(Party\\|Celeb\\)" "~/.emacs.d/icons/org/party.png" nil nil :ascent center)
