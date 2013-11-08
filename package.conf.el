@@ -49,6 +49,7 @@
                    highlight-current-line
                    idle-highlight-mode
                    mu4e-maildirs-extension
+                   org-bullets
 		   ))
   (unless (package-installed-p package)
     (package-install package)))

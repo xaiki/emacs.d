@@ -89,4 +89,5 @@
 (add-hook 'org-mode-hook (lambda ()
                            (add-hook 'after-save-hook 'jd:org-decrypt-entires-silently)))
 
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (require 'xa-org-export)
