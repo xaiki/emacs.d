@@ -38,6 +38,20 @@
 (global-semantic-stickyfunc-mode 1)
 (global-semantic-idle-summary-mode 1)
 
+(which-function-mode)
+
+(setq mode-line-format (delete (assoc 'which-func-mode
+                                      mode-line-format) mode-line-format)
+      which-func-header-line-format '(which-func-mode ("" which-func-format)))
+(setq mode-line-misc-info 'mode-line-format)
+
+(defadvice which-func-ff-hook (after header-line activate)
+  (when which-func-mode
+    (setq mode-line-format (delete (assoc 'which-func-mode
+                                          mode-line-format) mode-line-format)
+          header-line-format which-func-header-line-format)))
+
+
 ;; CC mode
 (c-add-style "xa1"
 	     '("gnu"
