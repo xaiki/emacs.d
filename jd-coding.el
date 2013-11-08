@@ -1,5 +1,6 @@
-(require 'xcscope+)
+;;(require 'xcscope+)
 (require 'paredit)
+(require 'sublimity)
 
 (sublimity-global-mode)
 
