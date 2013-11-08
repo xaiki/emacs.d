@@ -25,6 +25,10 @@
          (smtpmail-smtp-server "smtp.correo.unq.edu.ar")
          (smtpmail-smtp-service 465))))
 
+(defun xa/filter (condp lst)
+    (delq nil
+          (mapcar (lambda (x) (and (funcall condp x) x)) lst)))
+
 (defun xa/apply-vars (vars)
   (mapc #'(lambda (var)
             (set (car var) (cadr var)))
