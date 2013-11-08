@@ -4,7 +4,7 @@
 ;; Expand load-path
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
-(add-to-list 'load-path "~/.emacs.d/org-caldav") ; Load org-caldav
+;;(add-to-list 'load-path "~/.emacs.d/org-caldav") ; Load org-caldav
 
 ;; Generate autoloads
 (let ((generated-autoload-file "~/.emacs.d/jd-autoloads.el"))
@@ -40,12 +40,13 @@
 (require 'jd-daemon)
 (require 'jd-coding)
 (require 'org)
+(require 'org-compat)
 ;;(require 'org-element)
 (require 'ob)
 (require 'org-crypt)
 (require 'org-habit)
 (require 'org-plot)
-(require 'org-caldav)
+;;(require 'org-caldav)
 (require 'naquadah-theme)
 (require 'saveplace)
 (require 'uniquify)
