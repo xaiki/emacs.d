@@ -3,6 +3,10 @@
 
 (package-initialize)
 
+(unless (package-read-all-archive-contents)
+  ;; Fetch the remote list of packages.
+  (package-refresh-contents))
+
 (dolist (package '(naquadah-theme
 		   oauth2		; Should be a dep of google-stuff
 		   browse-kill-ring
