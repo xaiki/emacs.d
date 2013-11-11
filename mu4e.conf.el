@@ -20,7 +20,7 @@
          mu4e-headers-fields
          '( (:human-date    .   12)
             (:flags         .    6)
-            (:from          .   22)
+            (:from-or-to    .   22)
             (:subject       .   nil))
          mu4e-maildir "~/Mail"
          mu4e-get-mail-command "echo hacked"
@@ -39,6 +39,18 @@
 
 (setq mail-user-agent 'mu4e-user-agent)
 (setq message-signature '(xa:random-signature))
+(setq mu4e-compose-signature '(xa:random-signature))
+
+(setq  mu4e-headers-new-mark       (purecopy '("N" . "☐")))
+(setq  mu4e-headers-unread-mark    (purecopy '("u" . "⭑")))
+
+(setq message-kill-buffer-on-exit t)
+
+(add-hook 'mu4e-compose-mode-hook
+          (defun xa:mu4e-compose-hook ()
+            "My settings for message composition."
+            (set-fill-column 72)
+            (flyspell-mode)))
 
 
 ;; enable inline images
