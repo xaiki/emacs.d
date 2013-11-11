@@ -14,7 +14,7 @@
   /*]]>*/-->
    </style>")
 
-(setq org-export-latex-classes '(("article"
+(setq org-latex-classes '(("article"
      "\\documentclass[11pt]{article}"
      ("\\section{%s}" . "\\section*{%s}")
      ("\\subsection{%s}" . "\\subsection*{%s}")
@@ -40,7 +40,7 @@
      org-beamer-sectioning
      )))
 
-(add-to-list 'org-export-latex-classes
+(add-to-list 'org-latex-classes
           '("article"
              "\\documentclass{scrartcl}"
              ("\\section{%s}" . "\\section*{%s}")
@@ -50,7 +50,7 @@
              ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 
-(add-to-list 'org-export-latex-classes
+(add-to-list 'org-latex-classes
           '("koma-article"
              "\\documentclass{scrartcl}"
              ("\\section{%s}" . "\\section*{%s}")
@@ -59,7 +59,7 @@
              ("\\paragraph{%s}" . "\\paragraph*{%s}")
              ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-(add-to-list 'org-export-latex-classes
+(add-to-list 'org-latex-classes
           '("koma-report"
              "\\documentclass{scrreprt}"
 	     ("\\chapter{%s}" . "\\chapter*{%s}")
@@ -68,7 +68,7 @@
              ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
              ("\\paragraph{%s}" . "\\paragraph*{%s}")))
 
-(add-to-list 'org-export-latex-classes
+(add-to-list 'org-latex-classes
           '("moderncv"
              "\\documentclass{moderncv}\\moderncvtheme[black]{classic}"
              ("\\section{%s}" . "\\section*{%s}")
@@ -77,7 +77,7 @@
              ("\\paragraph{%s}" . "\\paragraph*{%s}")
              ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-;; (add-to-list 'org-export-latex-classes
+;; (add-to-list 'org-latex-classes
 ;;   ;; beamer class, for presentations
 ;;   '("beamer"
 ;;      "\\documentclass[11pt]{beamer}\n
@@ -110,7 +110,7 @@
 ;;        "\\begin{frame}[fragile]\\frametitle{%s}"
 ;;        "\\end{frame}")))
 
-(add-to-list 'org-export-latex-classes
+(add-to-list 'org-latex-classes
   ;; beamer-covetel class, for presentations
   '("beamer-covetel"
      "\\input{preambulo.tex}\n"
