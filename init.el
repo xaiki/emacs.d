@@ -103,6 +103,7 @@
 (setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 
 (org-crypt-use-before-save-magic)
+(auto-dim-other-buffers-mode)
 (if (display-graphic-p)
     (progn
       (tool-bar-mode -1)			; Kill the toolbar

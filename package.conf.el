@@ -52,6 +52,7 @@
                    idle-highlight-mode
                    mu4e-maildirs-extension
                    org-bullets
+                   auto-dim-other-buffers
 		   ))
   (unless (package-installed-p package)
     (package-install package)))
