@@ -40,13 +40,26 @@ Ministerio de Desarrollo Social")
 
 (defvar xa:extend-email-regex  "\\([\\+-].+\\)?")
 
-(defun xa:email-addresses ()
+(defun xa:identities-email-addresses ()
   (let ((result))
     (dolist (style xa:posting-styles)
       (mapcar (lambda (x) (let ((addr (if (listp x) x nil)))
                             (when (member 'address x)
                               (setq result (append result (list (nth 1 addr))))))) style))
     (nreverse result)))
+
+(defun xa:mu4e-email-addresses ()
+  (let ((result))
+    (dolist (style xa:mu4e-account-alist)
+      (mapcar (lambda (x) (let ((addr (if (listp x) x nil)))
+                            (when (member 'user-mail-address x)
+                              (setq result (append result (list (nth 1 addr))))))) style))
+    (nreverse result)))
+
+(defun xa:email-addresses ()
+  (delq nil (delete-dups (append (xa:identities-email-addresses) (xa:mu4e-email-addresses)))))
+
+(xa:email-addresses)
 
 (defun xa:email-addresses-regexp ()
   (concat "\\("
@@ -66,7 +79,10 @@ Ministerio de Desarrollo Social")
 
 (defun xa:complete-from ()
   "Complete text at START with a user name and email."
-  (let ((end (point))
+  (let ((end (save-excursion
+               (re-search-forward "\\(\\`\\|[\n:,]\\)[ \t]*")
+               (goto-char (- (match-end 0) 1))
+               (point)))
         (start (save-excursion
                  (re-search-backward "\\(\\`\\|[\n:,]\\)[ \t]*")
                  (goto-char (match-end 0))
