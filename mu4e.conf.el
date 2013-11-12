@@ -39,7 +39,8 @@
          mu4e-html2text-command "w3m -dump -T text/html -s -graph"
          mail-user-agent 'mu4e-user-agent
          message-signature '(xa:random-signature)
-         mu4e-compose-signature '(xa:random-signature))
+         mu4e-compose-signature '(xa:random-signature)
+         mu4e-view-show-images t)
 
 (setq  mu4e-headers-new-mark       (purecopy '("N" . "☐")))
 (setq  mu4e-headers-unread-mark    (purecopy '("u" . "⭑")))
