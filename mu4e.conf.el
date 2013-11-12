@@ -35,11 +35,11 @@
          mu4e-drafts-folder "/.Gmail.Drafts"
          mu4e-trash-folder "/.Trash"
          mu4e-headers-leave-behavior 'apply
-         mu4e-use-fancy-chars t)
-
-(setq mail-user-agent 'mu4e-user-agent)
-(setq message-signature '(xa:random-signature))
-(setq mu4e-compose-signature '(xa:random-signature))
+         mu4e-use-fancy-chars t
+         mu4e-html2text-command "w3m -dump -T text/html -s -graph"
+         mail-user-agent 'mu4e-user-agent
+         message-signature '(xa:random-signature)
+         mu4e-compose-signature '(xa:random-signature))
 
 (setq  mu4e-headers-new-mark       (purecopy '("N" . "☐")))
 (setq  mu4e-headers-unread-mark    (purecopy '("u" . "⭑")))
