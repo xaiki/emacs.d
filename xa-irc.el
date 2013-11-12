@@ -1,4 +1,4 @@
-(defun jd:erc-start ()
+(defun xa:erc-start ()
   (erc-tls
    :server "prometheus.naquadah.org"
    :port 6666
@@ -16,14 +16,14 @@
    :port 6666
    :nick "jd-lost-oasis"))
 
-(defun jd:erc-stop ()
+(defun xa:erc-stop ()
   "Disconnect from IRC servers."
   (interactive)
   (dolist (buffer (erc-buffer-list))
     (kill-buffer buffer)))
 
 ;;;###autoload
-(defun jd:irc ()
+(defun xa:irc ()
   "Connect to IRC servers."
   (interactive)
   (let ((buflist (when (fboundp 'erc-buffer-list)
@@ -31,9 +31,9 @@
     (if buflist
         (if (yes-or-no-p "Restart IRC?")
             (progn
-              (jd:erc-stop)
-              (jd:erc-start))
+              (xa:erc-stop)
+              (xa:erc-start))
           (message "Not doing anything."))
-      (jd:erc-start))))
+      (xa:erc-start))))
 
-(provide 'jd-irc)
+(provide 'xa-irc)
