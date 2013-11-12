@@ -1,4 +1,5 @@
 (require 'xa-nm)
+(require 'offlineimap)
 
 (setq send-mail-function 'smtpmail-send-it
       smtpmail-stream-type 'starttls
@@ -10,12 +11,16 @@
       smtpmail-smtp-service 587)
 
 (defun xa:on-connect ()
-  (message "disconneted")
+  (message "conneted")
+  (offlineimap)
   (smtpmail-send-queued-mail)
   (setq smtpmail-queue-mail nil))
 
 (defun xa:on-disconnect ()
   (message "disconneted")
+  (condition-case ex
+      (offlineimap-kill 9)
+    ('error (message (format "Ignoring exception: %s" ex))))
   (setq smtpmail-queue-mail t))
 
 (add-to-list 'nm-connected-hook 'xa:on-connect)

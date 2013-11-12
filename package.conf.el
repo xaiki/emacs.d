@@ -53,6 +53,7 @@
                    mu4e-maildirs-extension
                    org-bullets
                    auto-dim-other-buffers
+                   offlineimap
 		   ))
   (unless (package-installed-p package)
     (package-install package)))
