@@ -44,6 +44,9 @@
 (setq  mu4e-headers-new-mark       (purecopy '("N" . "☐")))
 (setq  mu4e-headers-unread-mark    (purecopy '("u" . "⭑")))
 
+(setq offlineimap-enable-mode-line-p '(string-match "mu4e-.*-mode"
+                                                    major-mode))
+
 (setq message-kill-buffer-on-exit t)
 
 (add-hook 'mu4e-compose-mode-hook
