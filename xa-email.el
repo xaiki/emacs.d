@@ -1,4 +1,5 @@
 (require 'smtpmail)
+(require 'mu4e)
 (setq
  user-mail-address "xaiki@evilgiggle.com"
  user-full-name  "Niv Sardi")
@@ -72,29 +73,57 @@ Ministerio de Desarrollo Social")
 
 (defun xa:message-complete-function ()
   "Function used in `completion-at-point-functions' in `message-mode'."
-  (let ((mail-abbrev-mode-regexp
-         "^From:"))
-    (when (mail-abbrev-in-expansion-header-p)
-      (xa:complete-from))))
+  (cond
+   ((let ((mail-abbrev-mode-regexp
+           "^From:"))
+      (mail-abbrev-in-expansion-header-p))
+    (xa:complete-email (xa:candidates-from)))
+   ((let ((mail-abbrev-mode-regexp
+           "^To:"))
+      (mail-abbrev-in-expansion-header-p))
+    (xa:complete-email mu4e~contacts-for-completion))))
+
+(defun xa:candidates-from ()
+  (let ((choices))
+    (dolist (email (xa:email-addresses))
+      (add-to-list 'choices (concat "\"" user-full-name "\" <" email ">")))
+    choices))
+
+(defun xa:candidates-to ()
+  (list mu4e~contains-line-matching)
+  (let ((choices))
+    (mu4e~request-contacts)
+    (dolist (email (xa:email-addresses))
+      (add-to-list 'choices (concat "\"" user-full-name "\" <" email ">")))
+    choices))
 
 (defun xa:complete-from ()
-  "Complete text at START with a user name and email."
-  (let ((end (save-excursion
+  (xa:complete-email (xa:candidates-from)))
+
+(defun xa:header-extract ()
+  (let* ((end (save-excursion
                (re-search-forward "\\(\\`\\|[\n:,]\\)[ \t]*")
                (goto-char (- (match-end 0) 1))
                (point)))
-        (start (save-excursion
+         (start (save-excursion
                  (re-search-backward "\\(\\`\\|[\n:,]\\)[ \t]*")
                  (goto-char (match-end 0))
-                 (point)))
-        choices)
-    (dolist (email (xa:email-addresses))
-      (add-to-list 'choices (concat "\"" user-full-name "\" <" email ">")))
-    (list start end choices)))
+                 (point))))
+    (list start end)))
+
+(defun xa:complete-email (choices)
+  "Complete text at START with a user name and email."
+  (append (xa:header-extract) (list choices)))
 
 (add-hook 'message-mode-hook
           (lambda ()
             (add-to-list 'completion-at-point-functions
                          'xa:message-complete-function)))
+
+(setq message-completion-alist '(("^\\(Newsgroups\\|Followup-To\\|Posted-To\\|Gcc\\):" . message-expand-group)
+ ("^\\(Resent-\\)?\\(To\\|B?Cc\\):" . message-expand-name)
+ ("^\\(Reply-To\\|From\\|Mail-Followup-To\\|Mail-Copies-To\\):" . message-expand-name)
+ ("^\\(Disposition-Notification-To\\|Return-Receipt-To\\):" . message-expand-name))
+)
 
 (provide 'xa-email)
