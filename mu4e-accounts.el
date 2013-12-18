@@ -43,6 +43,21 @@ Asesor, Programa de Televisión Digital")
             (set (car var) (cadr var)))
         vars))
 
+(defun xa:mu4e-account-get-vars (account)
+  "get vars for an account string"
+  (delq nil
+        (mapcar (lambda (x) (member account x))
+                xa:mu4e-account-alist)))
+
+(defun xa:mu4e-apply-account (account)
+  "apply vars from account string"
+  (xa:apply-vars
+   (cdar (xa:mu4e-account-get-vars account))))
+
+(defun xa:filter (condp lst)
+    (delq nil
+          (mapcar (lambda (x) (and (funcall condp x) x)) lst)))
+
 (defun xa:mu4e-set-account ()
   "Set the account for composing a message."
   (let* ((user-mail nil)
@@ -63,9 +78,8 @@ Asesor, Programa de Televisión Digital")
                              (mapcar #'(lambda (var) (car var)) xa:mu4e-account-alist)
                              nil t nil nil (caar xa:mu4e-account-alist))))
               (cdr (assoc account xa:mu4e-account-alist))))))
-    account-vars
-
-    (xa:apply-vars (cdr (member "*" (car xa:mu4e-account-alist))))
+    (message mu4e~headers-last-query)
+    (xa:mu4e-apply-account "*")
     (if account-vars
         (xa:apply-vars account-vars)
       (warn (concat "No email account found: " account-vars)))
