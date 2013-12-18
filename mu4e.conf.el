@@ -1,19 +1,19 @@
-(require 'xa-email)
 (require 'mu4e-accounts)
+(require 'xa-email)
 
 (mu4e-maildirs-extension)
 (setq mu4e-mu-binary "~/.local/bin/mu")
 (setq mu4e-maildir-shortcuts
-         '( ("/.Gmail.INBOX"       . ?i)
-            ("/.Gmail.Sent"        . ?s)
-            ("/.Gmail.Trash"       . ?t)
-            ("/.Gmail.All Mail"    . ?a)
-            ("/.Gmail.xaiki@inaes.opcode" . ?o)
-            ("/.UNQ.INBOX"         . ?u))
+         '( ("/Gmail/INBOX"       . ?i)
+            ("/Gmail/Sent"        . ?s)
+            ("/Gmail/Trash"       . ?t)
+            ("/Gmail/All Mail"    . ?a)
+            ("/Gmail/xaiki@inaes/opcode" . ?o)
+            ("/UNQ/INBOX"         . ?u))
          mu4e-bookmarks
-         '(("maildir:/.Gmail.INBOX OR maildir:/.UNQ.INBOX OR maildir:/.Gmail.Sent OR maildir:/.UNQ.Sent" "All mail you care about" ?m)
-           ("maildir:/.Gmail.INBOX OR maildir:/.Gmail.Sent" "Gmail" ?g)
-           ("maildir:/.UNQ.INBOX OR maildir:/.UNQ.Sent" "UNQ" ?u)
+         '(("maildir:/Gmail/INBOX OR maildir:/UNQ/INBOX" "All mail you care about" ?m)
+           ("maildir:/Gmail/INBOX" "Gmail" ?g)
+           ("maildir:/UNQ/INBOX" "UNQ" ?u)
            ("flag:unread AND NOT flag:trashed" "Unread messages" ?U)
            ("date:today..now" "Today's messages" ?t)
            ("date:7d..now" "Last 7 days" ?w))
@@ -31,19 +31,22 @@
                                        "0xa1f00@gmail.com"
                                        "xaiki@evilgiggle.com"
                                        )
-         mu4e-sent-folder "/.Gmail.Sent"
-         mu4e-drafts-folder "/.Gmail.Drafts"
-         mu4e-trash-folder "/.Trash"
+         mu4e-sent-folder "/Gmail/Sent"
+         mu4e-drafts-folder "/Gmail/Drafts"
+         mu4e-trash-folder "/Trash"
          mu4e-headers-leave-behavior 'apply
          mu4e-use-fancy-chars t
          mu4e-html2text-command "w3m -dump -T text/html -s -graph"
          mail-user-agent 'mu4e-user-agent
          message-signature '(xa:random-signature)
          mu4e-compose-signature '(xa:random-signature)
-         mu4e-view-show-images t)
+         mu4e-view-show-images t
+         mu4e-headers-include-related t)
 
 (setq  mu4e-headers-new-mark       (purecopy '("N" . "☐")))
 (setq  mu4e-headers-unread-mark    (purecopy '("u" . "⭑")))
+
+(set-face-attribute 'mu4e-unread-face nil :inherit font-lock-variable-name-face :bold t)
 
 (setq offlineimap-enable-mode-line-p '(string-match "mu4e-.*-mode"
                                                     major-mode))
