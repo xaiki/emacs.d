@@ -15,7 +15,8 @@
     diff-mode
     haskell-mode
     sql-mode
-    rst-mode)
+    rst-mode
+    js2-mode)
   "What considering as programming languages.")
 
 (defun jd:customize-programming-language-mode ()
