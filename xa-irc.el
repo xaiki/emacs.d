@@ -1,20 +1,8 @@
 (defun xa:erc-start ()
   (erc-tls
-   :server "prometheus.naquadah.org"
-   :port 6666
-   :nick "jd-naquadah")
-  (erc-tls
-   :server "prometheus.naquadah.org"
-   :port 6666
-   :nick "jd-oftc")
-  (erc-tls
-   :server "prometheus.naquadah.org"
-   :port 6666
-   :nick "jd-freenode")
-  (erc-tls
-   :server "prometheus.naquadah.org"
-   :port 6666
-   :nick "jd-lost-oasis"))
+   :server "core.evilgiggle.com"
+   :port 7778
+   :nick "freenode"))
 
 (defun xa:erc-stop ()
   "Disconnect from IRC servers."
