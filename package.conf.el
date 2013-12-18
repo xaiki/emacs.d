@@ -54,6 +54,10 @@
                    org-bullets
                    auto-dim-other-buffers
                    offlineimap
+                   flycheck
+                   w3m
+                   js2-mode
+                   ac-js2
 		   ))
   (unless (package-installed-p package)
     (package-install package)))
