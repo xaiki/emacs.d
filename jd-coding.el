@@ -2,8 +2,6 @@
 (require 'paredit)
 (require 'sublimity)
 
-(sublimity-global-mode)
-
 (defcustom jd:programming-language-major-modes
   '(prog-mode     ; This is the mode perl, makefile, lisp-mode, scheme-mode,
                   ; emacs-lisp-mode, sh-mode, java-mode, c-mode, c++-mode,
