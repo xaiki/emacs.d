@@ -1,6 +1,6 @@
+(require 'mu4e)
 (setq xa:mu4e-account-alist
       '(("*"
-
          (mu4e-sent-folder "/.Gmail.Sent")
          (mu4e-drafts-folder "/.Gmail.Drafts")
          (user-mail-address "xaiki@evilgiggle.com")
@@ -10,9 +10,11 @@
          (smtpmail-auth-credentials '(("smtp.gmail.com" 587 "0xa1f00@gmail.com" nil)))
          (smtpmail-smtp-server "smtp.gmail.com")
          (smtpmail-smtp-service 587)
-         (mu4e-compose-signature '(xa:random-signature)))
+         (mu4e-compose-signature '(xa:random-signature))
+         (ispell-dictionary "english"))
         ("Gmail"
          (user-mail-address "xaiki@evilgiggle.com")
+         (mu4e-compose-signature '(xa:random-signature))
          )
         ("debian"
          (user-mail-address "xaiki@debian.org"))
@@ -20,7 +22,8 @@
          (user-mail-address "xaiki@inaes.gob.ar")
          (mu4e-compose-signature "Niv Sardi
 Responsable de la Comisión de Cooperativas Tecnologicas
-Instituto Nacional de Asociativismo y Economía Social"))
+Instituto Nacional de Asociativismo y Economía Social")
+         (ispell-dictionary "castellano8"))
         ("UNQ"
          (mu4e-sent-folder "/.UNQ.Sent")
          (mu4e-drafts-folder "/.UNQ.Drafts")
@@ -33,11 +36,7 @@ Instituto Nacional de Asociativismo y Economía Social"))
          (smtpmail-smtp-service 465)
          (mu4e-compose-signature "Niv Sardi
 Asesor, Programa de Televisión Digital")
-         )))
-
-(defun xa:filter (condp lst)
-    (delq nil
-          (mapcar (lambda (x) (and (funcall condp x) x)) lst)))
+         (ispell-dictionary "castellano8"))))
 
 (defun xa:apply-vars (vars)
   (mapc #'(lambda (var)
