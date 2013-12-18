@@ -18,6 +18,8 @@
          (plantuml . t)
          (latex . t))))
 
+(setq org-time-clocksum-use-effort-durations t)
+(setq org-time-clocksum-format '(:years "%dy " :months "%dm " :weeks "%dw " :days "%dd " :hours "%dh" :require-hours nil :minutes "%02d" :require-minutes nil))
 (setq org-hide-leading-stars t)
 (setq org-src-fontify-natively t)
 (setq org-startup-indented t)
