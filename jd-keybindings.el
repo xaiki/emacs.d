@@ -1,3 +1,5 @@
+;;; keybindings --- this defines default keybindings
+
 (global-set-key "\C-cec" (lambda () (interactive)
 			   (erc :server "core.evilgiggle.com" :port "6667"
 				:nick "xaiki" :password "caca")))
@@ -30,12 +32,6 @@
 
 (global-set-key "\C-x\C-b" 'ibuffer)
 
-(global-set-key [f12] (lambda ()
-                        (interactive)
-                        (if (gnus-alive-p)
-                            (switch-to-buffer gnus-group-buffer)
-                          (gnus))))
-
 (global-set-key "\M-/" 'hippie-expand)
 
 (global-set-key (kbd "C-c C-,") 'magit-status)
@@ -50,6 +46,8 @@
 (global-set-key [S-f6] 'multi-term-dedicated-toggle)
 (global-set-key [f9] 'multi-term-next)
 (global-set-key [S-f9] 'multi-term)
+
+(global-set-key "\C-c\C-b" 'browse-url)
 
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
@@ -74,3 +72,4 @@
 (global-set-key (kbd "M-g M-v") 'flymake-display-err-menu-for-current-line)
 
 (provide 'jd-keybindings)
+;;; jd-keybindings.el ends here
