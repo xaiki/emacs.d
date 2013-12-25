@@ -1,8 +1,8 @@
 (require 'mu4e)
 (setq xa:mu4e-account-alist
       '(("*"
-         (mu4e-sent-folder "/.Gmail.Sent")
-         (mu4e-drafts-folder "/.Gmail.Drafts")
+         (mu4e-sent-folder "/Gmail/Sent")
+         (mu4e-drafts-folder "/Gmail/Drafts")
          (user-mail-address "xaiki@evilgiggle.com")
          (smtpmail-stream-type starttls)
          (smtpmail-default-smtp-server "smtp.gmail.com")
@@ -25,8 +25,8 @@ Responsable de la Comisión de Cooperativas Tecnologicas
 Instituto Nacional de Asociativismo y Economía Social")
          (ispell-dictionary "castellano8"))
         ("UNQ"
-         (mu4e-sent-folder "/.UNQ.Sent")
-         (mu4e-drafts-folder "/.UNQ.Drafts")
+         (mu4e-sent-folder "/UNQ/Sent")
+         (mu4e-drafts-folder "/UNQ/Drafts")
          (user-mail-address "niv.sardi@unq.edu.ar")
          (smtpmail-stream-type ssl)
          (smtpmail-default-smtp-server "smtp.correo.unq.edu.ar")

@@ -18,12 +18,13 @@
            ("date:today..now" "Today's messages" ?t)
            ("date:7d..now" "Last 7 days" ?w))
          mu4e-headers-fields
-         '( (:human-date    .   12)
-            (:flags         .    6)
-            (:from-or-to    .   22)
-            (:subject       .   nil))
+         '(
+           (:human-date    .   12)
+           (:flags         .    6)
+           (:from-or-to    .   22)
+           (:subject       .   nil))
          mu4e-maildir "~/Mail"
-         mu4e-get-mail-command "echo hacked"
+         mu4e-get-mail-command "mbsync -a"
          mu4e-user-mail-address-regexp "xaiki"
          mu4e-user-mail-address-list '("xaiki@debian.org"
                                        "xaiki@inaes.gob.ar"
@@ -51,6 +52,13 @@
 (setq offlineimap-enable-mode-line-p '(string-match "mu4e-.*-mode"
                                                     major-mode))
 
+(setq hs-special-modes-alist '((c-mode "{" "}" "/[*/]" nil nil)
+                               (c++-mode "{" "}" "/[*/]" nil nil)
+                               (bibtex-mode
+                                ("@\\S(*\\(\\s(\\)" 1))
+                               (java-mode "{" "}" "/[*/]" nil nil)
+                               (js-mode "{" "}" "/[*/]" nil)
+                               (mu4e-headers-mode ".*0$" ".*0$" nil)))
 (setq message-kill-buffer-on-exit t)
 
 (add-hook 'mu4e-compose-mode-hook
