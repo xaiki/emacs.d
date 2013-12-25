@@ -48,6 +48,7 @@
 (global-set-key [S-f9] 'multi-term)
 
 (global-set-key "\C-c\C-b" 'browse-url)
+(global-set-key "\C-c\C-f" 'find-function)
 
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
