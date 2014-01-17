@@ -2,7 +2,12 @@
   (erc-tls
    :server "core.evilgiggle.com"
    :port 7778
-   :nick "freenode"))
+   :nick "xaiki:freenode")
+  (erc-tls
+   :server "core.evilgiggle.com"
+   :port 7778
+   :nick "xaiki:oftc")
+  )
 
 (defun xa:erc-stop ()
   "Disconnect from IRC servers."
