@@ -58,6 +58,7 @@
                    w3m
                    js2-mode
                    ac-js2
+                   async
 		   ))
   (unless (package-installed-p package)
     (package-install package)))
