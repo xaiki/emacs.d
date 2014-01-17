@@ -1,10 +1,24 @@
 (require 'xa-nm)
 (require 'offlineimap)
 
-(setq send-mail-function 'smtpmail-send-it
+(defun xa:async-smtpmail-send-it ()
+  (async-start
+   `(lambda ()
+      (require 'smtpmail)
+      (with-temp-buffer
+        (insert ,(buffer-substring-no-properties (point-min) (point-max)))
+        ;; Pass in the variable environment for smtpmail
+        ,(async-inject-variables "\\`\\(smtpmail\\|\\(user-\\)?mail\\)-")
+        (smtpmail-send-it)))
+   ;; What to do when it finishes
+   (lambda (result)
+     (message "Async process done, result: %s" result)))
+  )
+
+(setq send-mail-function 'xa:async-smtpmail-send-it
       smtpmail-stream-type 'starttls
       smtpmail-default-smtp-server "smtp.gmail.com"
-      message-send-mail-function 'smtpmail-send-it
+      message-send-mail-function 'xa:async-smtpmail-send-it
       smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
       smtpmail-auth-credentials '(("smtp.gmail.com" 587 "0xa1f00@gmail.com" nil))
       smtpmail-smtp-server "smtp.gmail.com"
