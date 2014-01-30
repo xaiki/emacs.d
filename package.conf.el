@@ -59,6 +59,7 @@
                    js2-mode
                    ac-js2
                    async
+                   multiple-cursors
 		   ))
   (unless (package-installed-p package)
     (package-install package)))
