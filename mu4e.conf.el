@@ -42,7 +42,8 @@
          message-signature '(xa:random-signature)
          mu4e-compose-signature '(xa:random-signature)
          mu4e-view-show-images t
-         mu4e-headers-include-related t)
+         mu4e-headers-include-related t
+         mu4e-headers-skip-duplicates t)
 
 (setq  mu4e-headers-new-mark       (purecopy '("N" . "☐")))
 (setq  mu4e-headers-unread-mark    (purecopy '("u" . "⭑")))
