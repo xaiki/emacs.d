@@ -102,3 +102,9 @@
 
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (require 'xa-org-export)
+
+(defun xa:make-it-right ()
+  (interactive)
+  (save-excursion
+    (while (search-forward "\n\n" nil t)
+      (fill-paragraph))))
