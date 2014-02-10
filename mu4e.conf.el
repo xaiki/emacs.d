@@ -13,6 +13,7 @@
          mu4e-bookmarks
          '(("maildir:/Gmail/INBOX OR maildir:/UNQ/INBOX" "All mail you care about" ?m)
            ("maildir:/Gmail/INBOX" "Gmail" ?g)
+           ("maildir:/Gmail/xaiki@inaes/.opcode" "Opcode" ?o)
            ("maildir:/UNQ/INBOX" "UNQ" ?u)
            ("flag:unread AND NOT flag:trashed" "Unread messages" ?U)
            ("date:today..now" "Today's messages" ?t)
