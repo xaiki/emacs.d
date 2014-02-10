@@ -15,11 +15,6 @@
 (defun jd:flymake-display-err-for-current-line ()
   "Display a message with errors/warnings for current line if it has errors and/or warnings."
   (interactive)
-  (let* ((line-no             (flymake-current-line-no))
-	 (line-err-info-list  (nth 0 (flymake-find-err-info flymake-err-info line-no)))
-	 (menu-data           (flymake-make-err-menu-data line-no line-err-info-list)))
-    (when menu-data
-      (message (mapconcat
-                (lambda (err) (mapconcat 'identity (remove-if 'null err) " + "))
-                (cadr menu-data)
-                " + ")))))
+  (flycheck-display-error-at-point))
+(provide 'flymake.conf)
+;;; flymake.conf.el
