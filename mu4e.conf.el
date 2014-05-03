@@ -4,12 +4,12 @@
 (mu4e-maildirs-extension)
 (setq mu4e-mu-binary "~/.local/bin/mu")
 (setq mu4e-maildir-shortcuts
-         '( ("/Gmail/INBOX"       . ?i)
-            ("/Gmail/Sent"        . ?s)
-            ("/Gmail/Trash"       . ?t)
-            ("/Gmail/All Mail"    . ?a)
-            ("/Gmail/xaiki@inaes/opcode" . ?o)
-            ("/UNQ/INBOX"         . ?u))
+         '(("/Gmail/INBOX"       . ?i)
+           ("/Gmail/Sent"        . ?s)
+           ("/Gmail/Trash"       . ?t)
+           ("/Gmail/All Mail"    . ?a)
+           ("/Gmail/xaiki@inaes/opcode" . ?o)
+           ("/UNQ/INBOX"         . ?u))
          mu4e-bookmarks
          '(("maildir:/Gmail/INBOX OR maildir:/UNQ/INBOX" "All mail you care about" ?m)
            ("maildir:/Gmail/INBOX" "Gmail" ?g)
@@ -19,13 +19,12 @@
            ("date:today..now" "Today's messages" ?t)
            ("date:7d..now" "Last 7 days" ?w))
          mu4e-headers-fields
-         '(
-           (:human-date    .   12)
+         '((:human-date    .   12)
            (:flags         .    6)
            (:from-or-to    .   22)
-           (:subject       .   nil))
+           (:subject       .  nil))
          mu4e-maildir "~/Mail"
-         mu4e-get-mail-command "mbsync -a"
+         mu4e-get-mail-command "torsocks mbsync -a"
          mu4e-user-mail-address-regexp "xaiki"
          mu4e-user-mail-address-list '("xaiki@debian.org"
                                        "xaiki@inaes.gob.ar"

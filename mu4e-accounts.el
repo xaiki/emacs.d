@@ -58,34 +58,38 @@ Asesor, Programa de Televisión Digital")
     (delq nil
           (mapcar (lambda (x) (and (funcall condp x) x)) lst)))
 
+(defun xa:mu4e-get-account-vars ()
+  (if mu4e-compose-parent-message
+      (let ((ret nil))
+        (dolist (to (mapcar 'cdr
+                            (append
+                             (mu4e-message-field mu4e-compose-parent-message :to)
+                             (mu4e-message-field mu4e-compose-parent-message :from))))
+          (when (and (not ret)
+                     (member to mu4e-user-mail-address-list))
+            (setq ret (xa:filter
+                       (lambda (x)
+                         (equal to (cadr (assoc 'user-mail-address x))))
+                       xa:mu4e-account-alist))))
+        (unless ret
+          (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
+            (xa:filter (lambda (x) (string-match (car x) maildir)) xa:mu4e-account-alist)
+            ))
+        (cdar ret))
+    (let ((account (ido-completing-read "Compose with account: "
+                                        (mapcar #'(lambda (var) (car var)) xa:mu4e-account-alist)
+                                        nil t nil nil (caar xa:mu4e-account-alist))))
+      (cdr (assoc account xa:mu4e-account-alist)))))
+
 (defun xa:mu4e-set-account ()
   "Set the account for composing a message."
   (let* ((user-mail nil)
-         (account-vars
-          (if mu4e-compose-parent-message
-              (let ((ret nil))
-                (dolist (to (mapcar 'cdr (mu4e-message-field mu4e-compose-parent-message :to)))
-                  (when (and (not ret) (member to mu4e-user-mail-address-list))
-                      (setq ret (xa:filter (lambda (x) (equal to (cadr (assoc 'user-mail-address x)))) xa:mu4e-account-alist))
-                      (setq user-mail to))
-                  )
-                (unless ret
-                  (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
-                    (xa:filter (lambda (x) (string-match (car x) maildir)) xa:mu4e-account-alist)
-                    ))
-                (cdar ret))
-            (let ((account (ido-completing-read "Compose with account: "
-                             (mapcar #'(lambda (var) (car var)) xa:mu4e-account-alist)
-                             nil t nil nil (caar xa:mu4e-account-alist))))
-              (cdr (assoc account xa:mu4e-account-alist))))))
+         (account-vars (xa:mu4e-get-account-vars)))
     (message mu4e~headers-last-query)
     (xa:mu4e-apply-account "*")
     (if account-vars
         (xa:apply-vars account-vars)
-      (warn (concat "No email account found: " account-vars)))
-    (if user-mail
-        (setq user-mail-address user-mail)
-      )))
+      (warn (concat "No email account found: " account-vars)))))
 
 (add-hook 'mu4e-compose-pre-hook 'xa:mu4e-set-account)
 

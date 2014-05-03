@@ -44,7 +44,6 @@
 		   auto-complete-clang-async
 		   popwin
 		   org-trello
-		   sublimity
 		   xcscope
 		   paredit
                    smex
@@ -59,7 +58,6 @@
                    js2-mode
                    ac-js2
                    async
-                   multiple-cursors
-		   ))
+                   multiple-cursors))
   (unless (package-installed-p package)
     (package-install package)))

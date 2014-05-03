@@ -92,13 +92,10 @@
 
 (require 'org-crypt)
 (defun jd:org-decrypt-entires-silently ()
-  (when (not (and (stringp buffer-file-name)
-                  (string-match "JOURNAL.org" buffer-file-name)))
-    (message buffer-file-name)
-    (let ((m (buffer-modified-p)))
+  (let ((m (buffer-modified-p)))
       (org-decrypt-entries)
       (unless m
-        (set-buffer-modified-p nil)))))
+        (set-buffer-modified-p nil))))
 (add-hook 'org-mode-hook 'jd:org-decrypt-entires-silently)
 (add-hook 'org-mode-hook (lambda ()
                            (add-hook 'after-save-hook 'jd:org-decrypt-entires-silently)))
@@ -114,3 +111,7 @@
 
 (setq org-mobile-directory      (concat org-directory "/mobile"))
 (setq org-mobile-inbox-for-pull (concat org-mobile-directory "/inbox.org"))
+
+(setq org-crypt-key "EA3D162A")
+
+

@@ -1,7 +1,32 @@
-
 (setq org-export-latex-classes nil)
+
+(setq org-latex-pdf-process
+  '("pdflatex -interaction nonstopmode -output-directory %o %f"
+    "pdflatex -interaction nonstopmode -output-directory %o %f"
+    "pdflatex -interaction nonstopmode -output-directory %o %f"
+    "pdftk %b.pdf output %b.crypt.pdf owner_pw `apg -n 1 +s`"))
+
 (when (require 'org-latex nil t)
   (setq org-export-latex-listings t))
+
+(eval-after-load 'ox '(require 'ox-koma-letter))
+(eval-after-load 'ox-koma-letter
+  '(progn
+     (add-to-list 'org-latex-classes
+                  '("koma-letter"
+                    "\\documentclass\{scrlttr2\}
+     \\setkomavar{frombank}{(1234)\\,567\\,890}
+     \[DEFAULT-PACKAGES]
+     \[PACKAGES]
+     \[EXTRA]"))
+     (setq org-koma-letter-default-class "koma-letter"
+           org-koma-letter-from-address "Gualeguay 1225
+Barracas
+Capital Federal"
+           org-koma-letter-phone  "+54 911 3574 7002"
+           org-koma-letter-email  "xaiki@evilgiggle.com"
+           org-koma-letter-place  "Buenos Aires"
+           org-koma-letter-sender "Niv Sardi")))
 (setq org-indent-mode nil)
 (setq org-export-html-style
       "<style type=\"text/css\">

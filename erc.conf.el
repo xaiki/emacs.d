@@ -1,3 +1,4 @@
+(require 'erc-pcomplete)
 ;;(add-to-list 'erc-modules 'smiley)
 (add-to-list 'erc-modules 'match)
 (add-to-list 'erc-modules 'scrolltobottom)
@@ -7,6 +8,7 @@
 (setq erc-header-line-format "%t: %o")
 (setq erc-join-buffer 'bury)
 (setq erc-warn-about-blank-lines nil)
+(setq pcomplete-ignore-case t)
 
 (setq erc-prompt (lambda ()
                    (concat "[" (car erc-default-recipients) "]")))
@@ -29,3 +31,5 @@
           (defun jd:fix-scrolling-bug ()
             "See http://debbugs.gnu.org/cgi/bugreport.cgi?bug=11697"
             (set (make-local-variable 'scroll-conservatively) 1000)))
+
+

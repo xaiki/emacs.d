@@ -67,3 +67,4 @@
 (setq org-agenda-skip-deadline-prewarning-if-scheduled t)
 (setq org-agenda-skip-timestamp-if-done t)
 (setq org-agenda-dim-blocked-tasks 'invisible)
+(setq org-agenda-current-time-string "→ now —————————")

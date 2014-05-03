@@ -1,6 +1,5 @@
 ;;(require 'xcscope+)
 (require 'paredit)
-(require 'sublimity)
 
 (defcustom jd:programming-language-major-modes
   '(prog-mode     ; This is the mode perl, makefile, lisp-mode, scheme-mode,
@@ -27,7 +26,7 @@
   (setq show-trailing-whitespace t)
   (flycheck-mode 1)
   (flyspell-prog-mode)
-  (sublimity-mode))
+)
 
 (dolist (mode jd:programming-language-major-modes)
   (add-hook
@@ -100,10 +99,10 @@
   (setq indent-tabs-mode t)
   (setq c-basic-offset 8))
 
-(setq tab-width 8)
+(setq tab-width 4)
 (setq indent-tabs-mode t)
-(setq c-basic-offset 4)
-(setq perl-indent-level 4)
+(setq c-basic-offset 8)
+(setq perl-indent-level 8)
 (setq sh-basic-offset 8)
 (setq js-indent-level 4)
 (global-font-lock-mode)
