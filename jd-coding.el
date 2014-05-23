@@ -1,5 +1,6 @@
 ;;(require 'xcscope+)
 (require 'paredit)
+(require 'dtrt-indent)
 
 (defcustom jd:programming-language-major-modes
   '(prog-mode     ; This is the mode perl, makefile, lisp-mode, scheme-mode,
@@ -26,7 +27,7 @@
   (setq show-trailing-whitespace t)
   (flycheck-mode 1)
   (flyspell-prog-mode)
-)
+  (dtrt-indent-mode t))
 
 (dolist (mode jd:programming-language-major-modes)
   (add-hook

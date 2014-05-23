@@ -58,6 +58,7 @@
                    js2-mode
                    ac-js2
                    async
-                   multiple-cursors))
+                   multiple-cursors
+                   dtrt-indent))
   (unless (package-installed-p package)
     (package-install package)))
