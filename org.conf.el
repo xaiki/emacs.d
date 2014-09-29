@@ -68,6 +68,7 @@
 
 (global-set-key "\C-cc" 'org-capture)
 
+(setq org-mode-hook nil)
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-mode-hook
@@ -78,8 +79,8 @@
                (when (string-prefix-p (expand-file-name org-directory) buffer-file-name)
                  (call-process-shell-command
                   (format
-                   "git commit -m \"Org auto-commit\" -s %s && git push &"
-                   buffer-file-name)
+                   "git commit -m \"%s: Org auto-commit\" -s %s && git push &"
+                   (last (split-string buffer-file-name "/")) buffer-file-name )
                   nil 0))))))
 
 (defun org-summary-todo (n-done n-not-done)
