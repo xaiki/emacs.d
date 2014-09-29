@@ -17,15 +17,38 @@
   (completion-at-point))
 
 (setq notmuch-address-selection-function 'xa:notmuch-address-selection-function)
-(setq notmuch-address-selection-function 'xa:complete-to)
-(setq notmuch-address-selection-function 'xa:completion-at-point)
+;;(setq notmuch-address-selection-function 'xa:complete-to)
+;;(setq notmuch-address-selection-function 'xa:completion-at-point)
 
+(defun notmuch-search-toggle (tag)
+  "Return a function that toggles TAG on the current item."
+  (lambda ()
+    (interactive)
+    (if (member tag (notmuch-search-get-tags))
+        (notmuch-search-tag (list (concat "-" tag) "+inbox"))
+      (notmuch-search-tag (list (concat "+" tag) "-inbox" "-unread")))))
+
+(defun expose (function &rest args)
+  "Return an interactive version of FUNCTION, 'exposing' it to the user."
+  (lambda ()
+    (interactive)
+    (apply function args)))
+
+;; Notmuch mail listing keybindings.
+(define-key notmuch-search-mode-map "g"
+  'notmuch-poll-and-refresh-this-buffer)
 (define-key notmuch-show-mode-map "d"
-  (lambda ()
-    (interactive)
-      (notmuch-show-tag "+deleted")))
-
+  (notmuch-search-toggle "deleted"))
 (define-key notmuch-search-mode-map "d"
-  (lambda ()
-    (interactive)
-      (notmuch-search-tag "+deleted")))
+  (notmuch-search-toggle "deleted"))
+(define-key notmuch-search-mode-map "S"
+  (notmuch-search-toggle "spam"))
+(define-key notmuch-hello-mode-map "g"
+  'notmuch-poll-and-refresh-this-buffer)
+(define-key notmuch-hello-mode-map "i"
+  (expose #'notmuch-hello-search "tag:inbox"))
+(define-key notmuch-hello-mode-map "u"
+  (expose #'notmuch-hello-search "tag:unread"))
+(define-key notmuch-hello-mode-map "a"
+  (expose #'notmuch-hello-search "tag:archive"))
+
