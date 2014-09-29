@@ -92,5 +92,6 @@ Asesor, Programa de Televisión Digital")
       (warn (concat "No email account found: " account-vars)))))
 
 (add-hook 'mu4e-compose-pre-hook 'xa:mu4e-set-account)
+(add-hook 'message-setup-hook 'xa:mu4e-set-account)
 
 (provide 'mu4e-accounts)
