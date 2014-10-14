@@ -24,21 +24,17 @@
       smtpmail-smtp-server "smtp.gmail.com"
       smtpmail-smtp-service 587)
 
-(defun xa:on-connect ()
-  (message "conneted")
-  (offlineimap)
+(defun xa:mail-connect ()
+  (message "smtpmail: conneted")
   (smtpmail-send-queued-mail)
   (setq smtpmail-queue-mail nil))
 
-(defun xa:on-disconnect ()
-  (message "disconneted")
-  (condition-case ex
-      (offlineimap-kill 9)
-    ('error (message (format "Ignoring exception: %s" ex))))
+(defun xa:mail-disconnect ()
+  (message "smtpmail: disconneted")
   (setq smtpmail-queue-mail t))
 
-(add-to-list 'nm-connected-hook 'xa:on-connect)
-(add-to-list 'nm-disconnected-hook 'xa:on-disconnect)
+(add-to-list 'nm-connected-hook 'xa:mail-connect)
+(add-to-list 'nm-disconnected-hook 'xa:mail-disconnect)
 (nm-enable)
 
 (setq smtpmail-auth-supported '(xoauth2 cram-md5 plain login))
