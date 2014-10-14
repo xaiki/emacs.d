@@ -3,6 +3,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(elfeed-feeds
+   (quote
+    ("http://feeds.feedburner.com/creditslips/feed" "http://thecodelesscode.com/rss" "http://sachachua.com/blog/feed/" "https://github.com/blog.atom" "http://what-if.xkcd.com/feed.atom" "http://whattheemacsd.com/atom.xml" "http://blag.xkcd.com/feed/" "\"http://blag.xkcd.com/feed/\"" "http://xkcd.com/atom.xml" "http://www.aljazeera.com/Services/Rss/?PostingId=2007731105943979989" "http://mindhacks.com/feed/" "http://www.pagina12.com.ar/diario/rss/ultimas_noticias.xml" "http://www.buenosairesherald.com/articles/rss.aspx" "http://rt.com/rss/" "http://feeds.feedburner.com/TechCrunch/")))
  '(notmuch-saved-searches
    (quote
     (("inbox" . "tag:inbox")
