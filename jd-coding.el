@@ -1,6 +1,7 @@
 ;;(require 'xcscope+)
 (require 'paredit)
 (require 'dtrt-indent)
+(require 'multiple-cursors)
 
 (defcustom jd:programming-language-major-modes
   '(prog-mode     ; This is the mode perl, makefile, lisp-mode, scheme-mode,
@@ -85,6 +86,7 @@
 	    (c-toggle-auto-newline nil)))
 (add-hook 'c-initialization-hook
 	  (lambda () (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)))
+(add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
 
 (font-lock-add-keywords 'c-mode
                         '(("\\<.+_t\\>" . font-lock-type-face)
