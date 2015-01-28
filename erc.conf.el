@@ -1,8 +1,10 @@
+(require 'erc-clbin)
 (require 'erc-pcomplete)
 ;;(add-to-list 'erc-modules 'smiley)
 (add-to-list 'erc-modules 'match)
 (add-to-list 'erc-modules 'scrolltobottom)
 (add-to-list 'erc-modules 'notifications)
+(add-to-list 'erc-modules 'clbin)
 ;;(add-to-list 'erc-modules 'track-score)
 
 (setq erc-header-line-format "%t: %o")
