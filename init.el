@@ -116,3 +116,17 @@
       (scroll-bar-mode -1)			; But no scrollbar
       (global-hl-line-mode 1)			; Highlight the current line
       ))
+
+(require 'powerline)
+(require 'xa-powerline)
+(require 'nyan-mode)
+
+(setq mode-line-format (xa:powerline-nyan-center-theme))
+;;(setq mode-line-format '(:eval (list (nyan-create))))
+
+;;(sml/setup)
+;;(sml/apply-theme 'dark)
+;;(sml/apply-theme 'light)
+
+;;(sml/apply-theme 'respectful)
+
