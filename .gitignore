@@ -7,7 +7,6 @@ el-get
 tramp
 url
 elpa
-#*
 history
 auto-save-list
 semanticdb
@@ -15,3 +14,9 @@ semanticdb
 ido.last
 ac-comphist.dat
 recentf
+\#*
+.#*
+.*
+org-caldav*
+session*
+bookmarks
