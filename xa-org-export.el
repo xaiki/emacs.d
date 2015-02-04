@@ -1,5 +1,7 @@
-(setq org-export-latex-classes nil)
+(require 'ox-odt)
+(require 'ox-ehtml) 
 
+(setq org-export-latex-classes nil)
 (setq org-latex-pdf-process
   '("pdflatex -interaction nonstopmode -output-directory %o %f"
     "pdflatex -interaction nonstopmode -output-directory %o %f"
