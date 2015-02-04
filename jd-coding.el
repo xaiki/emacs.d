@@ -2,6 +2,7 @@
 (require 'paredit)
 (require 'dtrt-indent)
 (require 'multiple-cursors)
+(require 'tern)
 
 (defcustom jd:programming-language-major-modes
   '(prog-mode     ; This is the mode perl, makefile, lisp-mode, scheme-mode,
@@ -54,30 +55,6 @@
 
 
 ;; CC mode
-(c-add-style "xa1"
-	     '("gnu"
-	       (c-offsets-alist
-		(block-open . 0)
-		(block-close . 0)
-		(substatement-open . 0)
-		(case-label . +)
-		(func-decl-cont . 0)
-		(inline-open . 0))
-	       (c-hanging-braces-alist
-                (brace-list-close nil)
-		(defun-open after)
-		(defun-close after)
-		(class-open before after)
-		(class-close before)
-		(substatement-open after before)
-		(substatement-close after))
-	       (c-block-comment-prefix . "* ")
-	       (c-echo-syntactic-information-p . t)
-	       (c-basic-offset . 4)
-               ;; Don't insert electric newlines on ;
-               ;; That makes me CRAZY
-               (c-hanging-semi&comma-criteria . nil)))
-
 (add-hook 'c-mode-common-hook
 	  (lambda ()
             (when (fboundp 'doxymacs-mode)
@@ -109,8 +86,6 @@
 (setq sh-basic-offset 8)
 (setq js-indent-level 4)
 (global-font-lock-mode)
-
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (require 'pabbrev nil t)
 (add-to-list 'auto-mode-alist '("~/src/.*linux.*/.*\\.[ch]$" . linux-c-mode))
