@@ -8,6 +8,8 @@
   (paredit-mode 1))
 
 (setq js2-highlight-level 3)
+(setq js2-strict-missing-semi-warning nil)
+(setq js2-missing-semi-one-line-override t)
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook (lambda () (tern-mode t)))

@@ -91,6 +91,11 @@
 (add-to-list 'auto-mode-alist '("~/src/.*linux.*/.*\\.[ch]$" . linux-c-mode))
 (add-to-list 'auto-mode-alist '("*.make$" . makefile-gmake-mode))
 (add-to-list 'auto-mode-alist '("Makefile.*" . makefile-gmake-mode))
+(add-to-list 'auto-mode-alist '("*.json$" . js2-mode))
+(add-to-list 'auto-mode-alist '("*.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("*.html$" . web-mode))
+(add-to-list 'auto-mode-alist '("*.tpl$" . web-mode))
+(add-to-list 'auto-mode-alist '("*.hbs$" . web-mode))
 
 (defun ffmpeg-c-mode ()
   "C mode with adjusted values for videolan."
