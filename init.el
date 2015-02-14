@@ -59,7 +59,10 @@
 (require 'sws-mode nil t)
 (require 'jade-mode nil t)
 
+(require 'js2-mode nil t)
+(require 'web-mode nil t)
 (require 'popwin)
+(require 'xa-irc)
 (popwin-mode 1)
 
 ;;(require 'google-contacts-message)
