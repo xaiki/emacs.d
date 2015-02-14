@@ -1,4 +1,15 @@
 (require 'erc)
+
+(defun xa:get-erc-secret (server user)
+  (let ((found (nth 0 (auth-source-search
+                       :host server
+                       :user user
+                       :require '(:user :secret)))))
+    (let ((secret (plist-get found :secret)))
+      (if (functionp secret)
+          (funcall secret)
+        secret))))
+
 (defun* erc-znc (&rest spec
                        &key server port nick network
                        &allow-other-keys)
@@ -7,15 +18,7 @@
           (port    (plist-get spec :port))
           (nick    (plist-get spec :nick))
           (network (plist-get spec :network))
-          (secret  (let ((found (nth 0 (auth-source-search
-                                        :host server
-                                        :user (concat nick "#" network)
-                                        :require '(:user :secret)
-                                        ))))
-                     (let ((secret (plist-get found :secret)))
-                       (if (functionp secret)
-                           (funcall secret)
-                         secret)))))
+          (secret  (xa:get-erc-secret server (concat nick "#" network))))
        (erc-tls
         :server   server
         :port     port
@@ -33,7 +36,21 @@
    :server "core.evilgiggle.com"
    :port 7778
    :nick "xaiki"
-   :network "oftc"))
+   :network "oftc")
+  (erc
+   :server "localhost"
+   :port 6667
+   :nick "xaiki"))
+
+(add-hook 'erc-join-hook 'bitlbee-identify)
+(defun bitlbee-identify ()
+  "If we're on the bitlbee server, send the identify command to the 
+ &bitlbee channel."
+  (when (and (string= "localhost" erc-session-server)
+             (string= "&bitlbee" (buffer-name)))
+    (erc-message "PRIVMSG" (format "%s identify %s" 
+                                   (erc-default-target) 
+                                   (xa:get-erc-secret "bitlbee.localhost" "xaiki")))))
 
 (defun xa:erc-stop (&optional dontask)
   "Disconnect from IRC servers."
