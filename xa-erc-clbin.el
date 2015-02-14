@@ -119,6 +119,11 @@ characters. Set to nil to disable."
   :group 'erc-clbin
   :type 'integer)
 
+(defcustom erc-clbin-min-lines 3
+  "how many lines must be pasted before passing to clbin."
+  :group 'erc-clbin
+  :type 'integer)
+
 ;;;###autoload
 (defun erc-clbin-old ()
   "Clbin a region using the function referenced in `erc-clbin-function'.
@@ -139,7 +144,7 @@ You can put this on `erc-pre-send-hook'."
 (defun erc-clbin (text)
   "Clbins a text such that messages start at column `erc-clbin-static-center'."
   (let ((ret text))
-    (when (string-match "\n" text)
+    (when (string-match (mapconcat 'identity (make-list erc-clbin-min-lines "\n.*") "") text)
       (request-response-data (request "https://clbin.com"
             :type "POST"
             :data (concat "clbin=" text)
