@@ -8,7 +8,17 @@
 (unless package-archive-contents    ;; Refresh the packages descriptions
   (package-refresh-contents))
 
-(dolist (package '(org-plus-contrib
+(dolist (package '(web-mode
+                   nm
+                   notmuch
+                   notmuch-labeler
+                   notmuch-unread 
+                   nyan-mode
+                   powerline
+                   org-ehtml
+		   erc-image
+		   tern
+		   org-plus-contrib
                    naquadah-theme
 		   oauth2		; Should be a dep of google-stuff
 		   browse-kill-ring
@@ -21,7 +31,7 @@
 		   gnuplot-mode
 		   magit
 		   magit-gh-pulls
-		   magit-log-edit
+		   ;;magit-log-edit
 		   rainbow-delimiters
 		   htmlize
 		   lua-mode
