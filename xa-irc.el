@@ -15,39 +15,54 @@
                        &allow-other-keys)
   "hack arround erc-tlc"
   (let* ((server  (plist-get spec :server))
-          (port    (plist-get spec :port))
-          (nick    (plist-get spec :nick))
-          (network (plist-get spec :network))
-          (secret  (xa:get-erc-secret server (concat nick "#" network))))
+         (port    (plist-get spec :port))
+         (nick    (plist-get spec :nick))
+         (network (plist-get spec :network))
+         (secret  (xa:get-erc-secret server (concat nick "#" network))))
        (erc-tls
         :server   server
         :port     port
         :nick     (concat nick "/" network)
         :password (concat nick "/" network ":" secret))))
 
+(defun* erc-bip (&rest spec
+                       &key server port nick network
+                       &allow-other-keys)
+  "hack arround erc-tlc"
+  (let* ((server  (plist-get spec :server))
+         (port    (plist-get spec :port))
+         (nick    (plist-get spec :nick))
+         (network (plist-get spec :network))
+         (secret  (xa:get-erc-secret server (concat nick "#" network))))
+       (erc-tls
+        :server   server
+        :port     port
+        :nick     nick
+        :password (concat nick ":" secret ":" network))))
+
 (defun xa:erc-start (&optional dontask)
   (setq erc-prompt-for-password nil)
-  (erc-znc
+  (erc-bip
    :server "core.evilgiggle.com"
    :port 7778
    :nick "xaiki"
    :network "freenode")
-  (erc-znc
+  (erc-bip
    :server "core.evilgiggle.com"
    :port 7778
    :nick "xaiki"
    :network "oftc")
-  (erc
-   :server "localhost"
-   :port 6667
-   :nick "xaiki"))
+  (erc-bip
+   :server "core.evilgiggle.com"
+   :port 7778
+   :nick "xaiki"
+   :network "bitlbee"))
 
 (add-hook 'erc-join-hook 'bitlbee-identify)
 (defun bitlbee-identify ()
   "If we're on the bitlbee server, send the identify command to the 
  &bitlbee channel."
-  (when (and (string= "localhost" erc-session-server)
-             (string= "&bitlbee" (buffer-name)))
+  (when (string= "&bitlbee" (buffer-name))
     (erc-message "PRIVMSG" (format "%s identify %s" 
                                    (erc-default-target) 
                                    (xa:get-erc-secret "bitlbee.localhost" "xaiki")))))

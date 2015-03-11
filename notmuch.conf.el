@@ -1,3 +1,10 @@
+(require 'nm nil t)
+(require 'nm-company nil t)
+(require 'notmuch-labeler)
+
+(notmuch-labeler-hide "inbox")
+(notmuch-labeler-image-tag "attachement")
+
 (setq notmuch-search-oldest-first nil)
 
 (defun xa:notmuch-address-selection-function (prompt collection initial-input)
@@ -31,6 +38,8 @@
     (interactive)
     (apply function args)))
 
+(notmuch-search-toggle "delete")
+
 ;; Notmuch mail listing keybindings.
 (define-key notmuch-search-mode-map "g"
   'notmuch-poll-and-refresh-this-buffer)
@@ -52,3 +61,6 @@
 (require 'notmuch-address)
 (setq notmuch-address-command "~/bin/notmuch-contact.py")
 (notmuch-address-message-insinuate)
+
+
+(setq nm-default-query "folder:Gmail/INBOX ")

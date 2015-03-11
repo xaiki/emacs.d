@@ -18,19 +18,22 @@
    (quote
     ("latexmk -g -pdf %f" "pdftk %b.pdf output %b.crypt.pdf owner_pw `apg -n 1 +s`")))
  '(org-show-notification-handler (quote notifications-notify))
+ '(package-selected-packages
+   (quote
+    (notmuch-unread ob-browser erc-image erc-view-log erc-social-graph erc-colorize impatient-mode kite company znc yaml-mode xcscope web-mode wc-goal-mode w3m vala-mode stylus-mode smex smart-mode-line slime skewer-reload-stylesheets scss-mode readline-complete rainbow-mode rainbow-delimiters powerline popwin php-mode paredit org-trello org-plus-contrib org-ehtml org-caldav org-bullets org-beautify-theme offlineimap nyan-mode notmuch-labeler nm naquadah-theme mustache-mode multiple-cursors multi-term mu4e-maildirs-extension mmm-mode markdown-mode manage-minor-mode magit-log-edit magit-gh-pulls lua-mode less-css-mode jss jinja2-mode jade-mode idle-highlight-mode htmlize highlight-current-line helm-gtags helm-css-scss haskell-mode handlebars-sgml-mode handlebars-mode goto-last-change google-maps google-contacts go-mode gnuplot-mode git-gutter flycheck f esxml elnode elfeed-web dtrt-indent dot-mode dockerfile-mode ctags-update ctags css-eldoc company-tern company-irony company-c-headers coffee-mode clojure-mode chess c-eldoc browse-kill-ring auto-dim-other-buffers auto-complete-clang-async ascope anything-exuberant-ctags ac-js2 ac-ispell ac-helm 2048-game)))
  '(safe-local-variable-values
    (quote
     ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"
-           (add-hook
-            (quote write-contents-functions)
-            (lambda nil
-              (delete-trailing-whitespace)
-              nil))
-           (require
-            (quote whitespace))
-           "Sometimes the mode needs to be toggled off and on."
-           (whitespace-mode 0)
-           (whitespace-mode 1))
+	   (add-hook
+	    (quote write-contents-functions)
+	    (lambda nil
+	      (delete-trailing-whitespace)
+	      nil))
+	   (require
+	    (quote whitespace))
+	   "Sometimes the mode needs to be toggled off and on."
+	   (whitespace-mode 0)
+	   (whitespace-mode 1))
      (whitespace-line-column . 80)
      (whitespace-style face trailing lines-tail)
      (require-final-newline . t)
