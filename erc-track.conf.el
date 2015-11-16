@@ -1,3 +1,4 @@
+(require 'erc-track)
 (setq erc-track-exclude-types '("NICK" "JOIN" "PART" "QUIT" "MODE"
                                 "301" ; away notice
                                 "305" ; return from awayness
@@ -8,12 +9,21 @@
                                 "324" ; modes
                                 "329" ; channel creation date
                                 ))
+(erc-modified-channels-update)
 (setq erc-track-exclude-server-buffer t)
-(setq erc-track-exclude '("*stickychan" "*status"))
-(setq erc-track-showcount t)
+(setq erc-track-exclude '("*stickychan" "*status" "&bitlbee"))
+(setq erc-track-showcount nil)
 (setq erc-track-shorten-start 1)
 (setq erc-track-switch-direction 'importance)
 (setq erc-track-visibility 'selected-visible)
+
+(setq erc-track-use-faces t)
+(setq erc-track-faces-priority-list
+      '(erc-current-nick-face
+        erc-keyword-face
+        erc-direct-msg-face))
+(setq erc-track-priority-faces-only 'all)
+(setq erc-format-query-as-channel-p t)
 
 ;; This seems useful when using a visibility set to `selected-visible'.  If
 ;; you go to a frame where (nth 1 erc-modified-channels-alist) is

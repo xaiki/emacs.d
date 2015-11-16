@@ -1,20 +1,20 @@
 (require 'mu4e-accounts)
 (require 'xa-email)
 
-(mu4e-maildirs-extension)
+;;(mu4e-maildirs-extension)
 (setq mu4e-mu-binary "~/.local/bin/mu")
 (setq mu4e-maildir-shortcuts
-         '(("/Gmail/INBOX"       . ?i)
-           ("/Gmail/Sent"        . ?s)
-           ("/Gmail/Trash"       . ?t)
-           ("/Gmail/All Mail"    . ?a)
-           ("/Gmail/xaiki@inaes/opcode" . ?o)
-           ("/UNQ/INBOX"         . ?u))
+         '(("/"       . ?i)
+           ("/Sent"        . ?s)
+           ("/Trash"       . ?t)
+           ("/All Mail"    . ?a)
+           ("/UNQ/INBOX"     . ?u)
+           ("/Popcorn/INBOX" . ?p)
+           )
          mu4e-bookmarks
-         '(("maildir:/Gmail/INBOX OR maildir:/UNQ/INBOX" "All mail you care about" ?m)
-           ("maildir:/Gmail/INBOX" "Gmail" ?g)
-           ("maildir:/Gmail/xaiki@inaes/.opcode" "Opcode" ?o)
+         '(("maildir:/ OR maildir:/Popcorn/INBOX" "All mail you care about" ?m)
            ("maildir:/UNQ/INBOX" "UNQ" ?u)
+           ("maildir:/Popcorn/INBOX" "Popcorn" ?p)
            ("flag:unread AND NOT flag:trashed" "Unread messages" ?U)
            ("date:today..now" "Today's messages" ?t)
            ("date:7d..now" "Last 7 days" ?w))
@@ -24,7 +24,7 @@
            (:from-or-to    .   22)
            (:subject       .  nil))
          mu4e-maildir "~/Mail"
-         mu4e-get-mail-command "torsocks mbsync -a"
+         mu4e-get-mail-command "torsocks mbsync eth0: eth0:Sent eth0:INBOX eth0:Drafts eth0:Trash pct"
          mu4e-user-mail-address-regexp "xaiki"
          mu4e-user-mail-address-list '("xaiki@debian.org"
                                        "xaiki@inaes.gob.ar"
@@ -32,8 +32,8 @@
                                        "0xa1f00@gmail.com"
                                        "xaiki@evilgiggle.com"
                                        )
-         mu4e-sent-folder "/Gmail/Sent"
-         mu4e-drafts-folder "/Gmail/Drafts"
+         mu4e-sent-folder "/Sent"
+         mu4e-drafts-folder "/Drafts"
          mu4e-trash-folder "/Trash"
          mu4e-headers-leave-behavior 'apply
          mu4e-use-fancy-chars t
@@ -45,6 +45,7 @@
          mu4e-headers-include-related t
          mu4e-headers-skip-duplicates t)
 
+(setq  mu4e-headers-first-child-prefix  (purecopy '("\\" . "┗>")))
 (setq  mu4e-headers-new-mark       (purecopy '("N" . "☐")))
 (setq  mu4e-headers-unread-mark    (purecopy '("u" . "⭑")))
 
@@ -69,11 +70,19 @@
             (flyspell-mode)))
 
 
+(setq mu4e-use-fancy-chars t)
 ;; enable inline images
 (setq mu4e-view-show-images t)
 ;; use imagemagick, if available
 (when (fboundp 'imagemagick-register-types)
   (imagemagick-register-types))
+
+(defun xa:threads-hide (orig-fun &rest args)
+  (mu4e~headers-threads-hide))
+
+;;(advice-remove 'mu4e~headers-add-header  #'xa:threads-hide)
+
+;;(add-hook 'mu4e~headers-add-header 'xa:thread-hide 'append)
 
 (require 'org-mu4e)
 (setq mu4e-attach-flag-mark ?⚓)

@@ -1,6 +1,12 @@
 (require 'company-web)
+(require 'company-web-html)
 
 (add-hook 'after-init-hook 'global-company-mode)
+(add-to-list 'company-backends 'company-web-fa+)
+(add-to-list 'company-backends 'company-web-bootstrap+)
+(add-to-list 'company-backends 'company-web-html)
+(add-to-list 'company-backends 'company-web-jade)
+(add-to-list 'company-backends 'company-web-slim)
 (add-to-list 'company-backends 'company-tern)
 (add-to-list 'company-backends 'company-irony)
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)

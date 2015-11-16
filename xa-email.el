@@ -1,5 +1,5 @@
 (require 'smtpmail)
-(require 'mu4e)
+(require 'mu4e nil t)
 (setq
  user-mail-address "xaiki@evilgiggle.com"
  user-full-name  "Niv Sardi")
@@ -115,15 +115,10 @@ Ministerio de Desarrollo Social")
   "Complete text at START with a user name and email."
   (append (xa:header-extract) (list choices)))
 
-(add-hook 'message-mode-hook
-          (lambda ()
-            (add-to-list 'completion-at-point-functions
-                         'xa:message-complete-function)))
 
-(setq message-completion-alist '(("^\\(Newsgroups\\|Followup-To\\|Posted-To\\|Gcc\\):" . message-expand-group)
- ("^\\(Resent-\\)?\\(To\\|B?Cc\\):" . message-expand-name)
- ("^\\(Reply-To\\|From\\|Mail-Followup-To\\|Mail-Copies-To\\):" . message-expand-name)
- ("^\\(Disposition-Notification-To\\|Return-Receipt-To\\):" . message-expand-name))
-)
+;; (add-hook 'message-mode-hook
+;;           (lambda ()
+;;             (add-to-list 'completion-at-point-functions
+;;                          'xa:message-complete-function)))
 
 (provide 'xa-email)

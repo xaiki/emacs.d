@@ -4,6 +4,20 @@
 (require 'multiple-cursors)
 (require 'tern)
 
+;; http://www.flycheck.org/manual/latest/index.html
+(require 'flycheck)
+
+;; turn on flychecking globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
 (defcustom jd:programming-language-major-modes
   '(prog-mode     ; This is the mode perl, makefile, lisp-mode, scheme-mode,
                   ; emacs-lisp-mode, sh-mode, java-mode, c-mode, c++-mode,
@@ -29,7 +43,8 @@
   (setq show-trailing-whitespace t)
   (flycheck-mode 1)
   (flyspell-prog-mode)
-  (dtrt-indent-mode t))
+  (dtrt-indent-mode t)
+  (company-mode))
 
 (dolist (mode jd:programming-language-major-modes)
   (add-hook
@@ -59,7 +74,6 @@
 	  (lambda ()
             (when (fboundp 'doxymacs-mode)
               (doxymacs-mode 1))
-	    (c-set-style "xa1")
 	    (c-toggle-auto-newline nil)))
 (add-hook 'c-initialization-hook
 	  (lambda () (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)))
@@ -89,13 +103,14 @@
 
 (require 'pabbrev nil t)
 (add-to-list 'auto-mode-alist '("~/src/.*linux.*/.*\\.[ch]$" . linux-c-mode))
-(add-to-list 'auto-mode-alist '("*.make$" . makefile-gmake-mode))
+(add-to-list 'auto-mode-alist '("\\.make$" . makefile-gmake-mode))
 (add-to-list 'auto-mode-alist '("Makefile.*" . makefile-gmake-mode))
-(add-to-list 'auto-mode-alist '("*.json$" . js2-mode))
-(add-to-list 'auto-mode-alist '("*.js$" . js2-mode))
-(add-to-list 'auto-mode-alist '("*.html$" . web-mode))
-(add-to-list 'auto-mode-alist '("*.tpl$" . web-mode))
-(add-to-list 'auto-mode-alist '("*.hbs$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 
 (defun ffmpeg-c-mode ()
   "C mode with adjusted values for videolan."
@@ -155,5 +170,18 @@
 ;;     (let ((matching-text (blink-matching-open)))
 ;;       (when matching-text
 ;;         (message matching-text)))))
+
+(defun my-setup-indent (n)
+  ;; web development
+  (setq coffee-tab-width n) ; coffeescript
+  (setq javascript-indent-level n) ;; javascript-mode
+  (setq js-indent-level n) ; js-mode
+  (setq js2-basic-offset n) ; js2-mode
+  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+  (setq css-indent-offset n) ; css-mode
+  )
+
 
 (provide 'jd-coding)

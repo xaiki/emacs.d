@@ -1,29 +1,35 @@
-(defcustom xa:mode-line-ignore-alist '("Dim" "Fly[^ ]+")
+(require 'fontawesome)
+(require 'nyan-mode)
+
+(defcustom xa:mode-line-ignore-alist '("Dim" "Fly[^ ]+" "Rbow" "Paredit")
   "list of regexp that will be ignored in the minor mode mode-line"
   :group 'powerline)
 
-(defcustom xa:major-mode-line-regexp-map
-      '(("[Ee]macs-?"          . "𝛏")
-        ("[Jj]ava[Ss]cript"    . "JS")
-        ("[Ss]hell-?[Ss]cript" . "$"))
-      "list of (regexp . rep) pairs that will be applied on the
-      major mode when building the mode-line"
-      :group 'powerline)
+  (defun xa:fontawesome (symbol)
+    (propertize (fontawesome symbol) 'face '(:family "FontAwesome")))
 
-(defcustom xa:minor-mode-line-regexp-map
-      '(("Fly"        . "")
-        ("[Tt]ern"    . "T")
-        ("[Ss]kewer"  . "Sk")
-        ("GitGutter"  . "")
-        ("Fill"       . "")
-        ("Ind"        . "")
-        ("company"    . "")
-        ("ElDoc"      . "")
-        ("Rbow"       . "")
-        ("Paredit"    . ""))
-      "list of (regexp . rep) pairs that will be applied on the
-      minor mode when building the mode-line"
-      :group 'powerline)
+  (defcustom xa:major-mode-line-regexp-map
+    '(("[Ee]macs-?"          . "𝛏")
+      ("[Jj]ava[Ss]cript"    . "JS")
+      ("[Ss]hell-?[Ss]cript" . "$"))
+    "list of (regexp . rep) pairs that will be applied on the
+          major mode when building the mode-line"
+    :group 'powerline)
+
+  (defcustom xa:minor-mode-line-regexp-map
+    `(("Fly"        . ,(xa:fontawesome "bolt"))
+      ("[Tt]ern"    . ,(xa:fontawesome "code"))
+      ("[Ss]kewer"  . "Sk")
+      ("GitGutter"  . ,(xa:fontawesome "code-fork"))
+      ("Fill"       . ,(xa:fontawesome "bars"))
+      ("company"    . ,(xa:fontawesome "compass"))
+      ("ElDoc"      . ,(xa:fontawesome "info-circle")))
+    "list of (regexp . rep) pairs that will be applied on the
+          minor mode when building the mode-line"
+    :group 'powerline)
+
+(set-face-attribute 'mode-line nil
+                    :family "Source Code Pro")
 
 (defun xa:build-ignore-cons-cells ()
   (let ((ret ()))
@@ -89,11 +95,13 @@
                           (separator-right (intern (format "powerline-%s-%s"
                                                            powerline-default-separator
                                                            (cdr powerline-default-separator-dir))))
-                          (lhs (list (powerline-raw "%*" nil 'l)
-                                     (powerline-buffer-size nil 'l)
-                                     (powerline-buffer-id nil 'l)
-                                     (powerline-raw " ")
-                                     (funcall separator-left mode-line face1)
+                          (lhs (list ;;(powerline-raw "%*" nil 'l)
+                                     ;;(powerline-buffer-size nil 'l)
+                                     ;;(powerline-raw " ")
+                                     ;;(funcall separator-left mode-line face2 )
+                                     (powerline-buffer-id face2 'l)
+                                     (powerline-raw " " face2)
+                                     (funcall separator-left face2 face1)
                                      (powerline-narrow face1 'l)
                                      (powerline-vc face1)))
                           (rhs (list (powerline-raw global-mode-string face1 'r)

@@ -1,5 +1,6 @@
 (require 'ox-odt)
-(require 'ox-ehtml) 
+(require 'ox-ehtml)
+(require 'ox-gfm)
 
 (setq org-export-latex-classes nil)
 (setq org-latex-pdf-process

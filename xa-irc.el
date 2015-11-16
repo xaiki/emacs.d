@@ -1,10 +1,13 @@
 (require 'erc)
 
+(setq tls-program '("gnutls-cli --insecure -p %p %h" "gnutls-cli --insecure -p %p %h --protocols ssl3" "openssl s_client -connect %h:%p -no_ssl2 -ign_eof"))
+
 (defun xa:get-erc-secret (server user)
   (let ((found (nth 0 (auth-source-search
                        :host server
                        :user user
                        :require '(:user :secret)))))
+    (message (format "getting identity for server %s user %s" server user))
     (let ((secret (plist-get found :secret)))
       (if (functionp secret)
           (funcall secret)
@@ -52,11 +55,12 @@
    :port 7778
    :nick "xaiki"
    :network "oftc")
-  (erc-bip
-   :server "core.evilgiggle.com"
-   :port 7778
-   :nick "xaiki"
-   :network "bitlbee"))
+  ;; (erc-bip                       ;;
+  ;;  :server "core.evilgiggle.com" ;;
+  ;;  :port 7778                    ;;
+  ;;  :nick "xaiki"                 ;;
+  ;;  :network "bitlbee")           ;;
+  )
 
 (add-hook 'erc-join-hook 'bitlbee-identify)
 (defun bitlbee-identify ()
@@ -88,6 +92,6 @@
           (message "Not doing anything."))
       (xa:erc-start))))
 
-(add-to-list 'nm-connected-hook (lambda () (xa:irc t)))
+;;(add-to-list 'nm-connected-hook (lambda () (xa:irc t)))
 
 (provide 'xa-irc)

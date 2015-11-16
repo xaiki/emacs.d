@@ -17,11 +17,11 @@
 
 (setq send-mail-function 'xa:async-smtpmail-send-it
       smtpmail-stream-type 'starttls
-      smtpmail-default-smtp-server "smtp.gmail.com"
+      smtpmail-default-smtp-server "smail.xaiki.net"
       message-send-mail-function 'xa:async-smtpmail-send-it
-      smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
-      smtpmail-auth-credentials '(("smtp.gmail.com" 587 "0xa1f00@gmail.com" nil))
-      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-starttls-credentials '(("smail.xaiki.net" 587 nil nil))
+      smtpmail-auth-credentials '(("smail.xaiki.net" 587 "xaiki@evilgiggle.com" nil))
+      smtpmail-smtp-server "smail.xaiki.net"
       smtpmail-smtp-service 587)
 
 (defun xa:mail-connect ()
@@ -37,10 +37,11 @@
 (add-to-list 'nm-disconnected-hook 'xa:mail-disconnect)
 (nm-enable)
 
-(setq smtpmail-auth-supported '(xoauth2 cram-md5 plain login))
+;;(setq smtpmail-auth-supported '(xoauth2 cram-md5 plain login))
+(setq smtpmail-auth-supported '(cram-md5 plain login))
 (setq smtpmail-xoauth-command "~/dotfiles/mail-scripts/oauth2-authinfo.py")
 
-(defun smtpmail-try-auth-method (process mech user password)
+(defun xa:smtpmail-try-auth-method (process mech user password)
   (let (ret)
     (cond
      ((or (not mech)

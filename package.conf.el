@@ -9,16 +9,16 @@
   (package-refresh-contents))
 
 (dolist (package '(web-mode
-                   nm
-                   notmuch
-                   notmuch-labeler
-                   notmuch-unread 
+;;                   nm
+;;                   notmuch
+;;                   notmuch-labeler
+;;                   notmuch-unread 
                    nyan-mode
                    powerline
-                   org-ehtml
 		   erc-image
 		   tern
 		   org-plus-contrib
+		   org-ehtml
                    naquadah-theme
 		   oauth2		; Should be a dep of google-stuff
 		   browse-kill-ring
@@ -46,12 +46,14 @@
 		   clojure-mode
 		   slime
 		   jinja2-mode
-		   git-commit-mode
 		   helm
 		   helm-css-scss
 		   ac-helm
+                   ac-html-bootstrap
 		   auto-complete
 		   auto-complete-clang-async
+		   company-web
+                   company-tern
 		   popwin
 		   org-trello
 		   xcscope
@@ -59,7 +61,7 @@
                    smex
                    highlight-current-line
                    idle-highlight-mode
-                   mu4e-maildirs-extension
+;;                   mu4e-maildirs-extension
                    org-bullets
                    auto-dim-other-buffers
                    offlineimap
@@ -69,6 +71,11 @@
                    ac-js2
                    async
                    multiple-cursors
-                   dtrt-indent))
+                   dtrt-indent
+                   skewer-mode
+                   
+                   ))
   (unless (package-installed-p package)
-    (package-install package)))
+    (progn
+      (message "installing %s" package)
+      (package-install package))))

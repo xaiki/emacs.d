@@ -6,6 +6,12 @@
 (add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
 ;;(add-to-list 'load-path "~/.emacs.d/org-caldav") ; Load org-caldav
 
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 ;; Generate autoloads
 (let ((generated-autoload-file "~/.emacs.d/jd-autoloads.el"))
   (update-directory-autoloads "~/.emacs.d")
@@ -44,6 +50,7 @@
 (require 'jd-keybindings)
 (require 'jd-daemon)
 (require 'jd-coding)
+;;(require 'xa-theme)
 (require 'org)
 (require 'org-compat)
 ;;(require 'org-element)
@@ -98,7 +105,7 @@
 (show-paren-mode t)
 (url-handler-mode 1)                    ; Allow to open URL
 (mouse-avoidance-mode 'animate)         ; Move the mouse away
-(ffap-bindings)                         ; Use ffap
+;;(ffap-bindings)                         ; Use ffap
 
 ;;(iswitchb-mode 1)
 (ido-mode 'both)                            ; Interactively Do Things
@@ -120,11 +127,7 @@
       (global-hl-line-mode 1)			; Highlight the current line
       ))
 
-(require 'powerline)
-(require 'xa-powerline)
-(require 'nyan-mode)
-
-(setq mode-line-format (xa:powerline-nyan-center-theme))
+;;(setq mode-line-format (xa:powerline-nyan-center-theme))
 ;;(setq mode-line-format '(:eval (list (nyan-create))))
 
 ;;(sml/setup)
@@ -133,3 +136,36 @@
 
 ;;(sml/apply-theme 'respectful)
 
+;; auto-close gpg buffers, taken from
+;; http://stackoverflow.com/questions/15255080/how-to-auto-close-an-auto-encryption-mode-buffer-in-emacs
+
+(defun dwim-kill-buffers-by-ext (ext &optional timeout)
+  (interactive)
+  (let ((timeout (or timeout 60))
+        (buffers-killed 0))
+    (dolist (buffer (buffer-list))
+      (with-current-buffer buffer
+          (when (string-match ext (buffer-name buffer))
+          (let ((current-time (second (current-time)))
+                (last-displayed-time (second buffer-display-time)))
+            (when (> (- current-time last-displayed-time)
+                     timeout)
+              (message "Auto killing .gpg buffer '%s'" (buffer-name buffer))
+              (when (buffer-modified-p buffer)
+                (save-buffer))
+              (kill-buffer buffer)
+              (incf buffers-killed))))))
+    (unless (zerop buffers-killed)
+      (message "%s .%s buffers have been autosaved and killed" buffers-killed ext))))
+
+(defun xa:kill-gpg-buffers (&optional timeout)
+  (dwim-kill-buffers-by-ext "\\.gpg$" timeout))
+
+(defun xa:kill-crypt-buffers (&optional timeout)
+  (dwim-kill-buffers-by-ext "crypt" timeout))
+
+(run-with-idle-timer 60 t 'xa:kill-gpg-buffers)
+(run-with-idle-timer 60 t 'xa:kill-crypt-buffers)
+
+(provide 'init)
+;;; init.el ends here

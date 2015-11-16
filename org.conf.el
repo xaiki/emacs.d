@@ -1,22 +1,25 @@
 (require 'org-depend nil t)
+(require 'ob-core)
 (setq org-directory "~/Documents/org")
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
-(org-babel-do-load-languages
- (quote org-babel-load-languages)
- (quote ((emacs-lisp . t)
-         (dot . t)
-         (ditaa . t)
-         (R . t)
-         (python . t)
-         (ruby . t)
-         (gnuplot . t)
-         (clojure . t)
-         (sh . t)
-         (ledger . t)
-         (org . t)
-         (plantuml . t)
-         (latex . t))))
+(add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
+
+;; (org-babel-do-load-languages
+;;  (quote org-babel-load-languages)
+;;  (quote ((emacs-lisp . t)
+;;          (dot . t)
+;;          (ditaa . t)
+;;          (R . t)
+;;          (python . t)
+;;          (ruby . t)
+;;          (gnuplot . t)
+;;          (clojure . t)
+;;          (sh . t)
+;;          (ledger . t)
+;;          (org . t)
+;;          (plantuml . t)
+;;          (latex . t))))
 
 (setq org-time-clocksum-use-effort-durations t)
 (setq org-time-clocksum-format '(:years "%dy " :months "%dm " :weeks "%dw " :days "%dd " :hours "%dh" :require-hours nil :minutes "%02d" :require-minutes nil))
@@ -101,8 +104,29 @@
 (add-hook 'org-mode-hook (lambda ()
                            (add-hook 'after-save-hook 'jd:org-decrypt-entires-silently)))
 
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 (require 'xa-org-export)
+
+(when (require 'org-bullets nil t)
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(setq font-lock-keywords-alist nil)
+(font-lock-add-keywords 'org-mode
+                        '(("^ +\\([-*]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))
+                          ("\\(|\\)"
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "┃"))))
+                          ("^ *\\([|]\\)-"
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "┣"))))
+                          ("[-+\\|]\\(-\\)[-+\\|]"
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "━"))))
+                          ("[-+\\|][-+\\|]\\(-\\)"
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "━"))))
+                          ("[-+\\|]\\(-\\)"
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "━"))))
+                          ("-\\(+\\)-"
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "╋"))))
+                          ("^ *[|][-+]*\\([|]\\) *$"
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "┫"))))))
 
 (defun xa:make-it-right ()
   (interactive)
@@ -116,3 +140,13 @@
 (setq org-crypt-key "EA3D162A")
 
 
+(require 'org-mime)
+(setq org-mime-library 'mml)
+
+(add-hook 'message-mode-hook
+          (lambda ()
+            (local-set-key "\C-c\M-o" 'org-mime-htmlize)))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key "\C-c\M-o" 'org-mime-org-buffer-htmlize)))
