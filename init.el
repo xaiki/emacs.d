@@ -1,7 +1,7 @@
 ;; dot emacs from Julien Danjou <julien@danjou.info>
 ;; Written since 2009!
 
-(setenv "GPG_AGENT_INFO" (car (split-string (nth 1 (split-string (shell-command-to-string "gpg-agent --daemon") "=")) ";")))
+;;(setenv "GPG_AGENT_INFO" (car (split-string (nth 1 (split-string (shell-command-to-string "gpg-agent --daemon") "=")) ";")))
 
 ;; Expand load-path
 (add-to-list 'load-path "~/.emacs.d")

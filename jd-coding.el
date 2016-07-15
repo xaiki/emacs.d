@@ -7,6 +7,9 @@
 ;; http://www.flycheck.org/manual/latest/index.html
 (require 'flycheck)
 
+(require 'xcscope)
+(cscope-setup)
+
 ;; turn on flychecking globally
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
@@ -32,7 +35,8 @@
     haskell-mode
     sql-mode
     rst-mode
-    js2-mode)
+;;    js2-mode
+    )
   "What considering as programming languages.")
 
 (defun jd:customize-programming-language-mode ()
@@ -105,12 +109,15 @@
 (add-to-list 'auto-mode-alist '("~/src/.*linux.*/.*\\.[ch]$" . linux-c-mode))
 (add-to-list 'auto-mode-alist '("\\.make$" . makefile-gmake-mode))
 (add-to-list 'auto-mode-alist '("Makefile.*" . makefile-gmake-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.css$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.hbs$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(add-to-list 'auto-mode-alist '("eos-image-builder/hooks" . shell-script-mode))
 
 (defun ffmpeg-c-mode ()
   "C mode with adjusted values for videolan."

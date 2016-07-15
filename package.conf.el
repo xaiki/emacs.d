@@ -1,3 +1,4 @@
+(require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
@@ -19,6 +20,7 @@
 		   tern
 		   org-plus-contrib
 		   org-ehtml
+		   ox-gfm
                    naquadah-theme
 		   oauth2		; Should be a dep of google-stuff
 		   browse-kill-ring
@@ -55,7 +57,7 @@
 		   company-web
                    company-tern
 		   popwin
-		   org-trello
+;;		   org-trello
 		   xcscope
 		   paredit
                    smex
@@ -73,7 +75,9 @@
                    multiple-cursors
                    dtrt-indent
                    skewer-mode
-                   
+                   impatient-mode
+                   c-eldoc
+                   xcscope
                    ))
   (unless (package-installed-p package)
     (progn

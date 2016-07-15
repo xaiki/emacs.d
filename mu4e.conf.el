@@ -24,7 +24,7 @@
            (:from-or-to    .   22)
            (:subject       .  nil))
          mu4e-maildir "~/Mail"
-         mu4e-get-mail-command "torsocks mbsync eth0: eth0:Sent eth0:INBOX eth0:Drafts eth0:Trash pct"
+         mu4e-get-mail-command "ls";;"torsocks mbsync eth0: eth0:Sent eth0:INBOX eth0:Drafts eth0:Trash pct"
          mu4e-user-mail-address-regexp "xaiki"
          mu4e-user-mail-address-list '("xaiki@debian.org"
                                        "xaiki@inaes.gob.ar"
@@ -37,13 +37,23 @@
          mu4e-trash-folder "/Trash"
          mu4e-headers-leave-behavior 'apply
          mu4e-use-fancy-chars t
-         mu4e-html2text-command "w3m -dump -T text/html -s -graph"
+;;         mu4e-html2text-command "w3m -dump -T text/html -s -graph"
          mail-user-agent 'mu4e-user-agent
          message-signature '(xa:random-signature)
          mu4e-compose-signature '(xa:random-signature)
          mu4e-view-show-images t
          mu4e-headers-include-related t
          mu4e-headers-skip-duplicates t)
+
+(require 'mu4e-contrib)
+(setq mu4e-html2text-command 'mu4e-shr2text)
+;; If you use the mu4e-shr2text, it might be useful to emulate some of the shr key bindings, with something like:
+
+(add-hook 'mu4e-view-mode-hook
+  (lambda()
+     ;; try to emulate some of the eww key-bindings
+    (local-set-key (kbd "<tab>") 'shr-next-link)
+    (local-set-key (kbd "<backtab>") 'shr-previous-link)))
 
 (setq  mu4e-headers-first-child-prefix  (purecopy '("\\" . "┗>")))
 (setq  mu4e-headers-new-mark       (purecopy '("N" . "☐")))

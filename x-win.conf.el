@@ -1,5 +1,6 @@
-(setq x-select-enable-primary t)
+(setq x-select-enable-primary nil)
+(setq select-enable-clipboard t)
 (setq window-system-default-frame-alist
       '((x
-        (font . "Source Code Pro"))))
+        (font . "Fira Mono"))))
 (setq split-width-threshold 120)

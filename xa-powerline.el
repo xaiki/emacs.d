@@ -29,7 +29,7 @@
     :group 'powerline)
 
 (set-face-attribute 'mode-line nil
-                    :family "Source Code Pro")
+                    :family "Fira Sans Condensed")
 
 (defun xa:build-ignore-cons-cells ()
   (let ((ret ()))
