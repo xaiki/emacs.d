@@ -36,10 +36,9 @@
     (eval-after-load (match-string-no-properties 1 file)
       `(load ,(concat user-emacs-directory file)))))
 
-(setq auth-sources '(default
-                      "secrets:session"
-                      "secrets:Login"
-                      "~/.authinfo.gpg"))
+(setq auth-sources '("~/.authinfo.gpg"
+                     "secrets:session"
+                      "secrets:Login"))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
