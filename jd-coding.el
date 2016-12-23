@@ -35,6 +35,7 @@
     haskell-mode
     sql-mode
     rst-mode
+    python-mode
 ;;    js2-mode
     )
   "What considering as programming languages.")
