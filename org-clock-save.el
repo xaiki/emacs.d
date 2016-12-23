@@ -1,2 +1,2 @@
-;; org-persist.el - furiloche at <2015-11-03 mar 17:02>
-(setq stored-clock-history '(("/home/xaiki/src/Blocktech/TODO.org" . 4448) ("/home/xaiki/src/Blocktech/TODO.org" . 3247) ("/home/xaiki/src/Blocktech/TODO.org" . 1) ("/home/xaiki/src/Blocktech/TODO.org" . 2570) ("/home/xaiki/src/Blocktech/TODO.org" . 792)))
+;; org-persist.el - jericocoara at <2016-07-18 Mon 11:12>
+(setq stored-clock-history '(("/home/xaiki/src/Endless/endless.org" . 2390) ("/home/xaiki/src/Endless/endless.org" . 1836) ("/home/xaiki/src/Endless/endless.org" . 41016) ("/home/xaiki/src/Endless/endless.org" . 17523) ("/home/xaiki/src/Endless/endless.org" . 17629)))

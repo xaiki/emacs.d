@@ -9,4 +9,5 @@
 (add-to-list 'company-backends 'company-web-slim)
 (add-to-list 'company-backends 'company-tern)
 (add-to-list 'company-backends 'company-irony)
+(add-to-list 'company-backends 'company-jedi)
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
