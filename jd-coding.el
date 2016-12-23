@@ -49,7 +49,8 @@
   (flycheck-mode 1)
   (flyspell-prog-mode)
   (dtrt-indent-mode t)
-  (company-mode))
+  (company-mode)
+  (paredit-mode 1))
 
 (dolist (mode jd:programming-language-major-modes)
   (add-hook
