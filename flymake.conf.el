@@ -9,6 +9,8 @@
 (add-to-list 'flymake-allowed-file-name-masks
              '("\\.py\\'" flymake-pyflakes-init))
 
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+
 (defvar jd:flymake-display-error-message-timer
   (run-with-idle-timer 1 t 'jd:flymake-display-err-for-current-line))
 
