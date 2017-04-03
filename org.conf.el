@@ -1,7 +1,11 @@
 (require 'org-depend nil t)
 (require 'ob-core)
-(setq org-directory "~/Documents/org")
+(require 'org-invoice)
+(setq org-directory "~/Documents")
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
+
+(autoload 'org-invoice-report "org-invoice")
+(autoload 'org-dblock-write:invoice "org-invoice")
 
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
 

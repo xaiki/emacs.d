@@ -1,5 +1,6 @@
 (require 'smtpmail)
 (require 'mu4e nil t)
+(require 'mu4e-accounts nil t)
 (setq
  user-mail-address "xaiki@evilgiggle.com"
  user-full-name  "Niv Sardi")
@@ -45,7 +46,7 @@ Ministerio de Desarrollo Social")
   (let ((result))
     (dolist (style xa:posting-styles)
       (mapcar (lambda (x) (let ((addr (if (listp x) x nil)))
-                            (when (member 'address x)
+                            (when (member 'user-mail-address addr)
                               (setq result (append result (list (nth 1 addr))))))) style))
     (nreverse result)))
 

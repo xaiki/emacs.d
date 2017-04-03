@@ -4,10 +4,9 @@
 
 (setq org-export-latex-classes nil)
 (setq org-latex-pdf-process
-  '("pdflatex -interaction nonstopmode -output-directory %o %f"
-    "pdflatex -interaction nonstopmode -output-directory %o %f"
-    "pdflatex -interaction nonstopmode -output-directory %o %f"
-    "pdftk %b.pdf output %b.crypt.pdf owner_pw `apg -n 1 +s`"))
+      '("xelatex -interaction nonstopmode -output-directory %o %f "
+        "xelatex -interaction nonstopmode -output-directory %o %f "
+        "pdftk %b.pdf output %b.crypt.pdf owner_pw `apg -n 1 +s`"))
 
 (when (require 'org-latex nil t)
   (setq org-export-latex-listings t))
@@ -99,6 +98,24 @@ Capital Federal"
 (add-to-list 'org-latex-classes
           '("moderncv"
              "\\documentclass{moderncv}\\moderncvtheme[black]{classic}"
+             ("\\section{%s}" . "\\section*{%s}")
+             ("\\subsection{%s}" . "\\subsection*{%s}")
+             ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+             ("\\paragraph{%s}" . "\\paragraph*{%s}")
+             ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+(add-to-list 'org-latex-classes
+          '("invoice"
+             "\\documentclass[letterpaper]{dapper-invoice}
+[NO-DEFAULT-PACKAGES]
+[PACKAGES]
+[EXTRA]
+
+\\setmetadata{\\me}{Your Biz}{\\invoiceNo}{\\clientName}
+
+\\defaultfontfeatures{ Path = ./Fonts/ }
+\\usepackage{fontawesome}
+"
              ("\\section{%s}" . "\\section*{%s}")
              ("\\subsection{%s}" . "\\subsection*{%s}")
              ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
