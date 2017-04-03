@@ -28,7 +28,7 @@
     lua-mode
     cmake-mode
     tex-mode                            ; LaTeX inherits
-    sgml-mode                           ; HTML inherits
+;;    sgml-mode                           ; HTML inherits
     css-mode
     nxml-mode
     diff-mode
