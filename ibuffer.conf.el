@@ -8,11 +8,7 @@
          ,@(mapcar (lambda (directory)
                      `(,(file-name-nondirectory directory) (filename . ,directory)))
                    (remove-if-not 'file-directory-p
-                                  (directory-files "~/src/" t "^[^\.][^\.]*" t)))
-         ,@(mapcar (lambda (directory)
-                     `(,(concat "Debian/" (file-name-nondirectory directory)) (filename . ,directory)))
-                   (remove-if-not 'file-directory-p
-                                  (directory-files "~/Debian/" t "^[^\.][^\.]*" t)))
+                                  (directory-files "~/src" t "^[^\.][^\.]*" t)))
          ("Terminals" (mode . term-mode))
 	 ("Org" (or (mode . org-mode)
                     (mode . org-agenda-mode)
