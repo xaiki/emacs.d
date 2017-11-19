@@ -11,12 +11,15 @@
 
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
-(defvar jd:flymake-display-error-message-timer
-  (run-with-idle-timer 1 t 'jd:flymake-display-err-for-current-line))
+(when (require 'flycheck nil t)
+  (progn
+    (defvar jd:flymake-display-error-message-timer
+      (run-with-idle-timer 1 t 'jd:flymake-display-err-for-current-line))
 
-(defun jd:flymake-display-err-for-current-line ()
-  "Display a message with errors/warnings for current line if it has errors and/or warnings."
-  (interactive)
-  (flycheck-display-error-at-point))
+    (defun jd:flymake-display-err-for-current-line ()
+      "Display a message with errors/warnings for current line if it has errors and/or warnings."
+      (interactive)
+      (flycheck-display-error-at-point))
+    ))
 (provide 'flymake.conf)
 ;;; flymake.conf.el
