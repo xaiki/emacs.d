@@ -50,14 +50,7 @@
 (require 'jd-daemon)
 (require 'jd-coding)
 ;;(require 'xa-theme)
-(require 'org)
-(require 'org-compat)
-;;(require 'org-element)
-(require 'ob)
-(require 'org-crypt)
-(require 'org-habit)
-(require 'org-plot)
-;;(require 'org-caldav)
+;;(require 'org)
 (require 'naquadah-theme)
 (require 'saveplace)
 (require 'uniquify)
@@ -99,8 +92,6 @@
 (line-number-mode 1)			; Show line number
 (column-number-mode 1)			; Show colum number
 
-(setq org-support-shift-select t)
-
 (show-paren-mode t)
 (url-handler-mode 1)                    ; Allow to open URL
 (mouse-avoidance-mode 'animate)         ; Move the mouse away
@@ -116,7 +107,6 @@
 
 (setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 
-(org-crypt-use-before-save-magic)
 (auto-dim-other-buffers-mode)
 (if (display-graphic-p)
     (progn

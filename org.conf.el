@@ -1,8 +1,18 @@
 (require 'org-depend nil t)
 (require 'ob-core)
+(require 'org-compat)
+;;(require 'org-element)
+(require 'ob)
+(require 'org-crypt)
+(require 'org-habit)
+(require 'org-plot)
+;;(require 'org-caldav)
+
 (require 'org-invoice)
 (setq org-directory "~/Documents")
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
+
+(setq org-support-shift-select t)
 
 (autoload 'org-invoice-report "org-invoice")
 (autoload 'org-dblock-write:invoice "org-invoice")
@@ -141,11 +151,8 @@
 (setq org-mobile-directory      (concat org-directory "/mobile"))
 (setq org-mobile-inbox-for-pull (concat org-mobile-directory "/inbox.org"))
 
-(setq org-crypt-key "EA3D162A")
-
-
-(require 'org-mime)
-(setq org-mime-library 'mml)
+(when (require 'org-mime nil t)
+  (setq org-mime-library 'mml))
 
 (add-hook 'message-mode-hook
           (lambda ()
