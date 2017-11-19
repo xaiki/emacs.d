@@ -85,6 +85,7 @@
                    impatient-mode
                    c-eldoc
                    xcscope
+		   request
                    ))
   (unless (package-installed-p package)
     (progn
