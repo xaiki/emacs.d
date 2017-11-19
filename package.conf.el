@@ -68,7 +68,7 @@
 		   xcscope
 		   paredit
                    smex
-                   highlight-current-line
+;;                   highlight-current-line
                    idle-highlight-mode
 ;;                   mu4e-maildirs-extension
                    org-bullets
