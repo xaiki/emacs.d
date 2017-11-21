@@ -31,7 +31,6 @@
 ;;                   notmuch
 ;;                   notmuch-labeler
 ;;                   notmuch-unread 
-		   erc-image
 		   org-plus-contrib
 		   org-ehtml
 		   ox-gfm

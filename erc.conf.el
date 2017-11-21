@@ -1,6 +1,6 @@
 (require 'erc-clbin)
 (require 'erc-pcomplete)
-(require 'erc-image)
+(require-package 'erc-image)
 ;;(add-to-list 'erc-modules 'smiley)
 (add-to-list 'erc-modules 'match)
 ;;(add-to-list 'erc-modules 'scrolltobottom)

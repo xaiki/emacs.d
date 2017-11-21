@@ -1,4 +1,4 @@
-(require 'company)
+(require-package 'company)
 (setq magit-repo-dirs `("~/.emacs.d" "~/src"))
 (setq magit-commit-signoff t)
 (setq magit-remote-ref-format 'remote-slash-branch)

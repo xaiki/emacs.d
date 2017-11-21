@@ -1,3 +1,4 @@
+(require-package 'company)
 (defun xa:paredit-web ()
   "Turn on paredit mode for non-lisps."
   (interactive)
