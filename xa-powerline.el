@@ -1,5 +1,6 @@
-(require 'fontawesome)
-(require 'nyan-mode)
+(require-package 'powerline)
+(require-package 'fontawesome)
+(require-package 'nyan-mode)
 
 (defcustom xa:mode-line-ignore-alist '("Dim" "Fly[^ ]+" "Rbow" "Paredit")
   "list of regexp that will be ignored in the minor mode mode-line"

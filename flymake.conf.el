@@ -11,7 +11,7 @@
 
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
-(when (require 'flycheck nil t)
+(when (require-package 'flycheck)
   (progn
     (defvar jd:flymake-display-error-message-timer
       (run-with-idle-timer 1 t 'jd:flymake-display-err-for-current-line))

@@ -1,14 +1,22 @@
 ;;(require 'xcscope+)
-(require 'paredit)
-(require 'dtrt-indent)
-(require 'multiple-cursors)
-(require 'tern)
+(require-package 'paredit)
+(require-package 'dtrt-indent)
+(require-package 'multiple-cursors)
+(require-package 'tern)
 
 ;; http://www.flycheck.org/manual/latest/index.html
-(require 'flycheck)
+(require-package 'flycheck)
 
-(require 'xcscope)
+(require-package 'xcscope)
 (cscope-setup)
+
+(require-package 'web-mode)
+(require-package 'go-mode)
+(require-package 'haskell-mode)
+(require-package 'yaml-mode)
+(require-package 'php-mode)
+(require-package 'jinja2-mode)
+(require-package 'js2-mode)
 
 ;; turn on flychecking globally
 (add-hook 'after-init-hook #'global-flycheck-mode)

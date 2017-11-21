@@ -64,6 +64,7 @@
 (require 'web-mode nil t)
 (require 'popwin)
 (require 'xa-irc)
+(require 'xa-rust)
 (popwin-mode 1)
 
 ;;(require 'google-contacts-message)
@@ -77,11 +78,6 @@
 (global-hi-lock-mode 1)                 ; highlight stuff
 (global-git-gutter-mode 1)              ; git gutter seems nice
 (savehist-mode 1)
-
-;;(iswitchb-mode 1)
-(ido-mode 'both)                            ; Interactively Do Things
-(global-set-key "" 'ido-find-file)
-(smex-initialize)			; ido for M-x
 
 (browse-kill-ring-default-keybindings)
 (which-func-mode 1)

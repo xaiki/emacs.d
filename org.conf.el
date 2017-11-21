@@ -118,9 +118,9 @@
 (add-hook 'org-mode-hook (lambda ()
                            (add-hook 'after-save-hook 'jd:org-decrypt-entires-silently)))
 
-(require 'xa-org-export)
+;;(require 'xa-org-export)
 
-(when (require 'org-bullets nil t)
+(when (require-package 'org-bullets)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (setq font-lock-keywords-alist nil)

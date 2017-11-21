@@ -1,6 +1,6 @@
 (require-package 'naquadah-theme)
+(require-package 'smex)
 
-(require 'naquadah-theme)
 (set-face-attribute 'default nil :height 140)
 (setq-default line-spacing 0.4)
 
@@ -39,6 +39,12 @@
       (scroll-bar-mode -1)			; But no scrollbar
       (global-hl-line-mode 1)			; Highlight the current line
       ))
+
+;;(iswitchb-mode 1)
+(ido-mode 'both)                            ; Interactively Do Things
+(global-set-key "" 'ido-find-file)
+(smex-initialize)			; ido for M-x
+
 
 ;;(setq mode-line-format (xa:powerline-nyan-center-theme))
 ;;(setq mode-line-format '(:eval (list (nyan-create))))
