@@ -1,4 +1,15 @@
 (require 'package)
+
+(defun require-package (package)
+  "Install given PACKAGE if it was not installed before."
+  (if (package-installed-p package)
+      t
+    (progn
+      (unless (assoc package package-archive-contents)
+       (package-refresh-contents))
+      (package-install package)))
+  (require package))
+
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
@@ -16,22 +27,13 @@
 (unless package-archive-contents    ;; Refresh the packages descriptions
   (package-refresh-contents))
 
-(defun require-package (package)
-  "Install given PACKAGE if it was not installed before."
-  (if (package-installed-p package)
-      t
-    (progn
-      (unless (assoc package package-archive-contents)
-	(package-refresh-contents))
-      (package-install package)))
-  (require package nil t))
+(require-package 'org-plus-contrib)
 
 (dolist (package '(
 ;;                   nm
 ;;                   notmuch
 ;;                   notmuch-labeler
 ;;                   notmuch-unread 
-		   org-plus-contrib
 		   org-ehtml
 		   ox-gfm
 		   oauth2		; Should be a dep of google-stuff
@@ -78,3 +80,4 @@
       (message "installing %s" package)
       (package-install package))))
 
+(provide 'init-package)

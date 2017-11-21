@@ -42,7 +42,7 @@
 (load custom-file)
 
 ;; Install packages
-(require 'package)
+(require 'init-package)
 
 (require 'mu4e nil t)
 (require 'iso-transl)
