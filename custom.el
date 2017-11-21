@@ -25,9 +25,6 @@
  '(org-clock-sound t)
  '(org-show-notification-handler (quote notifications-notify))
  '(org-trello-current-prefix-keybinding "C-c o")
- '(package-selected-packages
-   (quote
-    (company-racer flycheck-rust racer company-jedi ox-reveal async timesheet paredit-everywhere flymake-vala company-web-bootstrap+ mkdown eshell-prompt-extras ido-completing-read+ org-pomodoro fontawesome highlight-tail color-theme-sanityinc-tomorrow color-theme ac-html-bootstrap company-web json-mode jsx-mode nginx-mode ox-gfm markdown-mode+ ham-mode gh-md persistent-soft unicode-fonts notmuch-unread ob-browser erc-image erc-view-log erc-social-graph erc-colorize impatient-mode kite company znc wc-goal-mode w3m vala-mode stylus-mode smex smart-mode-line skewer-reload-stylesheets scss-mode readline-complete rainbow-mode rainbow-delimiters popwin org-ehtml org-caldav org-bullets org-beautify-theme offlineimap nyan-mode notmuch-labeler nm naquadah-theme mustache-mode multiple-cursors multi-term mu4e-maildirs-extension mmm-mode markdown-mode manage-minor-mode magit-gh-pulls lua-mode less-css-mode jss jinja2-mode jade-mode idle-highlight-mode htmlize highlight-current-line helm-gtags helm-css-scss haskell-mode handlebars-sgml-mode handlebars-mode goto-last-change google-maps google-contacts go-mode gnuplot-mode git-gutter flycheck f esxml elnode elfeed-web dtrt-indent dot-mode dockerfile-mode ctags-update ctags css-eldoc company-tern company-irony company-c-headers coffee-mode clojure-mode chess c-eldoc browse-kill-ring auto-dim-other-buffers auto-complete-clang-async ascope anything-exuberant-ctags ac-js2 ac-ispell ac-helm 2048-game)))
  '(safe-local-variable-values
    (quote
     ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"
