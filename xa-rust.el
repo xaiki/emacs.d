@@ -18,6 +18,6 @@
              (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
 	     (electric-pair-mode 1)))
 
-(provide 'init-rust)
+(provide 'xa-rust)
 ;;; xa-rust ends here
 
