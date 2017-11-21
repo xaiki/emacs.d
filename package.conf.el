@@ -56,9 +56,6 @@
 		   mmm-mode
 		   clojure-mode
 		   slime
-		   helm
-		   helm-css-scss
-		   ac-helm
                    ac-html-bootstrap
 		   auto-complete
 		   auto-complete-clang-async
