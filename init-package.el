@@ -1,6 +1,6 @@
 (require 'package)
 
-(defun require-package (package)
+(defun require-package (package &optional no-require)
   "Install given PACKAGE if it was not installed before."
   (if (package-installed-p package)
       t
@@ -8,7 +8,7 @@
       (unless (assoc package package-archive-contents)
        (package-refresh-contents))
       (package-install package)))
-  (require package))
+  (if no-require () (require package)))
 
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -27,7 +27,7 @@
 (unless package-archive-contents    ;; Refresh the packages descriptions
   (package-refresh-contents))
 
-(require-package 'org-plus-contrib)
+(require-package 'org-plus-contrib t)
 
 (dolist (package '(
 ;;                   nm
