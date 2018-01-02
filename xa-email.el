@@ -54,7 +54,7 @@ Ministerio de Desarrollo Social")
   (let ((result))
     (dolist (style xa:mu4e-account-alist)
       (mapcar (lambda (x) (let ((addr (if (listp x) x nil)))
-                            (when (member 'user-mail-address x)
+                            (when (member 'user-mail-address addr)
                               (setq result (append result (list (nth 1 addr))))))) style))
     (nreverse result)))
 
