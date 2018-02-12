@@ -77,6 +77,7 @@
 
 (global-hi-lock-mode 1)                 ; highlight stuff
 (global-git-gutter-mode 1)              ; git gutter seems nice
+(global-color-identifiers-mode 1)       ; amazing mode to have plenty of colors
 (savehist-mode 1)
 
 (browse-kill-ring-default-keybindings)

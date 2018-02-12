@@ -74,6 +74,7 @@
                    impatient-mode
                    c-eldoc
 		   request
+                   color-identifiers-mode
                    ))
   (unless (package-installed-p package)
     (progn
