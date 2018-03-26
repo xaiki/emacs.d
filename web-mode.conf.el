@@ -14,7 +14,7 @@
       '(("ctemplate" . "\\.html\\'")))
 
 (setq web-mode-content-types-alist
-  '(("jsx" . "\\.js[x]?\\'")))
+  '(("jsx" . "\\.[jt]s[x]?\\'")))
 
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
