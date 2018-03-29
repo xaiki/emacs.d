@@ -25,6 +25,11 @@
   (when (offlineimap) (message "launched offlineimap"))
   )
 
+;; restart server each time network connects, this deals with a wierd bug
+;; where the server socket will just disappear and e $file will launch a new
+;; emacs instance
+(add-hook 'nm-connected-hook 'server-start)
+
 (defun nm-state-dbus-signal-handler (nmstate)
   "Handles NetworkManager signals and runs appropriate hooks."
   (cond ((= 20 nmstate)
