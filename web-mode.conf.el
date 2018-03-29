@@ -16,6 +16,9 @@
 (setq web-mode-content-types-alist
   '(("jsx" . "\\.[jt]s[x]?\\'")))
 
+;; hook into dtrt-indent
+(add-to-list 'dtrt-indent-hook-mapping-list '(web-mode javascript web-mode-code-indent-offset))
+
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 
