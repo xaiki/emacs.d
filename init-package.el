@@ -36,6 +36,7 @@
 ;;                   notmuch-unread 
 		   org-ehtml
 		   ox-gfm
+                   ox-minutes
 		   oauth2		; Should be a dep of google-stuff
 		   browse-kill-ring
                    rainbow-mode

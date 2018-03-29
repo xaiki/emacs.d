@@ -8,6 +8,9 @@
 (require 'org-plot)
 ;;(require 'org-caldav)
 
+(require 'ox-minutes)
+(require 'ox-gfm)
+
 (require 'org-invoice)
 (setq org-directory "~/Documents")
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
