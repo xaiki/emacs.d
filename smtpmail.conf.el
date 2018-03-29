@@ -17,11 +17,11 @@
 
 (setq send-mail-function 'xa:async-smtpmail-send-it
       smtpmail-stream-type 'starttls
-      smtpmail-default-smtp-server "smail.xaiki.net"
+      smtpmail-default-smtp-server "xaiki.net"
       message-send-mail-function 'xa:async-smtpmail-send-it
-      smtpmail-starttls-credentials '(("smail.xaiki.net" 587 nil nil))
-      smtpmail-auth-credentials '(("smail.xaiki.net" 587 "xaiki@evilgiggle.com" nil))
-      smtpmail-smtp-server "smail.xaiki.net"
+      smtpmail-starttls-credentials '(("xaiki.net" 587 nil nil))
+      smtpmail-auth-credentials '(("xaiki.net" "imaps" "x@btn.sh" nil))
+      smtpmail-smtp-server "xaiki.net"
       smtpmail-smtp-service 587)
 
 (defun xa:mail-connect ()
