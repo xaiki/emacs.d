@@ -19,6 +19,14 @@
 ;; hook into dtrt-indent
 (add-to-list 'dtrt-indent-hook-mapping-list '(web-mode javascript web-mode-code-indent-offset))
 
+;; hook into color-identifiers-mode
+(add-to-list
+ 'color-identifiers:modes-alist
+ `(web-mode . ("[^.][[:space:]]*"
+                   "\\_<\\([a-zA-Z_$]\\(?:\\s_\\|\\sw\\)*\\)"
+                   (nil font-lock-variable-name-face js2-function-param))))
+
+
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 
