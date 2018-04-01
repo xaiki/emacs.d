@@ -1,4 +1,5 @@
 (require-package 'company)
+(require-package 'color-identifiers-mode)
 (defun xa:paredit-web ()
   "Turn on paredit mode for non-lisps."
   (interactive)
@@ -24,7 +25,7 @@
  'color-identifiers:modes-alist
  `(web-mode . ("[^.][[:space:]]*"
                    "\\_<\\([a-zA-Z_$]\\(?:\\s_\\|\\sw\\)*\\)"
-                   (nil font-lock-variable-name-face js2-function-param))))
+                   (nil font-lock-variable-name-face web-mode-param-name-face))))
 
 
 ;; use eslint with web-mode for jsx files
