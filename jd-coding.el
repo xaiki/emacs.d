@@ -201,5 +201,9 @@
   (setq css-indent-offset n) ; css-mode
   )
 
+(defun xa:indent-buffer ()
+  (interactive)
+  (save-excursion
+    (indent-region (buffer-end -1) (buffer-end 1))))
 
 (provide 'jd-coding)
