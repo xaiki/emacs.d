@@ -38,14 +38,14 @@
 ;;          (plantuml . t)
 ;;          (latex . t))))
 
-(setq org-time-clocksum-use-effort-durations t)
+(setq org-time-clocksum-use-effort-durations nil)
 (setq org-time-clocksum-format '(:years "%dy " :months "%dm " :weeks "%dw " :days "%dd " :hours "%dh" :require-hours nil :minutes "%02d" :require-minutes nil))
 (setq org-hide-leading-stars t)
 (setq org-src-fontify-natively t)
 (setq org-startup-indented t)
 (setq org-completion-use-iswitchb t)
-(setq org-log-done t)
-(setq org-log-into-drawer t)
+(setq org-log-done nil)
+(setq org-log-into-drawer nil)
 (setq org-email-link-description-format "Email %c (%d): %s")
 (setq org-link-frame-setup
       '((gnus . org-gnus-no-new-news)
