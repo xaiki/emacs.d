@@ -7,13 +7,13 @@
          (smtpmail-stream-type starttls)
          (smtpmail-default-smtp-server "xaiki.net")
          (smtpmail-starttls-credentials '(("xaiki.net" 25 nil nil)))
-         (smtpmail-auth-credentials '(("evilgiggle.com" 25 "x@btn.sh" nil)))
+         (smtpmail-auth-credentials '(("xaiki.net" 25 "x@btn.sh" nil)))
          (smtpmail-smtp-server "xaiki.net")
          (smtpmail-smtp-service 25)
          (mu4e-compose-signature '(xa:random-signature))
          (ispell-dictionary "english"))
         ("Gmail"
-         (user-mail-address "xaiki@evilgiggle.com")
+         (user-mail-address "x@btn.sh")
          (mu4e-compose-signature '(xa:random-signature))
          )
         ("debian"
