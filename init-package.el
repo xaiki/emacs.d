@@ -58,7 +58,6 @@
 		   mmm-mode
 		   clojure-mode
 		   slime
-                   ac-html-bootstrap
 		   auto-complete
 		   auto-complete-clang-async
 		   popwin

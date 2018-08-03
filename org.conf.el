@@ -8,8 +8,8 @@
 (require 'org-plot)
 ;;(require 'org-caldav)
 
-(require 'ox-minutes)
-(require 'ox-gfm)
+(require-package 'ox-minutes)
+(require-package 'ox-gfm)
 
 (require 'org-invoice)
 (setq org-directory "~/Documents")
