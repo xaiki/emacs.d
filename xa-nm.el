@@ -1,12 +1,14 @@
-(require 'dbus)
-(defvar nm-dbus-registration nil)
-(setq nm-dbus-registration nil)
-(defvar nm-connected-hook nil
-  "Functions to run when network is connected.")
-(defvar nm-connecting-hook nil
-  "Functions to run when network is connecting.")
-(defvar nm-disconnected-hook nil
-  "Functions to run when network is disconnected.")
+;;; xa-nm --- integrate into network manager
+
+(when (require 'dbus nil t)
+  (defvar nm-dbus-registration nil)
+  (setq nm-dbus-registration nil)
+  (defvar nm-connected-hook nil
+    "Functions to run when network is connected.")
+  (defvar nm-connecting-hook nil
+    "Functions to run when network is connecting.")
+  (defvar nm-disconnected-hook nil
+    "Functions to run when network is disconnected."))
 
 (defun gnus-nm-agent-unplug()
   "Kill IMAP server processes and unplug Gnus agent."
