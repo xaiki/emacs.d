@@ -9,7 +9,7 @@
 (global-set-key "\C-ced" (lambda () (interactive)
 			   (erc :server "core.evilgiggle.com" :port "6667"
 				:nick "xaiki" :password "caca3")))
-
+(global-set-key (kbd "C-SPC") 'set-mark-command)
 (global-set-key "\C-cq"
                 (defun jd:quit-emacs ()
                   (interactive)

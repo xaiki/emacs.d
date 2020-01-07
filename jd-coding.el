@@ -123,12 +123,14 @@
 (add-to-list 'auto-mode-alist '("\\.css$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[jt]s[x]?$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.hbs$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.svelte$" . web-mode))
 (add-to-list 'auto-mode-alist '("eos-image-builder/hooks" . shell-script-mode))
+
+;;(setq dtrt-indent-verbosity 3)
 
 (defun ffmpeg-c-mode ()
   "C mode with adjusted values for videolan."
@@ -189,7 +191,7 @@
 ;;       (when matching-text
 ;;         (message matching-text)))))
 
-(defun my-setup-indent (n)
+(defun xa:setup-indent (n)
   ;; web development
   (setq coffee-tab-width n) ; coffeescript
   (setq javascript-indent-level n) ;; javascript-mode

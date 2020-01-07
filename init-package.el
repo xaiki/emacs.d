@@ -33,7 +33,8 @@
 ;;                   nm
 ;;                   notmuch
 ;;                   notmuch-labeler
-;;                   notmuch-unread 
+                   ;;                   notmuch-unread
+                   tide
 		   org-ehtml
 		   ox-gfm
                    ox-minutes
