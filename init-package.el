@@ -66,7 +66,7 @@
 ;;                   highlight-current-line
                    idle-highlight-mode
 ;;                   mu4e-maildirs-extension
-
+                   kubernetes
                    auto-dim-other-buffers
                    w3m
                    ac-js2
