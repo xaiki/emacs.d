@@ -3,6 +3,7 @@
 (require-package 'dtrt-indent)
 (require-package 'multiple-cursors)
 (require-package 'tern)
+(require-package 'vala-mode)
 
 ;; http://www.flycheck.org/manual/latest/index.html
 (require-package 'flycheck)
@@ -49,16 +50,18 @@
   "What considering as programming languages.")
 
 (defun jd:customize-programming-language-mode ()
-  (jd:font-lock-add-hack-keywords)
-  (idle-highlight-mode 1)
-  (rainbow-mode 1)
-  (rainbow-delimiters-mode 1)
-  (setq show-trailing-whitespace t)
-  (flycheck-mode 1)
-  (flyspell-prog-mode)
-  (dtrt-indent-mode t)
-  (company-mode)
-  (paredit-mode 1))
+  (if xa:org-is-exporting ()
+    (progn
+      (jd:font-lock-add-hack-keywords)
+      (idle-highlight-mode 1)
+      (rainbow-mode 1)
+      (rainbow-delimiters-mode 1)
+      (setq show-trailing-whitespace t)
+      (flycheck-mode 1)
+      (flyspell-prog-mode)
+      (dtrt-indent-mode t)
+      (company-mode)
+      (paredit-mode 1))))
 
 (dolist (mode jd:programming-language-major-modes)
   (add-hook
