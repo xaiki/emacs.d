@@ -1,6 +1,7 @@
 (require 'ox-odt)
 (require 'ox-ehtml)
-(require 'ox-gfm)
+(require-package 'ox-gfm)
+(require-package 'ox-reveal)
 
 
 (add-to-list 'org-latex-default-packages-alist
@@ -8,12 +9,26 @@
 (add-to-list 'org-latex-default-packages-alist
              '("spanishmx" "babel"))
 
+
+(setq org-export-before-parsing-hook nil)
+(setq org-export-after-processing-hook nil)
+(add-hook 'org-export-before-parsing-hook (lambda (a)  (setq xa:org-is-exporting 1)))
+(add-hook 'org-export-after-processing-hook (lambda (a) (setq xa:org-is-exporting 0)))
+
+(add-to-list 'org-latex-packages-alist
+             '("AUTO" "babel" t ("pdflatex")))
+(add-to-list 'org-latex-packages-alist
+             '("AUTO" "polyglossia" t ("xelatex" "lualatex")))
+
+(setenv "TEXINPUTS" (concat user-emacs-directory "latex"))
 (setq org-export-latex-classes nil)
+(setq xa:pdftk-cmd (concat "pdftk %b.pdf output %b.crypt.pdf owner_pw " (shell-command-to-string "apg -n 1 +s")))
 (setq org-latex-pdf-process
       '("echo 'podman run -ti -v %o:/data:Z moss/xelatex  xelatex -interaction nonstopmode -output-directory %o %F' > /dev/stderr"
         "podman run -ti -v `basepath %O`:/data:Z moss/xelatex  xelatex -interaction nonstopmode -output-directory %o %f"
         "pdftk %b.pdf output %b.crypt.pdf owner_pw `apg -n 1 +s` || true"
         ))
+(setq org-latex-compiler "xelatex")
 
 (when (require 'org-latex nil t)
   (setq org-export-latex-listings t))

@@ -8,10 +8,14 @@
 (require 'org-plot)
 ;;(require 'org-caldav)
 
+(setq xa:org-is-exporting 0)
+
 (require-package 'ox-minutes)
 (require-package 'ox-gfm)
 
 (require 'org-invoice)
+(require 'xa-org-export)
+
 (setq org-directory "~/Documents")
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
