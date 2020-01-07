@@ -14,3 +14,6 @@
 (add-to-list 'company-backends 'company-jedi)
 (add-to-list 'company-backends 'company-racer)
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
