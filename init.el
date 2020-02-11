@@ -63,7 +63,7 @@
 (require 'js2-mode nil t)
 (require 'web-mode nil t)
 (require 'popwin)
-(require 'xa-irc)
+;;(require 'xa-irc)
 (require 'xa-rust)
 (popwin-mode 1)
 
