@@ -50,10 +50,11 @@
   (interactive)
   (when (not nm-dbus-registration)
     (progn (setq nm-dbus-registration
+		 (condition-case nil
                  (dbus-register-signal :system
                   "org.freedesktop.NetworkManager" "/org/freedesktop/NetworkManager"
                   "org.freedesktop.NetworkManager" "StateChanged"
-                  'nm-state-dbus-signal-handler))
+                  'nm-state-dbus-signal-handler) (error nil)))
            (message "Enabled integration with NetworkManager"))))
 
 (defun nm-disable()
