@@ -1,4 +1,4 @@
-(require 'mu4e)
+(require 'mu4e nil t)
 (setq xa:mu4e-account-alist
       '(("*"
          (mu4e-sent-folder "/Sent")
