@@ -2,11 +2,18 @@
 (require 'ox-ehtml)
 (require 'ox-gfm)
 
+
+(add-to-list 'org-latex-default-packages-alist
+             '(nil "fontspec"))
+(add-to-list 'org-latex-default-packages-alist
+             '("spanishmx" "babel"))
+
 (setq org-export-latex-classes nil)
 (setq org-latex-pdf-process
-      '("xelatex -interaction nonstopmode -output-directory %o %f "
-        "xelatex -interaction nonstopmode -output-directory %o %f "
-        "pdftk %b.pdf output %b.crypt.pdf owner_pw `apg -n 1 +s`"))
+      '("echo 'podman run -ti -v %o:/data:Z moss/xelatex  xelatex -interaction nonstopmode -output-directory %o %F' > /dev/stderr"
+        "podman run -ti -v `basepath %O`:/data:Z moss/xelatex  xelatex -interaction nonstopmode -output-directory %o %f"
+        "pdftk %b.pdf output %b.crypt.pdf owner_pw `apg -n 1 +s` || true"
+        ))
 
 (when (require 'org-latex nil t)
   (setq org-export-latex-listings t))

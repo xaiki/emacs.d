@@ -45,13 +45,13 @@
 (setq org-startup-indented t)
 (setq org-completion-use-iswitchb t)
 (setq org-log-done nil)
-(setq org-log-into-drawer nil)
+(setq org-log-into-drawer t)
 (setq org-email-link-description-format "Email %c (%d): %s")
 (setq org-link-frame-setup
       '((gnus . org-gnus-no-new-news)
 	(file . find-file)))
 (setq org-todo-keywords
-      '((sequence "TODO(t!)"
+      '((sequence "TODO(t)"
                   "STARTED(s!)"
                   "DELEGATED(g@)"
                   "FEEDBACK(f!/@)"
@@ -164,3 +164,5 @@
 (add-hook 'org-mode-hook
           (lambda ()
             (local-set-key "\C-c\M-o" 'org-mime-org-buffer-htmlize)))
+
+(require 'xa-org-export)
