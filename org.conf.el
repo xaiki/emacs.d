@@ -60,7 +60,23 @@
                   "|"
                   "DONE(d!)"
                   "CANCELED(c@)")
-        (sequence "PROJECT(j!)" "|" "CANCELED(c@)" "DONE(d!)")))
+        (sequence "PROJECT(j!)" "|" "CANCELED(c@)" "DONE(d!)")
+        (sequence "A_HACER" "EMPEZADO" "|" "HECHO"
+#+A_HACER: SUSPENDIDO(w@/!) BLOQUEADO(h@/!) LARGO_PLAZO CORTO_PLAZO INMEDIATO | CANCELADO(c@/!)
+)
+        ))
+
+(setq org-todo-state-tags-triggers
+      (quote (("CANCELLED" ("CANCELLED" . t))
+              ("WAITING" ("WAITING" . t))
+              ("HOLD" ("WAITING") ("HOLD" . t))
+              (done ("WAITING") ("HOLD"))
+              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
+
+(setq org-use-fast-todo-selection t)
+(setq org-treat-S-cursor-todo-selection-as-state-change nil)
 (setq org-enforce-todo-dependencies t)
 (setq org-enforce-todo-checkbox-dependencies t)
 (setq org-link-abbrev-alist
@@ -166,3 +182,4 @@
             (local-set-key "\C-c\M-o" 'org-mime-org-buffer-htmlize)))
 
 (require 'xa-org-export)
+(require 'xa-org-refile)
