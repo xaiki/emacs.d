@@ -1,4 +1,4 @@
-(setq org-agenda-files "~/.emacs.d/org-agendas")
+(setq org-agenda-files (concat org-directory "/" "org-agendas"))
 (setq org-agenda-day-face-function
       (defun jd:org-agenda-day-face-holidays-function (date)
         "Compute DATE face with holidays."
