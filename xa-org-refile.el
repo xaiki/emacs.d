@@ -33,7 +33,8 @@
 ;;; the same heading in multiple subtrees or projects and still tell them
 ;;; apart while refiling.
 
-I now exclude DONE state tasks as valid refile targets. This helps to keep the refile target list to a reasonable size. 
+;;;I now exclude DONE state tasks as valid refile targets. This helps
+;;;to keep the refile target list to a reasonable size.
 
 (require 'xa-org-capture)
 ; Targets include this file and any file contributing to the agenda - up to 9 levels deep

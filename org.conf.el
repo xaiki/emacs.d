@@ -65,10 +65,8 @@
                   "DONE(d!)"
                   "CANCELED(c@)")
         (sequence "PROJECT(j!)" "|" "CANCELED(c@)" "DONE(d!)")
-        (sequence "A_HACER" "EMPEZADO" "|" "HECHO"
-#+A_HACER: SUSPENDIDO(w@/!) BLOQUEADO(h@/!) LARGO_PLAZO CORTO_PLAZO INMEDIATO | CANCELADO(c@/!)
-)
-        ))
+        (sequence "A_HACER" "EMPEZADO" "|" "HECHO")
+        (sequence "SUSPENDIDO(w@/!)" "BLOQUEADO(h@/!)" "LARGO_PLAZO" "CORTO_PLAZO" "INMEDIATO" "|" "CANCELADO(c@/!)")))
 
 (setq org-todo-state-tags-triggers
       (quote (("CANCELLED" ("CANCELLED" . t))
