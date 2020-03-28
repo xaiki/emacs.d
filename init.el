@@ -72,8 +72,7 @@
 
 ;; C source code
 (setq frame-title-format '("" invocation-name ": %b"))
-
-(set-frame-font "Hack 12")
+(set-frame-font "Iosevka Curly 11")
 (setq user-full-name "Niv Sardi")
 
 (global-hi-lock-mode 1)                 ; highlight stuff
