@@ -37,6 +37,9 @@
                    dockerfile-mode
                    docker-compose-mode
                    org-mind-map
+                   ido-completing-read+
+                   systemd
+                   fish-mode
                    tide
 		   org-ehtml
 		   ox-gfm
