@@ -1,3 +1,6 @@
+;;; python.conf --- simple python configuration
+;;; Commentary:
+;;; Code:
 (defun xa:paredit-python ()
   "Turn on paredit mode for non-lisps."
   (interactive)
@@ -8,3 +11,6 @@
 (define-key python-mode-map (kbd "RET") 'newline-and-indent)
 (define-key python-mode-map (kbd "S-<f5>") 'nosetests-compile)
 (add-hook 'python-mode-hook 'xa:paredit-python)
+
+(provide 'python.conf)
+;;; python.conf.el ends here
