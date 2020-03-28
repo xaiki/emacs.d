@@ -68,3 +68,4 @@
 (setq org-agenda-skip-timestamp-if-done t)
 (setq org-agenda-dim-blocked-tasks 'invisible)
 (setq org-agenda-current-time-string "→ now —————————")
+(provide 'org-agenda.conf)
