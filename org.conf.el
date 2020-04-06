@@ -8,6 +8,10 @@
 (require 'org-plot)
 ;;(require 'org-caldav)
 
+(setq org-mind-map-default-node-attribs
+      '(("shape" . "plaintext")
+        ("rank" . "source")))
+
 (setq xa:org-is-exporting 0)
 
 (require-package 'ox-minutes)

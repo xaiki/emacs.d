@@ -1,4 +1,4 @@
-(require 'xa-email)
+;;(require 'xa-email)
 ;; Check for new mail
 (require 'gnus-demon)
 ;; Move spam into spam
@@ -123,7 +123,7 @@ http://lists.alioth.debian.org/mailman/listinfo/\\1"))
 ;;(setq gnus-group-line-format "%ue%uM %S%p[%5t][%L]\t%P%5y:%B%(%g%)%O\n")
 
 ;; gnus-sum
-(setq gnus-ignored-from-addresses (xa:email-addresses-regexp))
+;;(setq gnus-ignored-from-addresses (xa:email-addresses-regexp))
 (setq gnus-thread-sort-functions '(gnus-thread-sort-by-number
                                    gnus-thread-sort-by-subject
                                    gnus-thread-sort-by-date
@@ -163,7 +163,7 @@ http://lists.alioth.debian.org/mailman/listinfo/\\1"))
 ;; This is used when "posting"...
 (setq gnus-mailing-list-groups "lists")
 
-(setq gnus-posting-styles xa:posting-styles)
+;;(setq gnus-posting-styles xa:posting-styles)
 
 ;; gnus-async
 (setq gnus-use-header-prefetch t)       ; prefetch header for next group
@@ -188,7 +188,7 @@ http://lists.alioth.debian.org/mailman/listinfo/\\1"))
 
 ;; gnus-gravatar
 (setq gnus-gravatar-properties '(:ascent center))
-(setq gnus-gravatar-too-ugly (xa:email-addresses-regexp))
+;;(setq gnus-gravatar-too-ugly (xa:email-addresses-regexp))
 
 ;; nnheader
 (setq gnus-nov-is-evil t)               ; No NOV
