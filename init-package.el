@@ -34,6 +34,9 @@
 ;;                   notmuch
 ;;                   notmuch-labeler
                    ;;                   notmuch-unread
+                   dockerfile-mode
+                   docker-compose-mode
+                   org-mind-map
                    tide
 		   org-ehtml
 		   ox-gfm
