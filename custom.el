@@ -27,7 +27,7 @@
  '(org-trello-current-prefix-keybinding "C-c o")
  '(package-selected-packages
    (quote
-    (fish-mode vala-mode docker-compose-mode dockerfile-mode org-mind-map ox-reveal systemd graphviz-dot-mode dot-mode org-plus-contrib offlineimap)))
+    (erlang org-superstar dumb-jump graphviz-dot-mode dot-mode docker-compose-mode dockerfile-mode ido-completing-read+ org-mind-map systemd fish-mode flycheck-rust racer jinja2-mode php-mode yaml-mode haskell-mode go-mode web-mode xcscope vala-mode multiple-cursors dtrt-indent paredit smex naquadah-theme color-identifiers-mode request c-eldoc impatient-mode ac-js2 w3m auto-dim-other-buffers kubernetes idle-highlight-mode popwin auto-complete-clang-async auto-complete slime-annot slime clojure-mode mmm-mode git-gutter goto-last-change google-contacts lua-mode htmlize rainbow-delimiters magit-gh-pulls magit gnuplot-mode markdown-mode multi-term org-bullets ox-reveal google-maps rainbow-mode browse-kill-ring tide ox-minutes ox-gfm org-plus-contrib org-ehtml offlineimap oauth2 company-web company-tern company-racer)))
  '(safe-local-variable-values
    (quote
     ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"

@@ -34,9 +34,8 @@
 ;;                   notmuch
 ;;                   notmuch-labeler
                    ;;                   notmuch-unread
-                   dockerfile-mode
-                   docker-compose-mode
                    org-mind-map
+                   org-superstar
                    dump-jump
                    graphviz-dot-mode
                    dockerfile-mode
