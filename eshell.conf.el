@@ -1,6 +1,6 @@
 (require 'eshell)
 
-(setq explicit-shell-file-name "zsh")
+(setq explicit-shell-file-name nil)
 (setq explicit-zsh-args '("-c" "export EMACS=; stty echo; zsh"))
 (setq comint-process-echoes t)
 
