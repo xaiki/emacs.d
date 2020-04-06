@@ -38,6 +38,7 @@
                    docker-compose-mode
                    org-mind-map
                    dump-jump
+                   graphviz-dot-mode
                    dockerfile-mode
                    docker-compose-mode
                    ido-completing-read+
