@@ -18,6 +18,7 @@
 (require-package 'php-mode)
 (require-package 'jinja2-mode)
 (require-package 'js2-mode)
+(require-package 'org)
 
 ;; turn on flychecking globally
 (add-hook 'after-init-hook #'global-flycheck-mode)
