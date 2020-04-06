@@ -54,6 +54,7 @@
 (setq org-link-frame-setup
       '((gnus . org-gnus-no-new-news)
 	(file . find-file)))
+
 (setq org-todo-keywords
       '((sequence "TODO(t)"
                   "STARTED(s!)"

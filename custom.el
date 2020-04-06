@@ -25,6 +25,9 @@
  '(org-clock-sound t)
  '(org-show-notification-handler (quote notifications-notify))
  '(org-trello-current-prefix-keybinding "C-c o")
+ '(package-selected-packages
+   (quote
+    (fish-mode vala-mode docker-compose-mode dockerfile-mode org-mind-map ox-reveal systemd graphviz-dot-mode dot-mode org-plus-contrib offlineimap)))
  '(safe-local-variable-values
    (quote
     ((eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"
