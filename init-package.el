@@ -37,6 +37,7 @@
                    dockerfile-mode
                    docker-compose-mode
                    org-mind-map
+                   dump-jump
                    ido-completing-read+
                    systemd
                    fish-mode
