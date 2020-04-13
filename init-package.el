@@ -36,7 +36,7 @@
                    ;;                   notmuch-unread
                    org-mind-map
                    org-superstar
-                   dump-jump
+                   dumb-jump
                    graphviz-dot-mode
                    dockerfile-mode
                    docker-compose-mode
