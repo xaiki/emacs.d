@@ -38,6 +38,8 @@
                    org-superstar
                    dumb-jump
                    graphviz-dot-mode
+                   vala-mode
+                   fish-mode
                    svelte-mode
                    dockerfile-mode
                    docker-compose-mode
