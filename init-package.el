@@ -38,6 +38,7 @@
                    org-superstar
                    dumb-jump
                    graphviz-dot-mode
+                   svelte-mode
                    dockerfile-mode
                    docker-compose-mode
                    ido-completing-read+
