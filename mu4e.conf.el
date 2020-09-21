@@ -1,4 +1,4 @@
-(require 'mu4e-accounts)
+(require 'xa-mu4e-accounts)
 (require 'xa-email)
 
 ;;(mu4e-maildirs-extension)

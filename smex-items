@@ -1,0 +1,31 @@
+
+;; ----- smex-history -----
+(
+ flycheck-mode
+ eval-buffer
+ flycheck-pos-tip-mode
+ magit-status
+ rustic-mode
+ package-list-packages
+ load-theme
+)
+
+;; ----- smex-data -----
+(
+ (magit-status . 2)
+ (eval-buffer . 10)
+ (package-list-packages . 3)
+ (load-theme . 1)
+ (racer-activate . 2)
+ (rustic-mode . 9)
+ (lsp-mode . 2)
+ (flycheck-mode . 14)
+ (rustic-flycheck-setup . 1)
+ (lsp-execute-code-action . 1)
+ (rustic-cargo-clippy . 1)
+ (rustic-popup . 1)
+ (flycheck-pos-tip-mode . 2)
+ (flycheck-buffer . 1)
+ (flycheck-info . 1)
+ (flycheck-list-errors . 1)
+)

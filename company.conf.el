@@ -1,3 +1,4 @@
+(require-package 'flycheck)
 (require-package 'company-web)
 ;;(require-package 'company-tern)
 (require-package 'company-racer)
@@ -17,3 +18,7 @@
 
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
+(setq company-idle-delay 0.2)
+(setq company-minimum-prefix-length 1)
+
+(add-hook 'flycheck-posframe-inhibit-functions #'company--active-p)

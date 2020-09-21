@@ -51,6 +51,7 @@
 (setq org-hide-leading-stars t)
 (setq org-src-fontify-natively t)
 (setq org-startup-indented t)
+(setq org-completion-use-ido t)
 (setq org-completion-use-iswitchb t)
 (setq org-log-done nil)
 (setq org-log-into-drawer t)
@@ -141,8 +142,16 @@
       (unless m
         (set-buffer-modified-p nil))))
 (add-hook 'org-mode-hook 'jd:org-decrypt-entires-silently)
-(add-hook 'org-mode-hook (lambda ()
-                           (add-hook 'after-save-hook 'jd:org-decrypt-entires-silently)))
+(add-hook 'org-mode-hook (defun jd:org-decrypt-after-save ()
+                           (add-hook (make-local-variable 'after-save-hook)
+                                     'jd:org-decrypt-entires-silently)))
+
+(setq org-clock-persist-query-save t)
+(setq org-show-notification-handler
+      (defun jd:org-show-notification-handler (notification)
+        (require 'notifications)
+        (notifications-notify
+         :title notification)))
 
 ;;(require 'xa-org-export)
 

@@ -4,6 +4,10 @@
 ;;(setenv "GPG_AGENT_INFO" (car (split-string (nth 1 (split-string (shell-command-to-string "gpg-agent --daemon") "=")) ";")))
 
 ;; Expand load-path
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
+
+;; Expand load-path
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
 ;;(add-to-list 'load-path "~/.emacs.d/org-caldav") ; Load org-caldav
@@ -15,7 +19,7 @@
   (let ((buf (get-file-buffer generated-autoload-file)))
     (when buf (kill-buffer buf))))
 
-;; Each file named <somelibrary>.pre.conf.el is loaded right now, e.g.
+;; Each file named <somelibrary>.preload.el is loaded right now, e.g.
 ;; before the library is loaded. This should really not be needed, but some
 ;; libraries are badly designed and need this until I have the time to fix
 ;; them.
@@ -36,7 +40,7 @@
 (load custom-file)
 
 ;; Install packages
-(require 'init-package)
+(require 'package)
 
 (require 'mu4e nil t)
 (require 'iso-transl)
@@ -45,6 +49,11 @@
 (require 'jd-keybindings)
 (require 'jd-daemon)
 (require 'jd-coding)
+(require 'ob)
+(require 'org-crypt)
+(require 'org-plot)
+(require 'naquadah-theme)
+(load-theme 'naquadah)
 ;;(require 'xa-theme)
 ;;(require 'org)
 
@@ -61,11 +70,26 @@
 (require 'xa-rust)
 (popwin-mode 1)
 
+(powerline-default-theme)
 ;;(require 'google-contacts-message)
 ;;(require 'google-contacts-gnus)
 
 ;; C source code
 (setq frame-title-format '("" invocation-name ": %b"))
+(setq ns-right-alternate-modifier nil)  ; Do not use the right Option as
+                                        ; meta, rather use it for
+                                        ; composition
+(tool-bar-mode -1)			; Kill the toolbar
+(setq scroll-step 1)
+(setq visible-bell nil)                 ; This bugs with El Capitan
+(setq-default fill-column 79)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(set-default 'indicate-buffer-boundaries '((up . nil) (down . nil) (t . left)))
+(setq next-screen-context-lines 5)      ; I want to keep more lines when
+                                        ; switching pages
+(setq use-dialog-box nil)               ; Seriously…
+(put 'narrow-to-region 'disabled nil)
+(set-default 'indent-tabs-mode nil)    ; always use spaces to indent, no tab
 (set-frame-font "Iosevka Curly 11")
 (setq user-full-name "Niv Sardi")
 

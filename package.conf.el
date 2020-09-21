@@ -1,14 +1,5 @@
 (require 'package)
-
-(defun require-package (package &optional no-require)
-  "Install given PACKAGE if it was not installed before."
-  (if (package-installed-p package)
-      t
-    (progn
-      (unless (assoc package package-archive-contents)
-       (package-refresh-contents))
-      (package-install package)))
-  (if no-require () (require package)))
+(require 'xa-package)
 
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -30,6 +21,7 @@
 (require-package 'org-plus-contrib t)
 
 (dolist (package '(
+                   flycheck-color-mode-line
                    naquadah-theme
                    elpy
                    crux

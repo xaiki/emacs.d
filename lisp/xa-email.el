@@ -1,6 +1,6 @@
 (require 'smtpmail)
 (require 'mu4e nil t)
-(require 'mu4e-accounts nil t)
+(require 'xa-mu4e-accounts nil t)
 (setq
  user-mail-address "xaiki@evilgiggle.com"
  user-full-name  "Niv Sardi")
