@@ -8,12 +8,6 @@
 (add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
 ;;(add-to-list 'load-path "~/.emacs.d/org-caldav") ; Load org-caldav
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 ;; Generate autoloads
 (let ((generated-autoload-file "~/.emacs.d/jd-autoloads.el"))
   (update-directory-autoloads "~/.emacs.d")
@@ -119,6 +113,8 @@
 
 (run-with-idle-timer 60 t 'xa:kill-gpg-buffers)
 (run-with-idle-timer 60 t 'xa:kill-crypt-buffers)
+(org-crypt-use-before-save-magic)
+(put 'downcase-region 'disabled nil)
 
 (provide 'init)
 ;;; init.el ends here
