@@ -1,23 +1,23 @@
 
 ;; ----- smex-history -----
 (
+ magit-status
+ replace-string
+ mc/edit-lines
  flycheck-mode
  eval-buffer
- flycheck-pos-tip-mode
- magit-status
  rustic-mode
  package-list-packages
- load-theme
 )
 
 ;; ----- smex-data -----
 (
- (magit-status . 2)
- (eval-buffer . 10)
+ (magit-status . 3)
+ (eval-buffer . 11)
  (package-list-packages . 3)
  (load-theme . 1)
  (racer-activate . 2)
- (rustic-mode . 9)
+ (rustic-mode . 10)
  (lsp-mode . 2)
  (flycheck-mode . 14)
  (rustic-flycheck-setup . 1)
@@ -25,7 +25,13 @@
  (rustic-cargo-clippy . 1)
  (rustic-popup . 1)
  (flycheck-pos-tip-mode . 2)
- (flycheck-buffer . 1)
+ (flycheck-buffer . 3)
  (flycheck-info . 1)
- (flycheck-list-errors . 1)
+ (flycheck-list-errors . 4)
+ (flymake-menu . 1)
+ (flymake-start . 1)
+ (replace-string . 3)
+ (mc/edit-lines . 3)
+ (smerge-keep-current . 18)
+ (smerge-keep-other . 2)
 )
