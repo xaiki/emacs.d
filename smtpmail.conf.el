@@ -1,5 +1,4 @@
 (require 'xa-nm)
-(require-package 'offlineimap)
 
 (defun xa:async-smtpmail-send-it ()
   (async-start

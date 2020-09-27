@@ -1,23 +1,23 @@
 
 ;; ----- smex-history -----
 (
- magit-status
- replace-string
- mc/edit-lines
- flycheck-mode
- eval-buffer
- rustic-mode
+ company-posframe-mode
  package-list-packages
+ eval-buffer
+ xa:indent-buffer
+ replace-string
+ jd:quit-emacs
+ describe-face
 )
 
 ;; ----- smex-data -----
 (
  (magit-status . 3)
- (eval-buffer . 11)
- (package-list-packages . 3)
+ (eval-buffer . 45)
+ (package-list-packages . 10)
  (load-theme . 1)
  (racer-activate . 2)
- (rustic-mode . 10)
+ (rustic-mode . 45)
  (lsp-mode . 2)
  (flycheck-mode . 14)
  (rustic-flycheck-setup . 1)
@@ -27,11 +27,52 @@
  (flycheck-pos-tip-mode . 2)
  (flycheck-buffer . 3)
  (flycheck-info . 1)
- (flycheck-list-errors . 4)
+ (flycheck-list-errors . 6)
  (flymake-menu . 1)
  (flymake-start . 1)
- (replace-string . 3)
- (mc/edit-lines . 3)
+ (replace-string . 16)
+ (mc/edit-lines . 7)
  (smerge-keep-current . 18)
  (smerge-keep-other . 2)
+ (paredit-mode . 5)
+ (edebug-defun . 8)
+ (toggle-read-only . 1)
+ (menu-bar-mode . 6)
+ (company-complete . 5)
+ (lisp-mode . 1)
+ (rustdoc-mode . 1)
+ (rustdoc-setup . 2)
+ (rustdoc-convert-current-package . 1)
+ (company-mode . 10)
+ (lsp-doctor . 2)
+ (rust-compile . 1)
+ (rust-test . 1)
+ (describe-face . 8)
+ (display-line-numbers-mode . 1)
+ (goto-line . 1)
+ (lsp-restart-workspace . 2)
+ (powerline-reset . 1)
+ (powerline-vim-theme . 1)
+ (comment-region . 9)
+ (describe-package . 1)
+ (xa:powerline-nyan-center-theme . 2)
+ (man . 1)
+ (rustdoc-search . 1)
+ (lsp-find-definition . 1)
+ (rustic-cargo-doc . 2)
+ (rustic-docstring-dwim . 1)
+ (browse-kill-ring . 4)
+ (posframe-hide-all . 14)
+ (describe-mode . 7)
+ (company-show-doc-buffer . 9)
+ (uncomment-region . 5)
+ (eldoc-mode . 2)
+ (list-faces-display . 1)
+ (dsssl-mode . 1)
+ (emacs-lisp-mode . 1)
+ (company-box-mode . 3)
+ (company-box-doc-manually . 1)
+ (jd:quit-emacs . 1)
+ (xa:indent-buffer . 14)
+ (company-posframe-mode . 2)
 )

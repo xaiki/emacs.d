@@ -3,7 +3,6 @@
 ;;; we're trying to emulate doom-emacs here
 ;;; Code:
 
-(require-package 'rustic)
 (use-package yasnippet
   :config
   (yas-global-mode 1))

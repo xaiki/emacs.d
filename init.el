@@ -7,13 +7,8 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
 
-;; Expand load-path
-(add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
-;;(add-to-list 'load-path "~/.emacs.d/org-caldav") ; Load org-caldav
-
 ;; Generate autoloads
-(let ((generated-autoload-file "~/.emacs.d/jd-autoloads.el"))
+(let ((generated-autoload-file "~/.emacs.d/lisp/jd-autoloads.el"))
   (update-directory-autoloads "~/.emacs.d")
   (load generated-autoload-file)
   (let ((buf (get-file-buffer generated-autoload-file)))
@@ -42,18 +37,19 @@
 ;; Install packages
 (require 'package)
 
+(require 'xa-ui)
 (require 'mu4e nil t)
 (require 'iso-transl)
-(require 'xa-ui)
 
 (require 'jd-keybindings)
 (require 'jd-daemon)
-(require 'jd-coding)
+(require 'xa-coding)
 (require 'ob)
 (require 'org-crypt)
 (require 'org-plot)
-(require 'naquadah-theme)
-(load-theme 'naquadah)
+
+
+
 ;;(require 'xa-theme)
 ;;(require 'org)
 
@@ -67,10 +63,8 @@
 (require 'web-mode nil t)
 (require 'popwin)
 ;;(require 'xa-irc)
-(require 'xa-rust)
 (popwin-mode 1)
 
-(powerline-default-theme)
 ;;(require 'google-contacts-message)
 ;;(require 'google-contacts-gnus)
 
@@ -140,5 +134,6 @@
 (org-crypt-use-before-save-magic)
 (put 'downcase-region 'disabled nil)
 
+(use-package powerline)
 (provide 'init)
 ;;; init.el ends here

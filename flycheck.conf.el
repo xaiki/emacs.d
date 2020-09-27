@@ -3,26 +3,37 @@
 ;;; get as much checking as possible
 ;;; Code:
 
-(require 'xa-package)
-(require-package 'flycheck-pos-tip)
-(require-package 'flycheck-posframe)
+(use-package flycheck-posframe
+  :config
+  (progn
+    (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode)
+    (add-hook 'flycheck-posframe-inhibit-functions #'company--active-p)
+    (setq flycheck-posframe-warning-prefix "⚠ "
+      flycheck-posframe-info-prefix "··· "
+      flycheck-posframe-error-prefix "✕ "
+      flycheck-posframe-position 'window-bottom-right-corner)
+    ;; (flycheck-posframe-configure-pretty-defaults)
+    ))
 
 (setq flycheck-completing-read-function 'ido-completing-read)
 (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
-(add-hook 'flycheck-mode-hook #'flycheck-posframe-mode)
-(add-hook 'flycheck-posframe-inhibit-functions #'company--active-p)
-
-(with-eval-after-load 'flycheck
-  (flycheck-pos-tip-mode)
-  (setq flycheck-popup-tip-error-prefix "✕ "))
-
 (setq flycheck-check-syntax-automatically '(save mode-enabled idle-buffer-switch))
 (setq flycheck-buffer-switch-check-intermediate-buffers t)
 (setq flycheck-display-errors-delay 0.25)
-(setq flycheck-posframe-warning-prefix "⚠ "
-        flycheck-posframe-info-prefix "··· "
-        flycheck-posframe-error-prefix "✕ ")
 
-(flycheck-posframe-configure-pretty-defaults)
+
+(setq flycheck-checker-error-threshold nil)
+;; Show indicators in the left margin
+(setq flycheck-indication-mode 'left-margin)
+
+;; Adjust margins and fringe widths…
+(defun xa:set-flycheck-margins ()
+  (setq left-fringe-width 8 right-fringe-width 8
+        left-margin-width 4 right-margin-width 0)
+  (flycheck-refresh-fringes-and-margins))
+
+;; …every time Flycheck is activated in a new buffer
+(add-hook 'flycheck-mode-hook #'xa:set-flycheck-margins)
+
 (provide 'flycheck.conf)
 ;;; flycheck.conf ends here

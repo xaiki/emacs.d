@@ -14,9 +14,6 @@
 
 (setq xa:org-is-exporting 0)
 
-(require-package 'ox-minutes)
-(require-package 'ox-gfm)
-
 (require 'org-invoice)
 (require 'xa-org-export)
 
@@ -155,8 +152,8 @@
 
 ;;(require 'xa-org-export)
 
-(when (require-package 'org-bullets)
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(use-package org-bullets
+  :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (setq font-lock-keywords-alist nil)
 (font-lock-add-keywords 'org-mode

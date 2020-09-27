@@ -7,3 +7,11 @@
 (eldoc-add-command
  'paredit-backward-delete
  'paredit-close-round)
+
+(eval-after-load 'paredit
+  '(progn (define-key paredit-mode-map (kbd "{")
+	    'paredit-open-curly)
+	  (define-key paredit-mode-map (kbd "}")
+	    'paredit-close-curly)
+	  (define-key paredit-mode-map (kbd "M-}")
+	    'paredit-close-curly-and-newline)))

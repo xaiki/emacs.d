@@ -1,5 +1,4 @@
 (setq magit-commit-signoff t)
-(require-package 'company)
 (setq magit-repo-dirs `("~/.emacs.d" "~/src"))
 (setq magit-remote-ref-format 'remote-slash-branch)
 (setq magit-completing-read-function 'magit-ido-completing-read)

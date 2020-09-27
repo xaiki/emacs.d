@@ -1,5 +1,4 @@
 (require 'package)
-(require 'xa-package)
 
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
@@ -18,9 +17,12 @@
 (unless package-archive-contents    ;; Refresh the packages descriptions
   (package-refresh-contents))
 
-(require-package 'org-plus-contrib t)
+(eval-when-compile
+  (package-install 'use-package)
+  (require 'use-package))
 
 (dolist (package '(
+                   org-plus-contrib
                    flycheck-color-mode-line
                    naquadah-theme
                    elpy
