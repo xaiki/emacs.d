@@ -57,4 +57,4 @@
 
   (xa:recalc-org-invoice))
 
-(provide 'org-invoice)
+(provide 'xa-org-invoice)

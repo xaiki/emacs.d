@@ -11,9 +11,16 @@
              jinja2-mode
              js2-mode
              org))
+  (straight-use-package p))
+
+(use-package magit
+  :config (global-git-commit-mode 1))
+
+(use-package undo-fu-session
+  :config
   (progn
-    (unless (package-installed-p p) (straight-use-package p))
-    (require p)))
+    (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
+    (global-undo-fu-session-mode)))
 
 (use-package hl-line
   :config (copy-face 'hl-line 'line-number-current-line))
@@ -24,12 +31,19 @@
 
 (use-package lsp-ui
   :config (setq lsp-ui-sideline-show-diagnostics t
-                lsp-ui-sideline-show-hover t
+                lsp-ui-sideline-show-hover nil
                 lsp-ui-sideline-show-symbol t
                 lsp-ui-sideline-show-code-actions t
+                lsp-ui-sideline-update-mode 'point
+                lsp-ui-sideline-diagnostic-max-lines 10
+                lsp-ui-sideline-diagnostic-max-line-length 100
                 lsp-ui-peek-enable t
                 lsp-ui-peek-show-directory t
-                lsp-ui-doc-enable t))
+                lsp-ui-doc-enable t
+                lsp-ui-doc-header t
+                lsp-ui-doc-include-signature t
+                lsp-ui-doc-max-width 2000
+                lsp-ui-doc-use-webkit nil))
 
 (use-package paredit)
 (use-package multiple-cursors)
@@ -102,6 +116,7 @@
     (display-line-numbers-mode)
     (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
     (local-set-key (kbd "C-c C-h") #'company-show-doc-inhibit-popup)
+    (lsp-ui-mode 1)
     (xa:paredit-coding)))
 
 (dolist (mode jd:programming-language-major-modes)
@@ -110,7 +125,7 @@
    'jd:customize-programming-language-mode))
 
 (semantic-mode 1)
-(global-git-commit-mode 1)
+
 (global-semantic-stickyfunc-mode 1)
 (global-semantic-idle-summary-mode 1)
 

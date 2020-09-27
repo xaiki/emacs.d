@@ -14,7 +14,7 @@
 
 (setq xa:org-is-exporting 0)
 
-(require 'org-invoice)
+(require 'xa-org-invoice)
 (require 'xa-org-export)
 
 (setq org-directory "~/Documents")

@@ -1,5 +1,5 @@
-(require 'mmm-mode)
-(setq mmm-global-mode 'maybe)
+(use-package mmm-mode
+  :config (setq mmm-global-mode 'maybe))
 
 (defun my-mmm-markdown-auto-class (lang &optional submode)
   "Define a mmm-mode class for LANG in `markdown-mode' using SUBMODE.

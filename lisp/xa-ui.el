@@ -6,9 +6,10 @@
 
 (use-package emojify
   :config (global-emojify-mode))
-(use-package emojify-logos)
 
+(use-package emojify-logos)
 (use-package all-the-icons)
+(use-package auto-dim-other-buffers)
 
 (use-package naquadah-theme
   :config
@@ -73,4 +74,8 @@
 
 ;;(setq mode-line-format (xa:powerline-nyan-center-theme))
 ;;(setq mode-line-format '(:eval (list (nyan-create))))
+
+(all-the-icons-install-fonts t)
+;;(use-package doom-modeline
+;;	:hook (window-setup . doom-modeline-mode))
 (provide 'xa-ui)

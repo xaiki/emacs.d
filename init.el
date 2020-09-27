@@ -34,8 +34,8 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-;; Install packages
-(require 'package)
+;; init straight
+(require 'xa-straight)
 
 (require 'xa-ui)
 (require 'mu4e nil t)
@@ -133,6 +133,7 @@
 (org-crypt-use-before-save-magic)
 (put 'downcase-region 'disabled nil)
 
-(use-package powerline)
+;;(use-package powerline)
+
 (provide 'init)
 ;;; init.el ends here

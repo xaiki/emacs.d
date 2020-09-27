@@ -1,23 +1,23 @@
 
 ;; ----- smex-history -----
 (
- package-list-packages
- package-install
- replace-string
- company-posframe-mode
  eval-buffer
  jd:quit-emacs
- rustic-mode
+ toggle-debug-on-error
+ package-list-packages
+ replace-string
+ comment-region
+ edebug-defun
 )
 
 ;; ----- smex-data -----
 (
  (magit-status . 3)
- (eval-buffer . 45)
+ (eval-buffer . 50)
  (package-list-packages . 13)
  (load-theme . 1)
  (racer-activate . 2)
- (rustic-mode . 45)
+ (rustic-mode . 48)
  (lsp-mode . 2)
  (flycheck-mode . 14)
  (rustic-flycheck-setup . 1)
@@ -50,7 +50,7 @@
  (describe-face . 8)
  (display-line-numbers-mode . 1)
  (goto-line . 1)
- (lsp-restart-workspace . 2)
+ (lsp-restart-workspace . 4)
  (powerline-reset . 1)
  (powerline-vim-theme . 1)
  (comment-region . 9)
@@ -70,10 +70,13 @@
  (list-faces-display . 1)
  (dsssl-mode . 1)
  (emacs-lisp-mode . 1)
- (company-box-mode . 3)
+ (company-box-mode . 6)
  (company-box-doc-manually . 1)
- (jd:quit-emacs . 1)
+ (jd:quit-emacs . 2)
  (xa:indent-buffer . 14)
  (company-posframe-mode . 2)
  (package-install . 1)
+ (lsp-ui-mode . 2)
+ (lsp-describe-session . 3)
+ (toggle-debug-on-error . 1)
 )

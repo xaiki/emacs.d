@@ -38,7 +38,7 @@
 
 (global-set-key (kbd "<f5>") 'recompile)
 
-(require 'multi-term)
+(use-package multi-term)
 (global-set-key [f6] (lambda () (interactive)
                        (unless (multi-term-dedicated-exist-p)
                          (multi-term-dedicated-open))
