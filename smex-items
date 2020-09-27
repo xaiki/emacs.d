@@ -1,20 +1,20 @@
 
 ;; ----- smex-history -----
 (
- company-posframe-mode
  package-list-packages
- eval-buffer
- xa:indent-buffer
+ package-install
  replace-string
+ company-posframe-mode
+ eval-buffer
  jd:quit-emacs
- describe-face
+ rustic-mode
 )
 
 ;; ----- smex-data -----
 (
  (magit-status . 3)
  (eval-buffer . 45)
- (package-list-packages . 10)
+ (package-list-packages . 13)
  (load-theme . 1)
  (racer-activate . 2)
  (rustic-mode . 45)
@@ -30,7 +30,7 @@
  (flycheck-list-errors . 6)
  (flymake-menu . 1)
  (flymake-start . 1)
- (replace-string . 16)
+ (replace-string . 18)
  (mc/edit-lines . 7)
  (smerge-keep-current . 18)
  (smerge-keep-other . 2)
@@ -75,4 +75,5 @@
  (jd:quit-emacs . 1)
  (xa:indent-buffer . 14)
  (company-posframe-mode . 2)
+ (package-install . 1)
 )

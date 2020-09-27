@@ -11,15 +11,12 @@
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
-
 (use-package lsp-mode
   :config
   (progn
     (setq lsp-rust-server 'rust-analyzer)
     (setq rustic-lsp-client 'lsp-mode)
-    (setq lsp-rust-analyzer-cargo-watch-command "clippy")
-    )
-  )
+    (setq lsp-rust-analyzer-cargo-watch-command "clippy")))
 
 (defun xa:inhibit-revert-buffer()
   (setq-local buffer-stale-function #'(lambda (&optional noconfirm) nil)))

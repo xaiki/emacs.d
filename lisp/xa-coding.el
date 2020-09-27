@@ -12,7 +12,7 @@
              js2-mode
              org))
   (progn
-    (unless (package-installed-p p) (package-install p))
+    (unless (package-installed-p p) (straight-use-package p))
     (require p)))
 
 (use-package hl-line
@@ -21,6 +21,15 @@
 (use-package dtrt-indent
   ;;:config (setq dtrt-indent-verbosity 3)
   )
+
+(use-package lsp-ui
+  :config (setq lsp-ui-sideline-show-diagnostics t
+                lsp-ui-sideline-show-hover t
+                lsp-ui-sideline-show-symbol t
+                lsp-ui-sideline-show-code-actions t
+                lsp-ui-peek-enable t
+                lsp-ui-peek-show-directory t
+                lsp-ui-doc-enable t))
 
 (use-package paredit)
 (use-package multiple-cursors)

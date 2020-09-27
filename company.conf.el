@@ -16,7 +16,7 @@
 (use-package company-posframe
   :config (company-posframe-mode t))
 
-(setq company-tooltip-maximum-width 200)
+(setq company-tooltip-maximum-width 1000)
 
 (require 'company-web-html)
 

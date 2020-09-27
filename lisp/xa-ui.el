@@ -26,6 +26,7 @@
 
 ;;(use-package solaire-mode)
 
+(set-frame-font "Iosevka Curly 11")
 (set-face-attribute 'default nil :height 140)
 (setq-default line-spacing 0.4)
 

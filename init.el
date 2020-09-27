@@ -84,7 +84,6 @@
 (setq use-dialog-box nil)               ; Seriously…
 (put 'narrow-to-region 'disabled nil)
 (set-default 'indent-tabs-mode nil)    ; always use spaces to indent, no tab
-(set-frame-font "Iosevka Curly 11")
 (setq user-full-name "Niv Sardi")
 
 (global-hi-lock-mode 1)                 ; highlight stuff

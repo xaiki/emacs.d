@@ -1,5 +1,5 @@
-(use-package ox-odt)
-(use-package ox-ehtml)
+(straight-use-package '(ox-odt :type git :host github :repo "kjambunathan/org-mode-ox-odt"))
+;;(use-package ox-ehtml)
 (use-package ox-gfm)
 (use-package ox-reveal)
 

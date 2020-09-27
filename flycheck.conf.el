@@ -3,6 +3,9 @@
 ;;; get as much checking as possible
 ;;; Code:
 
+(use-package exec-path-from-shell
+  :config (exec-path-from-shell-initialize))
+
 (use-package flycheck-posframe
   :config
   (progn
@@ -20,7 +23,6 @@
 (setq flycheck-check-syntax-automatically '(save mode-enabled idle-buffer-switch))
 (setq flycheck-buffer-switch-check-intermediate-buffers t)
 (setq flycheck-display-errors-delay 0.25)
-
 
 (setq flycheck-checker-error-threshold nil)
 ;; Show indicators in the left margin
