@@ -1,5 +1,30 @@
-(require-package 'naquadah-theme)
-(require-package 'smex)
+(use-package ido
+  :config (ido-mode 'both))
+
+(use-package smex
+  :config (smex-auto-update))
+
+(use-package emojify
+  :config (global-emojify-mode))
+(use-package emojify-logos)
+
+(use-package all-the-icons)
+
+(use-package naquadah-theme
+  :config
+  (progn
+    (load-theme 'naquadah)
+    (naquadah-theme-set-faces
+     'naquadah
+     '(flycheck-error (:underline (:style line :color scarlet-red-1) t))
+     '(flycheck-warning (:underline (:style line :color orange-2) t))
+     '(flycheck-info (:underline (:style line :color chameleon-1) t))
+     '(flymake-error (:underline (:style line :color scarlet-red-1) t))
+     '(flymake-warning (:underline (:style line :color orange-2) t))
+     '(flymake-info (:underline (:style line :color chameleon-1) t))
+     '(flymake-note (:underline (:style line :color sky-blue-1) t)))))
+
+;;(use-package solaire-mode)
 
 (set-face-attribute 'default nil :height 140)
 (setq-default line-spacing 0.4)
@@ -41,9 +66,8 @@
       ))
 
 ;;(iswitchb-mode 1)
-(ido-mode 'both)                            ; Interactively Do Things
+
 (global-set-key "" 'ido-find-file)
-(smex-initialize)			; ido for M-x
 
 
 ;;(setq mode-line-format (xa:powerline-nyan-center-theme))

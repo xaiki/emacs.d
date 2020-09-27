@@ -1,8 +1,7 @@
-(require 'ox-odt)
-(require 'ox-ehtml)
-(require-package 'ox-gfm)
-(require-package 'ox-reveal)
-
+(use-package ox-odt)
+(use-package ox-ehtml)
+(use-package ox-gfm)
+(use-package ox-reveal)
 
 (add-to-list 'org-latex-default-packages-alist
              '(nil "fontspec"))
