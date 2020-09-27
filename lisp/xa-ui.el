@@ -11,6 +11,12 @@
 (use-package all-the-icons)
 (use-package auto-dim-other-buffers)
 
+(use-package git-gutter
+  :config (global-git-gutter-mode 1))
+
+(use-package browse-kill-ring
+  :config (browse-kill-ring-default-keybindings))
+
 (use-package naquadah-theme
   :config
   (progn

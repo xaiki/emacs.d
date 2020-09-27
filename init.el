@@ -61,9 +61,6 @@
 
 (require 'js2-mode nil t)
 (require 'web-mode nil t)
-(require 'popwin)
-;;(require 'xa-irc)
-(popwin-mode 1)
 
 ;;(require 'google-contacts-message)
 ;;(require 'google-contacts-gnus)
@@ -87,11 +84,9 @@
 (setq user-full-name "Niv Sardi")
 
 (global-hi-lock-mode 1)                 ; highlight stuff
-(global-git-gutter-mode 1)              ; git gutter seems nice
 (global-color-identifiers-mode 1)       ; amazing mode to have plenty of colors
 (savehist-mode 1)
 
-(browse-kill-ring-default-keybindings)
 (which-func-mode 1)
 
 ;;(sml/setup)

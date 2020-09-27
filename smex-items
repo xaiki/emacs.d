@@ -13,7 +13,7 @@
 ;; ----- smex-data -----
 (
  (magit-status . 3)
- (eval-buffer . 50)
+ (eval-buffer . 51)
  (package-list-packages . 13)
  (load-theme . 1)
  (racer-activate . 2)

@@ -13,6 +13,11 @@
              org))
   (straight-use-package p))
 
+(use-package popwin
+  :config (progn
+            (push '("*rustfmt*" :height 20) popwin:special-display-config)
+            (popwin-mode 1)))
+
 (use-package magit
   :config (global-git-commit-mode 1))
 
@@ -91,6 +96,7 @@
   (set (make-local-variable 'paredit-space-for-delimiter-predicates)
        '((lambda (endp delimiter) nil)))
   (paredit-mode 1))
+
 
 
 (defun company-show-doc-inhibit-popup (arg)
