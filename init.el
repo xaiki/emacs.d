@@ -1,4 +1,4 @@
-;; dot emacs from Julien Danjou <julien@danjou.info>
+;; coppied dot emacs from Julien Danjou <julien@danjou.info>
 ;; Written since 2009!
 
 ;;(setenv "GPG_AGENT_INFO" (car (split-string (nth 1 (split-string (shell-command-to-string "gpg-agent --daemon") "=")) ";")))
@@ -31,7 +31,9 @@
 
 (setq auth-sources '("~/.authinfo.gpg"))
 
+
 (setq custom-file "~/.emacs.d/custom.el")
+(if (file-exists-p custom-file) () (write-region "" nil custom-file))
 (load custom-file)
 
 ;; init straight
