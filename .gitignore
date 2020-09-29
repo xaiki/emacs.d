@@ -24,3 +24,7 @@ session*
 bookmarks
 org-agendas
 org-clock-save.el
+custom.el
+emojis
+straight
+undo-fu-session
