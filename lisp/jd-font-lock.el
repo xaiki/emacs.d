@@ -6,3 +6,4 @@
       1
       '(:box (:color "grey10" :line-width 2) :background "red" :bold t :foreground "yellow")
       prepend))))
+(provide 'jd-font-lock)

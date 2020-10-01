@@ -8,6 +8,14 @@
     (add-hook 'before-save-hook 'tide-format-before-save))
   )
 
+(use-package flycheck
+  :config ;; disable jshint since we prefer eslint checking
+  (progn
+    (flycheck-add-mode 'javascript-eslint 'web-mode)
+    (setq-default flycheck-disabled-checkers
+                  (append flycheck-disabled-checkers
+                          '(javascript-jshint)))))
+
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)

@@ -1,1 +1,1 @@
-nil
+((magit-rebase nil))

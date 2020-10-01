@@ -1,7 +1,8 @@
 (straight-use-package '(ox-odt :type git :host github :repo "kjambunathan/org-mode-ox-odt"))
 ;;(use-package ox-ehtml)
-(use-package ox-gfm)
-(use-package ox-reveal)
+(use-package ox-gfm :after ox)
+(use-package ox-reveal :after ox)
+(use-package ox-hugo :after ox)
 
 (add-to-list 'org-latex-default-packages-alist
              '(nil "fontspec"))

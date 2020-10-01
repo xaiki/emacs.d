@@ -1,3 +1,4 @@
+(use-package org)
 (require 'org-depend nil t)
 (require 'ob-core)
 (require 'org-compat)

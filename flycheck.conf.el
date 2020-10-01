@@ -18,8 +18,11 @@
     ;; (flycheck-posframe-configure-pretty-defaults)
     ))
 
+;;(use-package flycheck-color-mode-line
+;;  :config (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+
 (setq flycheck-completing-read-function 'ido-completing-read)
-(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
+
 (setq flycheck-check-syntax-automatically '(save mode-enabled idle-buffer-switch))
 (setq flycheck-buffer-switch-check-intermediate-buffers t)
 (setq flycheck-display-errors-delay 0.25)

@@ -146,3 +146,5 @@
                              (powerline-render center)
                              (powerline-fill face1 (powerline-width rhs))
                              (powerline-render rhs)))))))
+(powerline-default-theme)
+(setq mode-line-format (xa:powerline-nyan-center-theme))

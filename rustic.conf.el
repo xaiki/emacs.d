@@ -7,7 +7,7 @@
   :config
   (yas-global-mode 1))
 
-(use-package flycheck
+(use-package flycheck-rust
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
@@ -23,7 +23,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rustic-mode))
 (add-hook 'rustic-mode-hook  #'xa:inhibit-revert-buffer)
-(add-hook 'rustic-mode-hook  #'rustdoc-mode)
+;;(add-hook 'rustic-mode-hook  #'rustdoc-mode)
 
 (defun xa:pop-to-posframe (buffer &optional norecord)
   (when (posframe-workable-p)

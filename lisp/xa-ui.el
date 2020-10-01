@@ -8,8 +8,10 @@
   :config (global-emojify-mode))
 
 (use-package emojify-logos)
-(use-package all-the-icons)
-(use-package auto-dim-other-buffers)
+(use-package all-the-icons
+  :after (all-the-icons-install-fonts t))
+(use-package auto-dim-other-buffers
+  :config (auto-dim-other-buffers-mode))
 
 (use-package git-gutter
   :config (global-git-gutter-mode 1))
@@ -33,7 +35,12 @@
 
 ;;(use-package solaire-mode)
 
-(set-frame-font "Iosevka Curly 11")
+(setq xa:x-font "Iosevka Curly 11")
+(setq window-system-default-frame-alist
+      '((x
+         (font . "Iosevka Curly 11"))))
+
+(set-frame-font xa:x-font)
 (set-face-attribute 'default nil :height 140)
 (setq-default line-spacing 0.4)
 
@@ -64,7 +71,6 @@
 
 (setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 
-(auto-dim-other-buffers-mode)
 (if (display-graphic-p)
     (progn
       (tool-bar-mode -1)			; Kill the toolbar
@@ -81,7 +87,7 @@
 ;;(setq mode-line-format (xa:powerline-nyan-center-theme))
 ;;(setq mode-line-format '(:eval (list (nyan-create))))
 
-(all-the-icons-install-fonts t)
+
 ;;(use-package doom-modeline
 ;;	:hook (window-setup . doom-modeline-mode))
 (provide 'xa-ui)

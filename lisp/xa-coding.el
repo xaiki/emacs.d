@@ -1,17 +1,38 @@
 ;;(require 'xcscope+)
-(dolist (p '(rustic
-             paredit
-             multiple-cursors
-             vala-mode
-             web-mode
-             go-mode
-             haskell-mode
-             yaml-mode
-             php-mode
-             jinja2-mode
-             js2-mode
-             org))
-  (straight-use-package p))
+(require 'jd-font-lock)
+
+(use-package multiple-cursors)
+;;(use-package vala-mode)
+(use-package web-mode)
+(use-package go-mode)
+(use-package haskell-mode)
+(use-package yaml-mode)
+(use-package php-mode)
+(use-package jinja2-mode)
+(use-package js2-mode)
+(use-package org)
+(use-package idle-highlight-mode)
+(use-package rainbow-mode)
+(use-package rainbow-delimiters)
+(use-package rustic)
+(use-package color-identifiers-mode
+  :config
+  (global-color-identifiers-mode 1)       ; amazing mode to have plenty of colors
+  )
+
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp
+  :config (push 'company-lsp company-backends)) ;; add company-lsp as a backend
+
+(use-package ccls
+  :ensure t
+  :config
+  (setq ccls-executable "ccls")
+  (setq lsp-prefer-flymake nil)
+  (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+  :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (require 'ccls) (lsp))))
 
 (use-package popwin
   :config (progn
@@ -44,15 +65,14 @@
                 lsp-ui-sideline-diagnostic-max-line-length 100
                 lsp-ui-peek-enable t
                 lsp-ui-peek-show-directory t
-                lsp-ui-doc-enable t
+                lsp-ui-doc-enable nil
                 lsp-ui-doc-header t
                 lsp-ui-doc-include-signature t
                 lsp-ui-doc-max-width 2000
                 lsp-ui-doc-use-webkit nil))
 
-(use-package paredit)
+;;(use-package paredit)
 (use-package multiple-cursors)
-(use-package vala-mode)
 
 (use-package flycheck
   :config
@@ -62,13 +82,6 @@
 (use-package xcscope
   :config (cscope-setup))
 
-;; disable jshint since we prefer eslint checking
-(setq-default flycheck-disabled-checkers
-              (append flycheck-disabled-checkers
-                      '(javascript-jshint)))
-
-;; use eslint with web-mode for jsx files
-(flycheck-add-mode 'javascript-eslint 'web-mode)
 
 (defcustom jd:programming-language-major-modes
   '(prog-mode     ; This is the mode perl, makefile, lisp-mode, scheme-mode,
@@ -86,6 +99,8 @@
     rst-mode
     python-mode
     rustic-mode
+    c++-mode
+    c-mode
     ;;    js2-mode
     )
   "What considering as programming languages.")
@@ -96,8 +111,6 @@
   (set (make-local-variable 'paredit-space-for-delimiter-predicates)
        '((lambda (endp delimiter) nil)))
   (paredit-mode 1))
-
-
 
 (defun company-show-doc-inhibit-popup (arg)
   "show doc popup but don't show company help on top of it"
@@ -157,7 +170,7 @@
 	    (c-toggle-auto-newline nil)))
 (add-hook 'c-initialization-hook
 	  (lambda () (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)))
-(add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
+;;(add-hook 'c-mode-hook 'c-turn-on-eldoc-mode)
 
 (font-lock-add-keywords 'c-mode
                         '(("\\<.+_t\\>" . font-lock-type-face)

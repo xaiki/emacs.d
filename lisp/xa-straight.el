@@ -1,5 +1,6 @@
 ;; straight.el bootstrap
-(setq straight-use-package-by-default t)
+(setq straight-use-package-by-default t
+      use-package-verbose 'debug)
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -14,5 +15,4 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
-
 (provide 'xa-straight)

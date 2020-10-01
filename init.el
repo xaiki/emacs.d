@@ -38,6 +38,7 @@
 
 ;; init straight
 (require 'xa-straight)
+(use-package org)
 
 (require 'xa-ui)
 (require 'mu4e nil t)
@@ -45,19 +46,17 @@
 
 (require 'jd-keybindings)
 (require 'jd-daemon)
-(require 'xa-coding)
 (require 'ob)
 (require 'org-crypt)
 (require 'org-plot)
 
-
+(require 'xa-coding)
 
 ;;(require 'xa-theme)
 ;;(require 'org)
 
 (require 'saveplace)
 (require 'uniquify)
-(require 'mmm-auto)
 (require 'sws-mode nil t)
 (require 'jade-mode nil t)
 
@@ -86,7 +85,6 @@
 (setq user-full-name "Niv Sardi")
 
 (global-hi-lock-mode 1)                 ; highlight stuff
-(global-color-identifiers-mode 1)       ; amazing mode to have plenty of colors
 (savehist-mode 1)
 
 (which-func-mode 1)
@@ -130,7 +128,7 @@
 (org-crypt-use-before-save-magic)
 (put 'downcase-region 'disabled nil)
 
-;;(use-package powerline)
+(use-package powerline)
 
 (provide 'init)
 ;;; init.el ends here
