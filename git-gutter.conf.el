@@ -1,0 +1,2 @@
+(git-gutter:linum-setup)
+;;;
