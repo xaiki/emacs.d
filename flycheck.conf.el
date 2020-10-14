@@ -29,12 +29,12 @@
 
 (setq flycheck-checker-error-threshold nil)
 ;; Show indicators in the left margin
-(setq flycheck-indication-mode 'left-margin)
+(setq flycheck-indication-mode 'left-fringe)
 
 ;; Adjust margins and fringe widths…
 (defun xa:set-flycheck-margins ()
-  (setq left-fringe-width 8 right-fringe-width 8
-        left-margin-width 4 right-margin-width 0)
+  (setq left-fringe-width 16 right-fringe-width 8
+        left-margin-width 1 right--width 0)
   (flycheck-refresh-fringes-and-margins))
 
 ;; …every time Flycheck is activated in a new buffer

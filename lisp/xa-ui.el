@@ -15,9 +15,10 @@
 
 (use-package diff-hl
   :config (global-diff-hl-mode)
-(add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
-(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-)
+  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+  (diff-hl-margin-mode 1)
+  (diff-hl-flydiff-mode 1))
 
 (use-package browse-kill-ring
   :config (browse-kill-ring-default-keybindings))

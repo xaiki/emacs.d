@@ -120,6 +120,10 @@
     (company-show-doc-buffer)
     (setq company-tooltip-maximum-width 200)))
 
+(require 'linum)
+(linum-mode)
+(setq linum-format  "%7d ")
+
 (defun jd:customize-programming-language-mode ()
   (progn
     (jd:font-lock-add-hack-keywords)
@@ -132,7 +136,6 @@
     (flyspell-prog-mode)
     (dtrt-indent-mode t)
     (company-mode 1)
-    (display-line-numbers-mode)
     (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
     (local-set-key (kbd "C-c C-h") #'company-show-doc-inhibit-popup)
     (lsp-ui-mode 1)
