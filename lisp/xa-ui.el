@@ -13,8 +13,11 @@
 (use-package auto-dim-other-buffers
   :config (auto-dim-other-buffers-mode))
 
-(use-package git-gutter
-  :config (global-git-gutter-mode 1))
+(use-package diff-hl
+  :config (global-diff-hl-mode)
+(add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+)
 
 (use-package browse-kill-ring
   :config (browse-kill-ring-default-keybindings))
