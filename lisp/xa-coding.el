@@ -123,9 +123,12 @@
     (company-show-doc-buffer)
     (setq company-tooltip-maximum-width 200)))
 
-(require 'linum)
-(linum-mode)
-(setq linum-format  "%7d ")
+(use-package nlinum
+  :config
+  (setq nlinum-format  "%7d "
+        nlinum-highlight-current-line t))
+
+(set-face-attribute 'nlinum-current-line nil :inherit hl-line-face :bold t)
 
 (defun jd:customize-programming-language-mode ()
   (progn
@@ -142,6 +145,7 @@
     (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
     (local-set-key (kbd "C-c C-h") #'company-show-doc-inhibit-popup)
     (lsp-ui-mode 1)
+    (nlinum-mode 1)
     (xa:paredit-coding)))
 
 (dolist (mode jd:programming-language-major-modes)

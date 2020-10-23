@@ -1,1 +1,2 @@
-((magit-rebase nil))
+((magit-commit nil)
+ (magit-rebase nil))
