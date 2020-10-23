@@ -15,6 +15,9 @@
 (use-package rainbow-mode)
 (use-package rainbow-delimiters)
 (use-package rustic)
+(use-package qml-mode)
+(use-package vala-mode)
+
 (use-package color-identifiers-mode
   :config
   (global-color-identifiers-mode 1)       ; amazing mode to have plenty of colors
