@@ -5,7 +5,7 @@
 
 ;; Expand load-path
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(add-to-list 'load-path "~/.emacs.d/mu/mu4e") ; mu4e
+(add-to-list 'load-path "~/.emacs.d/straight/repos/mu4e/mu4e") ; mu4e
 
 ;; Generate autoloads
 (let ((generated-autoload-file "~/.emacs.d/lisp/jd-autoloads.el"))
@@ -41,7 +41,7 @@
 (use-package org)
 
 (require 'xa-ui)
-(require 'mu4e nil t)
+(require 'mu4e)
 (require 'iso-transl)
 
 (require 'jd-keybindings)
