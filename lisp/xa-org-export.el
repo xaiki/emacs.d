@@ -10,10 +10,8 @@
              '("spanishmx" "babel"))
 
 
-(setq org-export-before-parsing-hook nil)
-(setq org-export-after-processing-hook nil)
-(add-hook 'org-export-before-parsing-hook (lambda (a)  (setq xa:org-is-exporting 1)))
-(add-hook 'org-export-after-processing-hook (lambda (a) (setq xa:org-is-exporting 0)))
+(advice-add 'org-export-as :before (lambda (a &optional b c d e)  (setq xa:org-is-exporting t)))
+(advice-add 'org-export-as :after (lambda (a &optional b c d e)  (setq xa:org-is-exporting nil)))
 
 (add-to-list 'org-latex-packages-alist
              '("AUTO" "babel" t ("pdflatex")))
