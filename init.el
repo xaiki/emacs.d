@@ -98,6 +98,9 @@
 ;; auto-close gpg buffers, taken from
 ;; http://stackoverflow.com/questions/15255080/how-to-auto-close-an-auto-encryption-mode-buffer-in-emacs
 
+(defun current-second ()
+  (car (cdr (current-time))))
+
 (defun dwim-kill-buffers-by-ext (ext &optional timeout)
   (interactive)
   (let ((timeout (or timeout 60))
@@ -105,7 +108,7 @@
     (dolist (buffer (buffer-list))
       (with-current-buffer buffer
           (when (string-match ext (buffer-name buffer))
-          (let ((current-time (second (current-time)))
+          (let ((current-time (current-second (current-time)))
                 (last-displayed-time (second buffer-display-time)))
             (when (> (- current-time last-displayed-time)
                      timeout)
