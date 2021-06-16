@@ -17,6 +17,8 @@
 (use-package rustic)
 (use-package qml-mode)
 (use-package vala-mode)
+(use-package markdown-mode)
+(use-package fish-mode)
 
 (use-package color-identifiers-mode
   :config
