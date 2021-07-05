@@ -18,6 +18,15 @@
     (setq rustic-lsp-client 'lsp-mode)
     (setq lsp-rust-analyzer-cargo-watch-command "clippy")))
 
+(if (or (file-exists-p "~/.cargo/bin/cargo") ;; 'normal'
+        (file-exists-p "~/.var/app/org.gnu.emacs/data/cargo/bin/cargo")) ;; 'flatpak'
+    (if (file-exists-p "~/.cargo/bin/cargo")
+        (setenv "PATH" (concat (getenv "PATH") ":" "~/.cargo/bin/"))
+      (setenv "PATH" (concat (getenv "PATH") ":" "~/.var/app/org.gnu.emacs/data/cargo/bin/")))
+  (progn
+    (start-process-shell-command "Rust Install" "*rust-install*" "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y")
+    (setenv "PATH" (concat (getenv "PATH") ":" ))))
+
 (defun xa:inhibit-revert-buffer()
   (setq-local buffer-stale-function #'(lambda (&optional noconfirm) nil)))
 
