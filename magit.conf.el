@@ -8,3 +8,4 @@
 (setq magit-status-sections-hook (delq 'magit-insert-stashes magit-status-sections-hook))
 (setq magit-last-seen-setup-instructions "1.4.0")
 (add-hook 'magit-commit-setup-hook '(magit-commit-signoff t))
+(setq magit-bind-magit-project-status nil)

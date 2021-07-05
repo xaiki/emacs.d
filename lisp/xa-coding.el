@@ -19,11 +19,18 @@
 (use-package vala-mode)
 (use-package markdown-mode)
 (use-package fish-mode)
+(use-package skewer-mode)
+(use-package impatient-mode)
+
+(use-package dash-docs
+  :config (setq dash-docs-docsets-path "~/Documents/DashDocs"))
 
 (use-package color-identifiers-mode
   :config
   (global-color-identifiers-mode 1)       ; amazing mode to have plenty of colors
   )
+
+(use-package company)
 
 (use-package company-lsp
   :ensure t
@@ -143,14 +150,15 @@
       (electric-pair-mode 1)
       (setq show-trailing-whitespace t)
       (flycheck-mode 1)
-      (flyspell-prog-mode)
+;;      (flyspell-prog-mode)
       (dtrt-indent-mode t)
-      (company-mode 1)
+      (company-mode +1)
       (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
       (local-set-key (kbd "C-c C-h") #'company-show-doc-inhibit-popup)
       (lsp-ui-mode 1)
       (nlinum-mode 1)
-      (xa:paredit-coding))))
+;;      (xa:paredit-coding)
+      )))
 
 (dolist (mode jd:programming-language-major-modes)
   (add-hook

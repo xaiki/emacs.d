@@ -1,11 +1,10 @@
-(use-package company
-  :config (setq company-tooltip-align-annotations t))
-
 (use-package tide
   :config ;; https://github.com/ananthakumaran/tide
   (progn
     (add-hook 'typescript-mode-hook #'setup-tide-mode)
-    (add-hook 'before-save-hook 'tide-format-before-save))
+    (add-hook 'before-save-hook 'tide-format-before-save)
+
+    )
   )
 
 (use-package flycheck
@@ -23,10 +22,6 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  ;; `M-x package-install [ret] company`
-  (company-mode +1)
   (message "tide mode setup"))
 
 (use-package dtrt-indent
