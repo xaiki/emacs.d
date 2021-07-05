@@ -131,6 +131,6 @@
 (put 'downcase-region 'disabled nil)
 
 (use-package powerline)
-(use-package mu4e)
+;;(use-package mu4e)
 (provide 'init)
 ;;; init.el ends here
