@@ -37,6 +37,7 @@
 
 ;; init straight
 (require 'xa-straight)
+(use-package paredit)
 (use-package org)
 
 (require 'xa-ui)
