@@ -7,8 +7,6 @@
 (use-package company-web
   :config
   (progn
-    (add-to-list 'company-backends 'company-web-fa+)
-    (add-to-list 'company-backends 'company-web-bootstrap+)
     (add-to-list 'company-backends 'company-web-html)
     (add-to-list 'company-backends 'company-web-jade)
     (add-to-list 'company-backends 'company-web-slim)))
@@ -25,7 +23,7 @@
 
 (require 'company-web-html)
 
-(add-hook 'after-init-hook 'global-company-mode)
+;;(add-hook 'after-init-hook 'global-company-mode)
 
 ;; (add-to-list 'company-backends 'company-tern)
 ;; (push company-irony company-backends)
